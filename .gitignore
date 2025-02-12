@@ -2,3 +2,6 @@
 *.v2
 *.vsidx
 *.suo
+.idea/
+.ConsoleApp1/bin/
+.ConsoleApp1/obj/

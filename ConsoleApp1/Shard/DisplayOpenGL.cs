@@ -1,4 +1,9 @@
-﻿namespace Shard
+﻿using OpenTK.Core;
+
+
+
+
+namespace Shard
 {
     class DisplayOpenGL : Display
     {

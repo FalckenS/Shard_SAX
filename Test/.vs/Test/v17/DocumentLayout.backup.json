@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Master\\HPC\\TDA572\\Test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\displaytextgl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\displaytextgl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\freetypefont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\freetypefont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\shaders\\text.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\shaders\\text.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|f:\\master\\hpc\\tda572\\test\\test\\shaders\\text.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{AF2FBABC-91B1-409F-A9E5-8F21A81450C2}|Test\\Test.csproj|solutionrelative:test\\shaders\\text.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Test",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Test.csproj",
+              "RelativeDocumentMoniker": "Test\\Test.csproj",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Test.csproj",
+              "RelativeToolTip": "Test\\Test.csproj",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-12T00:34:06.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Shader.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shader.cs",
+              "RelativeDocumentMoniker": "Test\\Shader.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shader.cs",
+              "RelativeToolTip": "Test\\Shader.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T00:02:58.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "text.frag",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shaders\\text.frag",
+              "RelativeDocumentMoniker": "Test\\Shaders\\text.frag",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shaders\\text.frag",
+              "RelativeToolTip": "Test\\Shaders\\text.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-11T23:38:36.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "text.vert",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shaders\\text.vert",
+              "RelativeDocumentMoniker": "Test\\Shaders\\text.vert",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Shaders\\text.vert",
+              "RelativeToolTip": "Test\\Shaders\\text.vert",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-11T23:38:15.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FreeTypeFont.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\FreeTypeFont.cs",
+              "RelativeDocumentMoniker": "Test\\FreeTypeFont.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\FreeTypeFont.cs",
+              "RelativeToolTip": "Test\\FreeTypeFont.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAYwH8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T16:57:10.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DisplayTextGL.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\DisplayTextGL.cs",
+              "RelativeDocumentMoniker": "Test\\DisplayTextGL.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\DisplayTextGL.cs",
+              "RelativeToolTip": "Test\\DisplayTextGL.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAgwK8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T15:54:56.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Program.cs",
+              "RelativeDocumentMoniker": "Test\\Program.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\Test\\Test\\Program.cs",
+              "RelativeToolTip": "Test\\Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAowDQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T23:22:10.079Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

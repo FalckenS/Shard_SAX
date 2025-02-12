@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Master\\HPC\\TDA572\\shard_SAX\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\gametestopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\gametestopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displaytext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaytext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameTestOpenGL.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\GameTestOpenGL.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\GameTestOpenGL.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\GameTestOpenGL.cs",
+              "RelativeToolTip": "ConsoleApp1\\GameTestOpenGL.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T12:56:23.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Bootstrap.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Bootstrap.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Bootstrap.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T12:47:03.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DisplayText.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayText.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayText.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayText.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayText.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T12:45:16.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DisplaySDL.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplaySDL.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplaySDL.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAwwAcBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T13:09:17.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DisplayOpenGL.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowEIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T13:13:26.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Display.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Display.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Display.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAowDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T13:09:05.837Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

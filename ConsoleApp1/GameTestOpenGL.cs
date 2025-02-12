@@ -13,8 +13,10 @@ namespace Shard
 
         public override void update()
         {
+            Bootstrap.getDisplay().showText("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
+
             _frame++;
-            if (_frame == 200)
+            if (_frame == 2000)
             {
                 Console.WriteLine(_frame);
                 GameObject gameObject = new GameObject();

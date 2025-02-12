@@ -53,11 +53,14 @@ namespace Shard
 
         private IntPtr _window, _glContext;
 
-        private Shader _shader;
+        private Shader _shader_text, _shader_shape;
 
         private FreeTypeFont _font;
 
         private List<TextInfo> _textInfos;
+
+        private int _vao, _vbo;
+
 
         public void swapBuffer()
         {
@@ -99,8 +102,9 @@ namespace Shard
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(0, BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
-            _shader = new Shader("Shaders/text.vert", "Shaders/text.frag");
-            _shader.Use();
+            _shader_text = new Shader("Shaders/text.vert", "Shaders/text.frag");
+            _shader_shape = new Shader("Shaders/simple.vert", "Shaders/simple.frag");
+            //_shader_text.Use();
 
             _font = new FreeTypeFont(32);
 
@@ -123,7 +127,7 @@ namespace Shard
 
         public override void showText(string text, double x, double y, int size, int r, int g, int b)
         {
-            showText(text, (float)x, (float)y, size, new Vector3(r, g, b), new Vector2(1f, 0f));
+            showText(text, (float)x, (float)y, size, new Vector3(r / 255.0f, g / 255.0f, b / 255.0f), new Vector2(1f, 0f));
         }
 
         public override void showText(char[,] text, double x, double y, int size, int r, int g, int b)
@@ -142,6 +146,8 @@ namespace Shard
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.Viewport(0, 0, getWidth(), getHeight());
 
+            _shader_text.Use();
+
             Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
             GL.UniformMatrix4(1, false, ref projectionM);
 
@@ -149,6 +155,14 @@ namespace Shard
             {
                 _font.RenderText(info.Text, info.X, info.Y, info.Scale, info.Color, info.Dir);
             }
+
+            _shader_shape.Use();
+
+            DrawRedTriangle();
+            GL.BindVertexArray(_vao);
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            swapBuffer();
+
         }
 
 
@@ -157,6 +171,30 @@ namespace Shard
             SDL.SDL_GL_DeleteContext(_glContext);
             SDL.SDL_DestroyWindow(_window);
             SDL.SDL_Quit();
+        }
+
+
+        public void DrawRedTriangle()
+        {
+            float[] vertices =
+            [
+                0.0f,  0.5f,  0.0f,
+                0.5f, -0.5f,  0.0f,
+                -0.5f, -0.5f,  0.0f
+            ];
+
+            _vbo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+            _vao = GL.GenVertexArray();
+            GL.BindVertexArray(_vao);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindVertexArray(0);
+
+            
         }
     }
 }

@@ -518,31 +518,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Antoine\\.nuget\\packages\\": {},
-    "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\samue\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard.csproj",
+      "projectUniqueName": "C:\\ProgrammingProjects\\shard_SAX\\ConsoleApp1\\Shard.csproj",
       "projectName": "Shard",
-      "projectPath": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard.csproj",
-      "packagesPath": "C:\\Users\\Antoine\\.nuget\\packages\\",
-      "outputPath": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\obj\\",
+      "projectPath": "C:\\ProgrammingProjects\\shard_SAX\\ConsoleApp1\\Shard.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\ProgrammingProjects\\shard_SAX\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Antoine\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -560,8 +553,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -600,7 +592,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

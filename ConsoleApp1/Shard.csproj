@@ -47,18 +47,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="Shaders/**" CopyToOutputDirectory="PreserveNewest" />
-		<None Include="Resource/**" CopyToOutputDirectory="PreserveNewest" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Remove="freetype6.dll" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="freetype6.dll">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<None Include="Shard/Shaders/**" CopyToOutputDirectory="PreserveNewest">
+			<Link>Shaders\%(RecursiveDir)%(Filename)%(Extension)</Link>
+		</None>
+		<None Include="Shard/Resource/**" CopyToOutputDirectory="PreserveNewest">
+			<Link>Resource\%(RecursiveDir)%(Filename)%(Extension)</Link>
 		</None>
 	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Update="Shard/Lib/freetype6.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Link>freetype6.dll</Link>
+		</None>
+	</ItemGroup>
+
 
 </Project>

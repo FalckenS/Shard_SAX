@@ -7,13 +7,13 @@ namespace Shard;
 class GameTestOpenGL : Game
 {
     private int _frame;
-    private TextToDisplay hello;
+    private TextToRender hello;
     private List<RectangleGameObject> _rectangleGameObjects;
 
     public override void initialize()
     {
         _frame = 0;
-        hello = new TextToDisplay("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
+        hello = new TextToRender("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
         
         RectangleGameObject rectangle = new RectangleGameObject();
         rectangle.Transform.X = -1;
@@ -26,33 +26,63 @@ class GameTestOpenGL : Game
     {
         _frame++;
         Bootstrap.getDisplay().showText("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
-        //Bootstrap.getDisplay().drawLine(0, 0, 1, 0, Color.Red);
     }
 }
 
 class RectangleGameObject : GameObject, CollisionHandler
 {
+    private int _minX;
+    private int _minY;
+    private int _maxX;
+    private int _maxY;
+    private Display _display;
+    
     public override void initialize()
     {
         setPhysicsEnabled();
         MyBody.Mass = 1;
         MyBody.Kinematic = true;
         MyBody.addRectCollider();
+        
+        _minX = (int)MyBody.MinAndMaxX[0];
+        _minY = (int)MyBody.MinAndMaxY[0];
+        _maxX = (int)MyBody.MinAndMaxX[1];
+        _maxY = (int)MyBody.MinAndMaxY[1];
+        
+        _display = Bootstrap.getDisplay();
     }
     
     public override void update()
     {
-        Display display = Bootstrap.getDisplay();
+        UpdatePosition();
+        //RenderWithLines();
+        Render();
+    }
 
-        int minX = (int)MyBody.MinAndMaxX[0];
-        int minY = (int)MyBody.MinAndMaxY[0];
-        int maxX = (int)MyBody.MinAndMaxX[1];
-        int maxY = (int)MyBody.MinAndMaxY[1];
-        
-        display.drawLine(minX, minY, maxX, minY, Color.Red);
-        display.drawLine(minX, minY, minX, maxY, Color.Red);
-        display.drawLine(maxX, minY, maxX, maxY, Color.Red);
-        display.drawLine(minX, maxY, maxX, maxY, Color.Red);
+    private void UpdatePosition()
+    {
+        _minX = (int)MyBody.MinAndMaxX[0];
+        _minY = (int)MyBody.MinAndMaxY[0];
+        _maxX = (int)MyBody.MinAndMaxX[1];
+        _maxY = (int)MyBody.MinAndMaxY[1];
+    }
+
+    private void RenderWithLines()
+    {
+        _display.drawLine(_minX, _minY, _maxX, _minY, Color.Green);
+        _display.drawLine(_minX, _minY, _minX, _maxY, Color.Green);
+        _display.drawLine(_maxX, _minY, _maxX, _maxY, Color.Green);
+        _display.drawLine(_minX, _maxY, _maxX, _maxY, Color.Green);
+    }
+    
+    private void Render()
+    {
+        _display.drawRectangle(
+            _minX, _maxY,
+            _maxX, _maxY,
+            _maxX, _minY,
+            _minX, _minY,
+            Color.Green);
     }
 
     public void onCollisionEnter(PhysicsBody x)

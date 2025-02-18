@@ -1,8 +1,7 @@
-﻿using System.Drawing;
-
-namespace Shard;
+﻿namespace Shard;
 
 using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using SDL2;
@@ -10,57 +9,21 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 
-public class MySdlBindingsContext : IBindingsContext
-{
-    public IntPtr GetProcAddress(string procName)
-    {
-        [DllImport("SDL2")]
-        static extern IntPtr SDL_GL_GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procName);
-        return SDL_GL_GetProcAddress(procName);
-    }
-}
-
-public class OpenGLLine(float x1, float x2, float y1, float y2, Color color)
-{
-    private float _x1 = x1/2, _x2 = x2/2, _y1 = y1/2, _y2 = y2/2;
-    private Color _color = color;
-
-    public float GetX1()
-    {
-        return _x1;
-    }
-    public float GetX2()
-    {
-        return _x2;
-    }
-    public float GetY1()
-    {
-        return _y1;
-    }
-    public float GetY2()
-    {
-        return _y2;
-    }
-    public Color GetColor()
-    {
-        return _color;
-    }
-}
-
 class DisplayOpenGL : Display
 {
+    private const float RenderDownscale = 0.5f;
     private IntPtr _window, _glContext;
     private Shader _shaderText, _shaderShape;
     private FreeTypeFont _font;
     private int _vao, _vbo;
     
-    private List<TextToDisplay> _textsToDisplay;
-    private List<OpenGLLine> _linesToDisplay;
+    private List<TextToRender> _textsToRender;
+    private List<LineToRender> _linesToRender;
+    private List<RectangleToRender> _rectanglesToRender;
     
     public override void initialize()
     {
         setSize(1000, 800);
-
         SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
         SDL_ttf.TTF_Init();
         _window = SDL.SDL_CreateWindow("Shard Game Engine",
@@ -87,8 +50,9 @@ class DisplayOpenGL : Display
 
         _font = new FreeTypeFont(32);
 
-        _textsToDisplay = new List<TextToDisplay>();
-        _linesToDisplay = new List<OpenGLLine>();
+        _textsToRender = new List<TextToRender>();
+        _linesToRender = new List<LineToRender>();
+        _rectanglesToRender = new List<RectangleToRender>();
     }
 
     public override void display()
@@ -102,41 +66,50 @@ class DisplayOpenGL : Display
         Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
         GL.UniformMatrix4(1, false, ref projectionM);
         
-        foreach (TextToDisplay text in _textsToDisplay)
+        foreach (TextToRender text in _textsToRender)
         {
             _font.RenderText(text.Text, text.XPos, text.YPos, text.Size,
                 new Vector3(text.R / 255.0f, text.G / 255.0f, text.B / 255.0f),
                 new Vector2(1f, 0f)
             );
         }
-        foreach (OpenGLLine line in _linesToDisplay)
+        foreach (LineToRender line in _linesToRender)
         {
             RenderLine(line);
         }
-        
+        foreach (RectangleToRender rectangle in _rectanglesToRender)
+        {
+            RenderRectangle(rectangle);
+        }
         SwapBuffer();
     }
     
     public override void clearDisplay()
     {
-        _textsToDisplay.Clear();
-        _linesToDisplay.Clear();
+        _textsToRender.Clear();
+        _linesToRender.Clear();
+        _rectanglesToRender.Clear();
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
     }
     
-    public override void showText(string text, double x, double y, int size, int r, int g, int b)
-    {
-        _textsToDisplay.Add(new TextToDisplay(text, (float)x, (float)y, size, r, g, b));
-    }
-
     public override void showText(char[,] text, double x, double y, int size, int r, int g, int b)
     {
 
     }
+    
+    public override void showText(string text, double x, double y, int size, int r, int g, int b)
+    {
+        _textsToRender.Add(new TextToRender(text, (float)x, (float)y, size, r, g, b));
+    }
 
     public override void drawLine(int x, int y, int x2, int y2, Color col)
     {
-        _linesToDisplay.Add(new OpenGLLine(x, x2, y, y2, col));
+        _linesToRender.Add(new LineToRender(x, y, x2, y2, col));
+    }
+
+    public override void drawRectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
+    {
+        _rectanglesToRender.Add(new RectangleToRender(x1, y1, x2, y2, x3, y3, x4, y4, color));
     }
 
     private void SwapBuffer()
@@ -164,14 +137,14 @@ class DisplayOpenGL : Display
         SDL.SDL_Quit();
     }
     
-    private void RenderLine(OpenGLLine line)
+    private void RenderLine(LineToRender lineToRender)
     {
         float[] vertices =
-        {
-            // Positions                      // Color (Red)
-            line.GetX1(), line.GetY1(), 0.0f, (float)line.GetColor().R, (float)line.GetColor().G, (float)line.GetColor().B, // Start point
-            line.GetX2(), line.GetY2(), 0.0f, (float)line.GetColor().R, (float)line.GetColor().G, (float)line.GetColor().B  // End point
-        };
+        [
+            // Positions
+            lineToRender.X1*RenderDownscale, lineToRender.Y1*RenderDownscale, 0.0f, 0, 0, 0, // Start point
+            lineToRender.X2*RenderDownscale, lineToRender.Y2*RenderDownscale, 0.0f, 0, 0, 0  // End point
+        ];
 
         _vao = GL.GenVertexArray();
         _vbo = GL.GenBuffer();
@@ -197,16 +170,20 @@ class DisplayOpenGL : Display
         GL.DrawArrays(PrimitiveType.Lines, 0, 2);
     }
 
-    private void DrawRedRectangle()
+    private void RenderRectangle(RectangleToRender rectangleToRender)
     {
         float[] vertices =
-        {
-            // Positions      // Colors (Red)
-            -0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // Bottom-left
-            0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // Bottom-right
-            0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // Top-right
-            -0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f  // Top-left
-        };
+        [
+            // Positions                                      // Colors (Red)
+            // Bottom-left
+            rectangleToRender.X1*RenderDownscale, rectangleToRender.Y1*RenderDownscale, 0.0f, 0, 0, 0,
+            // Bottom-right
+            rectangleToRender.X2*RenderDownscale, rectangleToRender.Y2*RenderDownscale, 0.0f, 0, 0, 0,
+            // Top-right
+            rectangleToRender.X3*RenderDownscale, rectangleToRender.Y3*RenderDownscale, 0.0f, 0, 0, 0,
+            // Top-left
+            rectangleToRender.X4*RenderDownscale, rectangleToRender.Y4*RenderDownscale, 0.0f, 0, 0, 0
+        ];
 
         uint[] indices =
         {
@@ -243,9 +220,28 @@ class DisplayOpenGL : Display
         GL.BindVertexArray(_vao);
         GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
     }
+
+    private class MySdlBindingsContext : IBindingsContext
+    {
+        public IntPtr GetProcAddress(string procName)
+        {
+            [DllImport("SDL2")]
+            static extern IntPtr SDL_GL_GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procName);
+            return SDL_GL_GetProcAddress(procName);
+        }
+    }
+
+    private class LineToRender(float x1, float y1, float x2, float y2, Color color)
+    {
+        public float X1 { get; } = x1;
+        public float Y1 { get; } = y1;
+        public float X2 { get; } = x2;
+        public float Y2 { get; } = y2;
+        public Color Color { get; } = color;
+    }
 }
 
-class TextToDisplay(string text, float xPos, float yPos, int size, int r, int g, int b)
+internal class TextToRender(string text, float xPos, float yPos, int size, int r, int g, int b)
 {
     public string Text { get; } = text;
     public float XPos { get; } = xPos;
@@ -254,4 +250,17 @@ class TextToDisplay(string text, float xPos, float yPos, int size, int r, int g,
     public int R { get; } = r;
     public int G { get; } = g;
     public int B { get; } = b;
+}
+
+public class RectangleToRender(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
+{
+    public float X1 { get; } = x1;
+    public float Y1 { get; } = y1;
+    public float X2 { get; } = x2;
+    public float Y2 { get; } = y2;
+    public float X3 { get; } = x3;
+    public float Y3 { get; } = y3;
+    public float X4 { get; } = x4;
+    public float Y4 { get; } = y4;
+    public Color Color { get; } = color;
 }

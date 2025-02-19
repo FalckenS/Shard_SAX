@@ -137,13 +137,17 @@ class DisplayOpenGL : Display
         SDL.SDL_Quit();
     }
     
-    private void RenderLine(LineToRender lineToRender)
+    private void RenderLine(LineToRender lineInfo)
     {
+        float rCol = lineInfo.Color.R;
+        float gCol = lineInfo.Color.G;
+        float bCol = lineInfo.Color.B;
         float[] vertices =
         [
-            // Positions
-            lineToRender.X1*RenderDownscale, lineToRender.Y1*RenderDownscale, 0.0f, 0, 0, 0, // Start point
-            lineToRender.X2*RenderDownscale, lineToRender.Y2*RenderDownscale, 0.0f, 0, 0, 0  // End point
+            // Start point
+            lineInfo.X1*RenderDownscale, lineInfo.Y1*RenderDownscale, 0, rCol, gCol, bCol,
+            // End point
+            lineInfo.X2*RenderDownscale, lineInfo.Y2*RenderDownscale, 0, rCol, gCol, bCol
         ];
 
         _vao = GL.GenVertexArray();
@@ -170,19 +174,21 @@ class DisplayOpenGL : Display
         GL.DrawArrays(PrimitiveType.Lines, 0, 2);
     }
 
-    private void RenderRectangle(RectangleToRender rectangleToRender)
+    private void RenderRectangle(RectangleToRender rectangleInfo)
     {
+        float rCol = rectangleInfo.Color.R;
+        float gCol = rectangleInfo.Color.G;
+        float bCol = rectangleInfo.Color.B;
         float[] vertices =
         [
-            // Positions                                      // Colors (Red)
             // Bottom-left
-            rectangleToRender.X1*RenderDownscale, rectangleToRender.Y1*RenderDownscale, 0.0f, 0, 0, 0,
+            rectangleInfo.X1*RenderDownscale, rectangleInfo.Y1*RenderDownscale, 0, rCol, gCol, bCol,
             // Bottom-right
-            rectangleToRender.X2*RenderDownscale, rectangleToRender.Y2*RenderDownscale, 0.0f, 0, 0, 0,
+            rectangleInfo.X2*RenderDownscale, rectangleInfo.Y2*RenderDownscale, 0, rCol, gCol, bCol,
             // Top-right
-            rectangleToRender.X3*RenderDownscale, rectangleToRender.Y3*RenderDownscale, 0.0f, 0, 0, 0,
+            rectangleInfo.X3*RenderDownscale, rectangleInfo.Y3*RenderDownscale, 0, rCol, gCol, bCol,
             // Top-left
-            rectangleToRender.X4*RenderDownscale, rectangleToRender.Y4*RenderDownscale, 0.0f, 0, 0, 0
+            rectangleInfo.X4*RenderDownscale, rectangleInfo.Y4*RenderDownscale, 0, rCol, gCol, bCol
         ];
 
         uint[] indices =

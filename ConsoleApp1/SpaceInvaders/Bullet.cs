@@ -1,4 +1,9 @@
-﻿using Shard;
+﻿/*
+*   Contributions to the code made by others:
+*   @author Lucas Lonegro Gurfinkel (see Changelog for 1.3.0)
+*/
+
+using Shard;
 using System;
 using System.Drawing;
 

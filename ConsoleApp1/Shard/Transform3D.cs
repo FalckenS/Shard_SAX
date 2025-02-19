@@ -12,15 +12,15 @@ namespace Shard
 {
     class Transform3D : Transform
     {
-        private double z;
-        private double rotx, roty;
-        private int scalez;
+        private float z;
+        private float rotx, roty;
+        private float scalez;
 
         public Transform3D(GameObject o) : base(o)
         {
         }
 
-        public double Z
+        public float Z
         {
             get => z;
             set => z = value;
@@ -28,12 +28,12 @@ namespace Shard
 
 
 
-        public int Scalez
+        public float Scalez
         {
             get => scalez;
             set => scalez = value;
         }
-        public double Rotx { get => rotx; set => rotx = value; }
-        public double Roty { get => roty; set => roty = value; }
+        public float Rotx { get => rotx; set => rotx = value; }
+        public float Roty { get => roty; set => roty = value; }
     }
 }

@@ -37,6 +37,7 @@ Ch..ch...ch...ch...changes
 * Changed line 199 in DisplayText.cs from TTF_RenderText_Blended to TTF_RenderText_Solid to resolve engine crash on game over font loaded. (Bug fix by Kyle Agius)
 * Moved input.getInput() from line 288 in Bootstrap.cs to line 285. Moving the handling of input outside the gameloop while statement. (Bug fix by Erik Tran Simonsson)
 * Added full sprite path using Bootstrap.getAssetManager().getAssetPath() to line 37 in Invader.cs. Fixes image loading error. (Bug fix by Biting Lin) 
+* Added a fail safe in OnColissionEnter to line 67 in Bullet.cs. Stops bullets from initiating destroy events for multiple objects in the scene. (Bug fix by Lucas Lonegro Gurfinkel)
 
 ### 01/02/2024 - 1.2.0 - Shake it Off
 

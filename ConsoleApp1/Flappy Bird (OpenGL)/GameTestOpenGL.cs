@@ -71,8 +71,8 @@ class RectangleGameObject : GameObject, CollisionHandler
     {
         _display.drawLine(_minX, _minY, _maxX, _minY, Color.Green);
         _display.drawLine(_minX, _minY, _minX, _maxY, Color.Green);
-        _display.drawLine(_maxX, _minY, _maxX, _maxY, Color.Green);
-        _display.drawLine(_minX, _maxY, _maxX, _maxY, Color.Green);
+        _display.drawLine(_maxX, _maxY, _maxX, _minY, Color.Green);
+        _display.drawLine(_maxX, _maxY, _minX, _maxY, Color.Green);
     }
     
     private void Render()
@@ -82,7 +82,7 @@ class RectangleGameObject : GameObject, CollisionHandler
             _maxX, _maxY,
             _maxX, _minY,
             _minX, _minY,
-            Color.Green);
+            Color.Blue);
     }
 
     public void onCollisionEnter(PhysicsBody x)

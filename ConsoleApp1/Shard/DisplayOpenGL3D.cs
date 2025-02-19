@@ -12,12 +12,11 @@ using OpenTK.Mathematics;
 
 class CubeObject : GameObject 
 {
-    private Texture _texture;
 
     public CubeObject(float tx, float ty, float tz, // translation
                       float rx, float ry, float rz, // rotation
-                      float sx, float sy, float sz  // scale
-                      )
+                      float sx, float sy, float sz,  // scale
+                      string path)
     {
         Transform.X = tx; 
         Transform.Y = ty;
@@ -28,6 +27,7 @@ class CubeObject : GameObject
         Transform.Scalex = sx;
         Transform.Scaley = sy;
         Transform.Scalez = sz;
+        Transform.SpritePath = path;
     }
 
     public Matrix4 calcModel()
@@ -53,6 +53,7 @@ class DisplayOpenGL3D : Display
     private int _vaoCube, _vboCube, _eboCube;
     private Matrix4 _model, _view, _projection;
 
+    private Dictionary<string, Texture> _textureBuffer;
     private List<TextToRender> _textsToRender;
     private List<LineToRender> _linesToRender;
     private List<RectangleToRender> _rectanglesToRender;
@@ -178,6 +179,7 @@ class DisplayOpenGL3D : Display
         _linesToRender = new List<LineToRender>();
         _rectanglesToRender = new List<RectangleToRender>();
         _cubesToRender = new List<CubeObject>();
+        _textureBuffer = new Dictionary<string, Texture>();
     }
 
     public override void display()
@@ -246,6 +248,10 @@ class DisplayOpenGL3D : Display
     public override void addToDrawCube(CubeObject cube)
     {
         _cubesToRender.Add(cube);
+        if (!_textureBuffer.ContainsKey(cube.Transform.SpritePath))
+        {
+            _textureBuffer[cube.Transform.SpritePath] = Texture.LoadFromFile(cube.Transform.SpritePath);
+        }
     }
 
     private void SwapBuffer()
@@ -367,6 +373,10 @@ class DisplayOpenGL3D : Display
         _shaderCube.SetMatrix4("model", _model);
         _shaderCube.SetMatrix4("view", _view);
         _shaderCube.SetMatrix4("projection", _projection);
+
+        _shaderCube.SetInt("texture0", 0);
+        Texture tex = _textureBuffer[cube.Transform.SpritePath];
+        tex.Use(TextureUnit.Texture0);
 
         GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
     }

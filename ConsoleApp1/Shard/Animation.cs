@@ -11,10 +11,20 @@ namespace Shard.Shard
         private T _last;
         private float _lastTimeSeconds;
         private float _secondsSinceStart = 0;
-
+        
         public bool IsPaused { get; private set; }
         public int KeyFramesPerSecond {  get; set; }
         private List<T> _keyFrames;
+
+
+        public Animation(List<T> keyFrames)
+        {
+            _keyFrames = keyFrames;
+        }
+        public Animation(T[] keyFrames)
+        {
+            _keyFrames = [.. keyFrames];
+        }
 
         public T GetKeyFrame(float currentTimeSeconds,PlayMode playMode)
         {
@@ -65,5 +75,9 @@ namespace Shard.Shard
 
         public void Play() { IsPaused = false; }
         public void Pause() { IsPaused = true; }
+        public void InsertKeyFrame(int index, T keyFrame) {_keyFrames.Insert(index, keyFrame);}
+        public void AddKeyFrame(T keyFrame) {_keyFrames.Add(keyFrame);}
+        public void RemoveKeyFrameAt(int index) {_keyFrames.RemoveAt(index);}
+        public void RemoveKeyFrame(T keyFrame) {_keyFrames.Remove(keyFrame);}
     }
 }

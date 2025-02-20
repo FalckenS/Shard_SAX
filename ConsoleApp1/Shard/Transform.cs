@@ -69,7 +69,7 @@ namespace Shard
 
         public void translate(double nx, double ny)
         {
-            translate ((float)nx, (float)ny);
+            translate((float)nx, (float)ny);
         }
 
 

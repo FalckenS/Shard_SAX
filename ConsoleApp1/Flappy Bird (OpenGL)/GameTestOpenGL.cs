@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Shard;
 
@@ -26,14 +25,10 @@ internal class RectangleGameObject : GameObject, CollisionHandler
     private int _minY;
     private int _maxX;
     private int _maxY;
-    private Display _display;
     
     public override void initialize()
     {
-        _display = Bootstrap.getDisplay();
-        
         setPhysicsEnabled();
-        MyBody.Mass = 1;
         MyBody.Kinematic = true;
         MyBody.addRectCollider();
 
@@ -43,7 +38,7 @@ internal class RectangleGameObject : GameObject, CollisionHandler
     public override void update()
     {
         UpdatePosition();
-        //RenderWithLines();
+        RenderWithLines();
     }
 
     private void UpdatePosition()
@@ -56,24 +51,15 @@ internal class RectangleGameObject : GameObject, CollisionHandler
 
     private void RenderWithLines()
     {
-        _display.drawLine(_minX, _minY, _maxX, _minY, Color.Green);
-        _display.drawLine(_minX, _minY, _minX, _maxY, Color.Green);
-        _display.drawLine(_maxX, _maxY, _maxX, _minY, Color.Green);
-        _display.drawLine(_maxX, _maxY, _minX, _maxY, Color.Green);
+        Bootstrap.getDisplay().drawLine(_minX, _minY, _maxX, _minY, Color.Red);
+        Bootstrap.getDisplay().drawLine(_minX, _minY, _minX, _maxY, Color.Red);
+        Bootstrap.getDisplay().drawLine(_maxX, _maxY, _maxX, _minY, Color.Blue);
+        Bootstrap.getDisplay().drawLine(_maxX, _maxY, _minX, _maxY, Color.Blue);
     }
 
-    public void onCollisionEnter(PhysicsBody x)
-    {
-        throw new NotImplementedException();
-    }
+    public void onCollisionEnter(PhysicsBody x) {}
 
-    public void onCollisionExit(PhysicsBody x)
-    {
-        throw new NotImplementedException();
-    }
+    public void onCollisionExit(PhysicsBody x) {}
 
-    public void onCollisionStay(PhysicsBody x)
-    {
-        throw new NotImplementedException();
-    }
+    public void onCollisionStay(PhysicsBody x) {}
 }

@@ -1,6 +1,4 @@
-﻿namespace Shard;
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
@@ -8,6 +6,8 @@ using SDL2;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+
+namespace Shard;
 
 internal class DisplayOpenGL : Display
 {
@@ -125,10 +125,7 @@ internal class DisplayOpenGL : Display
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
     }
     
-    public override void showText(char[,] text, double xPos, double yPos, int size, int rCol, int gCol, int bCol)
-    {
-        throw new NotImplementedException();
-    }
+    public override void showText(char[,] text, double xPos, double yPos, int size, int rCol, int gCol, int bCol) {}
     
     public override void showText(string text, double xPos, double yPos, int scale, int rCol, int gCol, int bCol)
     {
@@ -142,12 +139,38 @@ internal class DisplayOpenGL : Display
 
     public override void addToDraw(GameObject gob)
     {
+        Color gameObjectColor = GetGameObjectColor(gob);
+
+        // Min x, y is bottom left
+        // Max x, y is top right
         _rectanglesToRender.Add(new RectangleToRender(
+            gob.MyBody.MinAndMaxX[0], gob.MyBody.MinAndMaxY[0],
+            gob.MyBody.MinAndMaxX[1], gob.MyBody.MinAndMaxY[0],
             gob.MyBody.MinAndMaxX[0], gob.MyBody.MinAndMaxY[1],
             gob.MyBody.MinAndMaxX[1], gob.MyBody.MinAndMaxY[1],
-            gob.MyBody.MinAndMaxX[1], gob.MyBody.MinAndMaxY[0],
-            gob.MyBody.MinAndMaxX[0], gob.MyBody.MinAndMaxY[0],
-            Color.Blue));
+            gameObjectColor));
+    }
+
+    private static Color GetGameObjectColor(GameObject gob)
+    {
+        Color gameObjectColor = Color.Blue;
+        if (gob.getTags().Contains("Green"))
+        {
+            gameObjectColor = Color.Green;
+        }
+        else if (gob.getTags().Contains("Red"))
+        {
+            gameObjectColor = Color.Red;
+        }
+        else if (gob.getTags().Contains("Blue"))
+        {
+            gameObjectColor = Color.Blue;
+        }
+        else if (gob.getTags().Contains("Yellow"))
+        {
+            gameObjectColor = Color.Yellow;
+        }
+        return gameObjectColor;
     }
 
     private void Resize()
@@ -201,14 +224,10 @@ internal class DisplayOpenGL : Display
         float bCol = rectangleInfo.Color.B;
         float[] vertices =
         [
-            // Bottom-left
-            rectangleInfo.XPos1, rectangleInfo.YPos1, 0, rCol, gCol, bCol,
-            // Bottom-right
-            rectangleInfo.XPos2, rectangleInfo.YPos2, 0, rCol, gCol, bCol,
-            // Top-right
-            rectangleInfo.XPos3, rectangleInfo.YPos3, 0, rCol, gCol, bCol,
-            // Top-left
-            rectangleInfo.XPos4, rectangleInfo.YPos4, 0, rCol, gCol, bCol
+            rectangleInfo.BotLX, rectangleInfo.BotLY, 0, rCol, gCol, bCol,
+            rectangleInfo.BotRX, rectangleInfo.BotRY, 0, rCol, gCol, bCol,
+            rectangleInfo.TopRX, rectangleInfo.TopRY, 0, rCol, gCol, bCol,
+            rectangleInfo.TopLX, rectangleInfo.TopLY, 0, rCol, gCol, bCol
         ];
 
         uint[] indices =
@@ -279,15 +298,15 @@ internal class TextToRender(string text, float xPos, float yPos, int scale, int 
     public int BCol { get; } = bCol;
 }
 
-internal class RectangleToRender(float xPos1, float yPos1, float xPos2, float yPos2, float xPos3, float yPos3, float xPos4, float yPos4, Color color)
+internal class RectangleToRender(float botLX, float botLY, float botRX, float botRY, float topLX, float topLY, float topRX, float topRY, Color color)
 {
-    public float XPos1 { get; } = xPos1;
-    public float YPos1 { get; } = yPos1;
-    public float XPos2 { get; } = xPos2;
-    public float YPos2 { get; } = yPos2;
-    public float XPos3 { get; } = xPos3;
-    public float YPos3 { get; } = yPos3;
-    public float XPos4 { get; } = xPos4;
-    public float YPos4 { get; } = yPos4;
+    public float BotLX { get; } = botLX;
+    public float BotLY { get; } = botLY;
+    public float BotRX { get; } = botRX;
+    public float BotRY { get; } = botRY;
+    public float TopLX { get; } = topLX;
+    public float TopLY { get; } = topLY;
+    public float TopRX { get; } = topRX;
+    public float TopRY { get; } = topRY;
     public Color Color { get; } = color;
 }

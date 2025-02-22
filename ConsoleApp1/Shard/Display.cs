@@ -23,11 +23,7 @@ namespace Shard
             drawLine(x, y, x2, y2, col.R, col.G, col.B, col.A);
         }
 
-        public virtual void drawRectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
-        {
-            
-        }
-        
+
         public virtual void drawCircle(int x, int y, int rad, int r, int g, int b, int a)
         {
         }

@@ -8,10 +8,10 @@ internal class GameTestOpenGL : Game
     public override void initialize()
     {
         RectangleGameObject rectangle = new RectangleGameObject();
-        rectangle.Transform.X = 0;
-        rectangle.Transform.Y = 0;
-        rectangle.Transform.Wid = 100;
-        rectangle.Transform.Ht = 100;
+        rectangle.Transform2D.X = 0;
+        rectangle.Transform2D.Y = 0;
+        rectangle.Transform2D.Wid = 100;
+        rectangle.Transform2D.Ht = 100;
     }
 
     public override void update()
@@ -44,7 +44,6 @@ internal class RectangleGameObject : GameObject, CollisionHandler
     {
         UpdatePosition();
         //RenderWithLines();
-        Render();
     }
 
     private void UpdatePosition()
@@ -61,16 +60,6 @@ internal class RectangleGameObject : GameObject, CollisionHandler
         _display.drawLine(_minX, _minY, _minX, _maxY, Color.Green);
         _display.drawLine(_maxX, _maxY, _maxX, _minY, Color.Green);
         _display.drawLine(_maxX, _maxY, _minX, _maxY, Color.Green);
-    }
-    
-    private void Render()
-    {
-        _display.drawRectangle(
-            _minX, _maxY,
-            _maxX, _maxY,
-            _maxX, _minY,
-            _minX, _minY,
-            Color.Blue);
     }
 
     public void onCollisionEnter(PhysicsBody x)

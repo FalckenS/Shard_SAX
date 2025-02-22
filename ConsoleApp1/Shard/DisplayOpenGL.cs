@@ -140,9 +140,14 @@ internal class DisplayOpenGL : Display
         _linesToRender.Add(new LineToRender(xPos, yPos, x2Pos, y2Pos, color));
     }
 
-    public override void drawRectangle(float x1Pos, float y1Pos, float x2Pos, float y2Pos, float x3Pos, float y3Pos, float x4Pos, float y4Pos, Color color)
+    public override void addToDraw(GameObject gob)
     {
-        _rectanglesToRender.Add(new RectangleToRender(x1Pos, y1Pos, x2Pos, y2Pos, x3Pos, y3Pos, x4Pos, y4Pos, color));
+        _rectanglesToRender.Add(new RectangleToRender(
+            gob.MyBody.MinAndMaxX[0], gob.MyBody.MinAndMaxY[1],
+            gob.MyBody.MinAndMaxX[1], gob.MyBody.MinAndMaxY[1],
+            gob.MyBody.MinAndMaxX[1], gob.MyBody.MinAndMaxY[0],
+            gob.MyBody.MinAndMaxX[0], gob.MyBody.MinAndMaxY[0],
+            Color.Blue));
     }
 
     private void Resize()

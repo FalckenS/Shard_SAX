@@ -3,36 +3,56 @@
   "WorkspaceRootPath": "F:\\Master\\HPC\\TDA572\\shard_SAX\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\inputframework3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputframework3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\shaders\\cube.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\shaders\\cube.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\inputframework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputframework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displayopengl3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\inputevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\gameobjectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,12 +79,8 @@
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\assetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\spaceinvaders\\invader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\spaceinvaders\\invader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|f:\\master\\hpc\\tda572\\shard_sax\\consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\cube.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\Shaders\\cube.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,17 +90,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "GameObject.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\GameObject.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GameObject.cs",
               "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\GameObject.cs",
               "RelativeToolTip": "ConsoleApp1\\Shard\\GameObject.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAywFwAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAowP0AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T14:15:43.061Z",
               "IsPinned": true,
@@ -92,52 +108,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "cube.frag",
-              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\cube.frag",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\cube.frag",
-              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\cube.frag",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\cube.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-19T01:04:54.954Z",
+              "DocumentIndex": 0,
+              "Title": "InputFramework3D.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework3D.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputFramework3D.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework3D.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\InputFramework3D.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowBoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T14:58:54.37Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Bootstrap.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Bootstrap.cs",
               "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
               "RelativeToolTip": "ConsoleApp1\\Shard\\Bootstrap.cs",
-              "ViewState": "AgIAAAoBAAAAAAAAAAAAwBIBAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAkwEcBAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-19T00:32:08.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameDoom.cs",
-              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Doom\\GameDoom.cs",
-              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
-              "RelativeToolTip": "ConsoleApp1\\Doom\\GameDoom.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBIAAABxAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Game.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Game.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Game.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAswCcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T23:59:56.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-20T14:46:05.313Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DisplayOpenGL3D.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
               "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
               "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
-              "ViewState": "AgIAAGwBAAAAAAAAAAAewHoBAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAYwIEAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T21:49:40.429Z",
               "EditorCaption": ""
@@ -145,6 +161,95 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "InputEvent.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputEvent.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputEvent.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputEvent.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\InputEvent.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAxwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:26:26.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InputFramework.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputFramework.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\InputFramework.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:21:17.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GameDoom.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Doom\\GameDoom.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
+              "RelativeToolTip": "ConsoleApp1\\Doom\\GameDoom.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwBYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T23:59:56.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Camera.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Camera.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Camera.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Camera.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA8wDwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T21:09:52.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Texture.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Texture.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Texture.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T22:37:55.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Display.cs",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Display.cs",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Display.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAABAwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T00:04:38.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "cube.frag",
+              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\cube.frag",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\cube.frag",
+              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\cube.frag",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\cube.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-19T01:04:54.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "DisplayOpenGL.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
@@ -152,38 +257,23 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
               "ViewState": "AgIAAFwAAAAAAAAAAAASwPMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T13:13:26.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-07T13:13:26.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "DisplaySDL.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplaySDL.cs",
               "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
               "RelativeToolTip": "ConsoleApp1\\Shard\\DisplaySDL.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAewF8AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T13:09:17.558Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-07T13:09:17.558Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Display.cs",
-              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Display.cs",
-              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Display.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAQwFsAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T00:04:38.13Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "GameObjectManager.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\GameObjectManager.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GameObjectManager.cs",
@@ -191,12 +281,11 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\GameObjectManager.cs",
               "ViewState": "AgIAABgAAAAAAAAAAABAwCIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T14:15:59.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T14:15:59.389Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "Collider.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Collider.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Collider.cs",
@@ -204,12 +293,11 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\Collider.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAywAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T14:01:11.611Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T14:01:11.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "ColliderRect.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\ColliderRect.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\ColliderRect.cs",
@@ -217,12 +305,11 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\ColliderRect.cs",
               "ViewState": "AgIAAJkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:50:44.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T11:50:44.498Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "CollisionHandler.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\CollisionHandler.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\CollisionHandler.cs",
@@ -230,12 +317,11 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\CollisionHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T14:00:40.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T14:00:40.51Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "AssetManager.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManager.cs",
@@ -243,12 +329,11 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManager.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:58:24.916Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T11:58:24.916Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "FreeTypeFont.cs",
               "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\FreeTypeFont.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\FreeTypeFont.cs",
@@ -256,34 +341,7 @@
               "RelativeToolTip": "ConsoleApp1\\Shard\\FreeTypeFont.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAACUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T12:14:56.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Invader.cs",
-              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "RelativeToolTip": "ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAmwCQAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:57:17.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Game.cs",
-              "DocumentMoniker": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Game.cs",
-              "ToolTip": "F:\\Master\\HPC\\TDA572\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Game.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA0wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T12:57:34.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T12:14:56.309Z"
             }
           ]
         }

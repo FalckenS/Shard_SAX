@@ -177,5 +177,10 @@ namespace Shard
 
 
         }
+
+        //public override int getTargetFrameRate()
+        //{
+        //    return 60;
+        //}
     }
 }

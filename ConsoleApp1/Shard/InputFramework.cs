@@ -9,6 +9,8 @@
 */
 
 using SDL2;
+using System.Runtime.InteropServices;
+using System;
 
 namespace Shard
 {
@@ -53,7 +55,7 @@ namespace Shard
 
                     ie.X = mot.x;
                     ie.Y = mot.y;
-
+                    Debug.getInstance().log("MouseMotion: " + ie.X + ", " + ie.Y);
                     informListeners(ie, "MouseMotion");
                 }
 
@@ -106,11 +108,14 @@ namespace Shard
                 if (ev.type == SDL.SDL_EventType.SDL_KEYUP)
                 {
                     ie.Key = (int)ev.key.keysym.scancode;
+                    Debug.getInstance().log("KeyUp: " + ie.Key);
                     informListeners(ie, "KeyUp");
                 }
 
+
                 tick -= timeInterval;
             }
+
 
 
         }

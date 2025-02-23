@@ -8,6 +8,8 @@
 *   
 */
 
+using OpenTK.Mathematics;
+using SDL2;
 using System;
 using System.Collections.Generic;
 
@@ -152,4 +154,111 @@ namespace Shard
 
 
     }
+
+    class CubeObject : GameObject
+    {
+
+        public CubeObject(float tx, float ty, float tz, // translation
+                          float rx, float ry, float rz, // rotation
+                          float sx, float sy, float sz,  // scale
+                          string path)
+        {
+            Transform.X = tx;
+            Transform.Y = ty;
+            Transform.Z = tz;
+            Transform.Rotx = rx;
+            Transform.Roty = ry;
+            Transform.Rotz = rz;
+            Transform.Scalex = sx;
+            Transform.Scaley = sy;
+            Transform.Scalez = sz;
+            Transform.SpritePath = path;
+        }
+
+        public Matrix4 calcModel()
+        {
+            Matrix4 trans = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
+            Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
+            Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
+            Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
+            Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
+            return scale * rotZ * rotY * rotX * trans;
+
+        }
+    }
+
+    class Player : GameObject, InputListener
+    {
+        private Camera _camera;
+
+        public Player(float tx, float ty, float tz)
+        {
+            Transform.X = tx;
+            Transform.Y = ty;
+            Transform.Z = tz;
+            _camera = new Camera(new Vector3(tx, ty, tz), 1.0f);
+
+            Bootstrap.getInput().addListener(this);
+        }
+
+        public Camera GetCamera()
+        {
+            return _camera;
+        }
+
+        public void handleInput(InputEvent inp, string eventType)
+        {
+            if (Bootstrap.getRunningGame().isRunning() == false)
+            {
+                return;
+            }
+
+            float amount = (float)(10 * Bootstrap.getDeltaTime());
+
+            if (eventType == "KeyPressed")
+            {
+
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_D)
+                {
+                    _camera.Position += amount * _camera.Right;
+                }
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_A)
+                {
+                    _camera.Position -= amount * _camera.Right;
+                }
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_W)
+                {
+                    _camera.Position += amount * _camera.Front;
+                }
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_S)
+                {
+                    _camera.Position -= amount * _camera.Front;
+                }
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_Q)
+                {
+                    _camera.Position += amount * new Vector3(0, 1.0f, 0);
+                }
+                if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_E)
+                {
+                    _camera.Position -= amount * new Vector3(0, 1.0f, 0);
+                }
+
+            }
+
+            if (eventType == "MouseMotion")
+            {
+                float sensitivity = 0.2f;
+                //var deltaX = inp.X - inp.Lx;
+                //var deltaY = inp.Y - inp.Ly;
+                //_camera.Yaw += deltaX * sensitivity;
+                //_camera.Pitch -= deltaY * sensitivity;
+                _camera.Yaw += inp.Dx * sensitivity;
+                _camera.Pitch -= inp.Dy * sensitivity;
+            }
+
+
+        }
+
+    }  
+
 }

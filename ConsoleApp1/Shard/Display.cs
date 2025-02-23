@@ -96,5 +96,10 @@ namespace Shard
         {
 
         }
+
+        public virtual void LinkCamera(Camera camera)
+        {
+
+        }
     }
 }

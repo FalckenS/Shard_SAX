@@ -10,37 +10,7 @@ using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 
 
-class CubeObject : GameObject 
-{
 
-    public CubeObject(float tx, float ty, float tz, // translation
-                      float rx, float ry, float rz, // rotation
-                      float sx, float sy, float sz,  // scale
-                      string path)
-    {
-        Transform.X = tx; 
-        Transform.Y = ty;
-        Transform.Z = tz;
-        Transform.Rotx = rx;
-        Transform.Roty = ry;
-        Transform.Rotz = rz;
-        Transform.Scalex = sx;
-        Transform.Scaley = sy;
-        Transform.Scalez = sz;
-        Transform.SpritePath = path;
-    }
-
-    public Matrix4 calcModel()
-    {
-        Matrix4 trans = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
-        Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
-        Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty)); 
-        Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz)); 
-        Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
-        return scale * rotZ * rotY * rotX * trans;
-
-    }
-}
 
 
 class DisplayOpenGL3D : Display
@@ -52,6 +22,7 @@ class DisplayOpenGL3D : Display
     private int _vao, _vbo;
     private int _vaoCube, _vboCube, _eboCube;
     private Matrix4 _model, _view, _projection;
+    private Camera _camera;
 
     private Dictionary<string, Texture> _textureBuffer;
     private List<TextToRender> _textsToRender;
@@ -154,6 +125,11 @@ class DisplayOpenGL3D : Display
             getWidth(),
             getHeight(),
             SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL | SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE);
+
+        //SDL.SDL_ShowCursor(SDL.SDL_DISABLE);
+        SDL.SDL_SetRelativeMouseMode(SDL.SDL_bool.SDL_TRUE);
+
+
         _glContext = SDL.SDL_GL_CreateContext(_window);
 
         if (_glContext == IntPtr.Zero)
@@ -182,6 +158,11 @@ class DisplayOpenGL3D : Display
         _textureBuffer = new Dictionary<string, Texture>();
     }
 
+    public override void LinkCamera(Camera camera)
+    {
+        _camera = camera;
+    }
+
     public override void display()
     {
         Resize();
@@ -208,6 +189,12 @@ class DisplayOpenGL3D : Display
         {
             RenderRectangle(rectangle);
         }
+
+
+        // 3D rendering
+        _view = _camera.GetViewMatrix(); //Matrix4.CreateTranslation(0.0f, 0.0f, -10.0f);
+        _projection = _camera.GetProjectionMatrix(); //Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), getWidth() / (float)getHeight(), 0.1f, 100.0f);
+
         foreach (CubeObject cube in _cubesToRender)
         {
             RenderCube(cube);
@@ -368,8 +355,6 @@ class DisplayOpenGL3D : Display
         _shaderCube.Use();
         GL.BindVertexArray(_vaoCube);
         _model = cube.calcModel();
-        _view = Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f);
-        _projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), getWidth() / (float)getHeight(), 0.1f, 100.0f);
         _shaderCube.SetMatrix4("model", _model);
         _shaderCube.SetMatrix4("view", _view);
         _shaderCube.SetMatrix4("projection", _projection);

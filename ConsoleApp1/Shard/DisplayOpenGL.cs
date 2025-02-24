@@ -71,19 +71,39 @@ internal class DisplayOpenGL : Display
             -1.0f, 1.0f
         );
 
-        // Set projection for text shader
-        _shaderText.Use();
-        int textProjectionLocation = GL.GetUniformLocation(_shaderText.Program, "projection");
-        if (textProjectionLocation != -1)
-        {
-            GL.UniformMatrix4(textProjectionLocation, false, ref projectionM);
-        }
-        else
-        {
-            Console.WriteLine("Warning: 'projection' uniform not found in text shader.");
-        }
-
         // Set projection for shape shader
+        SetShapeShaderProjection(projectionM);
+
+        foreach (LineToRender line in _linesToRender)
+        {
+            RenderLine(line);
+        }
+        foreach (RectangleToRender rectangle in _rectanglesToRender)
+        {
+            RenderRectangle(rectangle);
+        }
+        
+        // Set projection for text shader
+        SetTextShaderProjection(projectionM);
+
+        foreach (TextToRender text in _textsToRender)
+        {
+            _font.RenderText(text.Text, text.XPos, text.YPos, text.Scale,
+                new Vector3(text.RCol/255.0f, text.GCol/255.0f, text.BCol/255.0f)
+            );
+        }
+        
+        SDL.SDL_GL_SwapWindow(_window);
+    }
+    
+    private void Resize()
+    {
+        SDL.SDL_GetWindowSize(_window, out int w, out int h);
+        setSize(w, h);
+    }
+    
+    private void SetShapeShaderProjection(Matrix4 projectionM)
+    {
         _shaderShape.Use();
         int shapeProjectionLocation = GL.GetUniformLocation(_shaderShape.Program, "projection");
         if (shapeProjectionLocation != -1)
@@ -94,29 +114,107 @@ internal class DisplayOpenGL : Display
         {
             Console.WriteLine("Warning: 'projection' uniform not found in shape shader.");
         }
-        
+    }
+
+    private void SetTextShaderProjection(Matrix4 projectionM)
+    {
         _shaderText.Use();
-        foreach (LineToRender line in _linesToRender)
+        int textProjectionLocation = GL.GetUniformLocation(_shaderText.Program, "projection");
+        if (textProjectionLocation != -1)
         {
-            RenderLine(line);
+            GL.UniformMatrix4(textProjectionLocation, false, ref projectionM);
         }
-        
-        _shaderShape.Use();
-        foreach (RectangleToRender rectangle in _rectanglesToRender)
+        else
         {
-            RenderRectangle(rectangle);
+            Console.WriteLine("Warning: 'projection' uniform not found in text shader.");
         }
-        foreach (TextToRender text in _textsToRender)
-        {
-            _font.RenderText(text.Text, text.XPos, text.YPos, text.Scale,
-                new Vector3(text.RCol / 255.0f, text.GCol / 255.0f, text.BCol / 255.0f),
-                new Vector2(1f, 0f)
-            );
-        }
-        
-        SDL.SDL_GL_SwapWindow(_window);
     }
     
+    private void RenderLine(LineToRender lineInfo)
+    {
+        float rCol = lineInfo.Color.R;
+        float gCol = lineInfo.Color.G;
+        float bCol = lineInfo.Color.B;
+        float[] vertices =
+        [
+            // Start point
+            lineInfo.XPos1, lineInfo.YPos1, 0, rCol, gCol, bCol,
+            // End point
+            lineInfo.XPos2, lineInfo.YPos2, 0, rCol, gCol, bCol
+        ];
+
+        // Generate and bind VAO, VBO
+        _vao = GL.GenVertexArray();
+        _vbo = GL.GenBuffer();
+        GL.BindVertexArray(_vao);
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
+        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+        // Define position attribute (Location = 0)
+        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
+        GL.EnableVertexAttribArray(0);
+
+        // Define color attribute (Location = 1)
+        GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+        GL.EnableVertexAttribArray(1);
+
+        // Unbind buffers
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        GL.BindVertexArray(0);
+
+        // Render the line
+        GL.BindVertexArray(_vao);
+        GL.DrawArrays(PrimitiveType.Lines, 0, 2);
+    }
+    
+    private void RenderRectangle(RectangleToRender rectangleInfo)
+    {
+        float rCol = rectangleInfo.Color.R;
+        float gCol = rectangleInfo.Color.G;
+        float bCol = rectangleInfo.Color.B;
+        float[] vertices =
+        [
+            rectangleInfo.BotLX, rectangleInfo.BotLY, 0, rCol, gCol, bCol,
+            rectangleInfo.BotRX, rectangleInfo.BotRY, 0, rCol, gCol, bCol,
+            rectangleInfo.TopRX, rectangleInfo.TopRY, 0, rCol, gCol, bCol,
+            rectangleInfo.TopLX, rectangleInfo.TopLY, 0, rCol, gCol, bCol
+        ];
+
+        uint[] indices =
+        [
+            0, 1, 2,  // First Triangle
+            2, 3, 0   // Second Triangle
+        ];
+
+        // Generate and bind VAO, VBO
+        _vao = GL.GenVertexArray();
+        _vbo = GL.GenBuffer();
+        GL.BindVertexArray(_vao);
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
+        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+        // Generate and bind EBO
+        int ebo = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
+        GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
+        // Define position attribute (Location = 0)
+        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
+        GL.EnableVertexAttribArray(0);
+        
+        // Define color attribute (Location = 1)
+        GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+        GL.EnableVertexAttribArray(1);
+
+        // Unbind buffers
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        GL.BindVertexArray(0);
+
+        // Render the rectangle
+        GL.BindVertexArray(_vao);
+        GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+    }
+
     public override void clearDisplay()
     {
         _textsToRender.Clear();
@@ -173,99 +271,6 @@ internal class DisplayOpenGL : Display
         return gameObjectColor;
     }
 
-    private void Resize()
-    {
-        SDL.SDL_GetWindowSize(_window, out int w, out int h);
-        setSize(w, h);
-    }
-    
-    private void RenderLine(LineToRender lineInfo)
-    {
-        float rCol = lineInfo.Color.R;
-        float gCol = lineInfo.Color.G;
-        float bCol = lineInfo.Color.B;
-        float[] vertices =
-        [
-            // Start point
-            lineInfo.XPos1, lineInfo.YPos1, 0, rCol, gCol, bCol,
-            // End point
-            lineInfo.XPos2, lineInfo.YPos2, 0, rCol, gCol, bCol
-        ];
-
-        // Generate and bind VAO, VBO
-        _vao = GL.GenVertexArray();
-        _vbo = GL.GenBuffer();
-        GL.BindVertexArray(_vao);
-        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
-        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
-
-        // Define position attribute (Location = 0)
-        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
-        GL.EnableVertexAttribArray(0);
-
-        // Define color attribute (Location = 1)
-        GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
-        GL.EnableVertexAttribArray(1);
-
-        // Unbind buffers
-        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-        GL.BindVertexArray(0);
-
-        // Use shader and render the line
-        _shaderShape.Use();
-        GL.BindVertexArray(_vao);
-        GL.DrawArrays(PrimitiveType.Lines, 0, 2);
-    }
-
-    private void RenderRectangle(RectangleToRender rectangleInfo)
-    {
-        float rCol = rectangleInfo.Color.R;
-        float gCol = rectangleInfo.Color.G;
-        float bCol = rectangleInfo.Color.B;
-        float[] vertices =
-        [
-            rectangleInfo.BotLX, rectangleInfo.BotLY, 0, rCol, gCol, bCol,
-            rectangleInfo.BotRX, rectangleInfo.BotRY, 0, rCol, gCol, bCol,
-            rectangleInfo.TopRX, rectangleInfo.TopRY, 0, rCol, gCol, bCol,
-            rectangleInfo.TopLX, rectangleInfo.TopLY, 0, rCol, gCol, bCol
-        ];
-
-        uint[] indices =
-        [
-            0, 1, 2,  // First Triangle
-            2, 3, 0   // Second Triangle
-        ];
-
-        // Generate and bind VAO, VBO
-        _vao = GL.GenVertexArray();
-        _vbo = GL.GenBuffer();
-        GL.BindVertexArray(_vao);
-        GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
-        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
-
-        // Generate and bind EBO
-        int ebo = GL.GenBuffer();
-        GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
-        GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
-
-        // Define position attribute (Location = 0)
-        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
-        GL.EnableVertexAttribArray(0);
-        
-        // Define color attribute (Location = 1)
-        GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
-        GL.EnableVertexAttribArray(1);
-
-        // Unbind buffers
-        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-        GL.BindVertexArray(0);
-
-        // Use shader and render the rectangle
-        _shaderShape.Use();
-        GL.BindVertexArray(_vao);
-        GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-    }
-
     private class MySdlBindingsContext : IBindingsContext
     {
         public IntPtr GetProcAddress(string procName)
@@ -285,28 +290,28 @@ internal class DisplayOpenGL : Display
         public float YPos2 { get; } = yPos2;
         public Color Color { get; } = color;
     }
-}
-
-internal class TextToRender(string text, float xPos, float yPos, int scale, int rCol, int gCol, int bCol)
-{
-    public string Text { get; } = text;
-    public float XPos { get; } = xPos;
-    public float YPos { get; } = yPos;
-    public int Scale { get; } = scale;
-    public int RCol { get; } = rCol;
-    public int GCol { get; } = gCol;
-    public int BCol { get; } = bCol;
-}
-
-internal class RectangleToRender(float botLX, float botLY, float botRX, float botRY, float topLX, float topLY, float topRX, float topRY, Color color)
-{
-    public float BotLX { get; } = botLX;
-    public float BotLY { get; } = botLY;
-    public float BotRX { get; } = botRX;
-    public float BotRY { get; } = botRY;
-    public float TopLX { get; } = topLX;
-    public float TopLY { get; } = topLY;
-    public float TopRX { get; } = topRX;
-    public float TopRY { get; } = topRY;
-    public Color Color { get; } = color;
+    
+    private class TextToRender(string text, float xPos, float yPos, int scale, int rCol, int gCol, int bCol)
+    {
+        public string Text { get; } = text;
+        public float XPos { get; } = xPos;
+        public float YPos { get; } = yPos;
+        public int Scale { get; } = scale;
+        public int RCol { get; } = rCol;
+        public int GCol { get; } = gCol;
+        public int BCol { get; } = bCol;
+    }
+    
+    private class RectangleToRender(float botLX, float botLY, float botRX, float botRY, float topLX, float topLY, float topRX, float topRY, Color color)
+    {
+        public float BotLX { get; } = botLX;
+        public float BotLY { get; } = botLY;
+        public float BotRX { get; } = botRX;
+        public float BotRY { get; } = botRY;
+        public float TopLX { get; } = topLX;
+        public float TopLY { get; } = topLY;
+        public float TopRX { get; } = topRX;
+        public float TopRY { get; } = topRY;
+        public Color Color { get; } = color;
+    }
 }

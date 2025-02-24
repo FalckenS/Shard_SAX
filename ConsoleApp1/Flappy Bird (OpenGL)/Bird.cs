@@ -9,7 +9,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     private bool _spacePressed = false;
     public Shard.GameFlappyBird Game { get; set; } = null;
     private const float FlyForce = 1.5f;
-    
+
     public override void initialize()
     {
         // Transform X, Y is bottom right of GameObject
@@ -30,7 +30,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         
         addTag("Green");
     }
-    
+
     public override void update()
     {
         Bootstrap.getDisplay().addToDraw(this);
@@ -57,36 +57,34 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         Die();
     }
 
+    private void Die()
+    {
+        ToBeDestroyed = true;
+        Bootstrap.getInput().removeListener(this);
+        Game.GameOver = true;
+    }
+
     public void onCollisionExit(PhysicsBody x) {}
 
     public void onCollisionStay(PhysicsBody x) {}
 
     public void handleInput(InputEvent inp, string eventType)
     {
-        if (eventType == "KeyDown" &&
-            inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE &&
-            !_spacePressed)
+        switch (eventType)
         {
-            _spacePressed = true;
-            FlyUp();
-        }
-        if (eventType == "KeyUp" &&
-            inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE &&
-            _spacePressed)
-        {
-            _spacePressed = false;
+            case "KeyDown" when
+                inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && !_spacePressed:
+                _spacePressed = true;
+                FlyUp();
+                break;
+            case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && _spacePressed:
+                _spacePressed = false;
+                break;
         }
     }
 
     private void FlyUp()
     {
         MyBody.addForce(Transform.Forward, FlyForce);
-    }
-
-    private void Die()
-    {
-        ToBeDestroyed = true;
-        Bootstrap.getInput().removeListener(this);
-        Game.GameOver = true;
     }
 }

@@ -42,7 +42,7 @@ internal class GameFlappyBird : Game
     public override void update()
     {
         DestroyWallsOutsideWindow();
-        if (ShouldNewWallBeCreated())
+        if (ShouldNewWallsBeCreated())
         {
             CreateWalls();
         }
@@ -73,6 +73,7 @@ internal class GameFlappyBird : Game
         {
             return;
         }
+        
         List<Wall> oldestWallPair = _walls[0];
         if (oldestWallPair[0].MyBody.MinAndMaxX[1] < -Bootstrap.getDisplay().getWidth() / 2f)
         {
@@ -82,7 +83,7 @@ internal class GameFlappyBird : Game
         }
     }
 
-    private bool ShouldNewWallBeCreated()
+    private bool ShouldNewWallsBeCreated()
     {
         if (_walls.Count == 0)
         {

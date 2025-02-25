@@ -181,8 +181,9 @@ namespace Shard
             Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
             Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
-            Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
-            return scale * rotZ * rotY * rotX * trans;
+            // Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
+            // return scale * rotZ * rotY * rotX * trans;
+            return rotZ * rotY * rotX * trans;
 
         }
     }
@@ -228,11 +229,16 @@ namespace Shard
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_W)
                 {
-                    _camera.Position += amount * _camera.Front;
+                    Vector3 v = new Vector3(_camera.Front.X, 0, _camera.Front.Z);
+                    v.Normalize();
+                    _camera.Position += amount * new Vector3(v);
+                    
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_S)
                 {
-                    _camera.Position -= amount * _camera.Front;
+                    Vector3 v = new Vector3(_camera.Front.X, 0, _camera.Front.Z);
+                    v.Normalize();
+                    _camera.Position -= amount * new Vector3(v);
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_Q)
                 {

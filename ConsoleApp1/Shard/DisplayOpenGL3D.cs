@@ -146,8 +146,9 @@ class DisplayOpenGL3D : Display
 
         _shaderText = new Shader("Shaders/text.vert", "Shaders/text.frag");
         _shaderShape = new Shader("Shaders/simple.vert", "Shaders/simple.frag");
+        _shaderCube = new Shader("Shaders/cube.vert", "Shaders/cube.frag");
 
-        prepareBaseCube();
+        // prepareBaseCube();
 
         _font = new FreeTypeFont(32);
 
@@ -169,18 +170,8 @@ class DisplayOpenGL3D : Display
         GL.Clear(ClearBufferMask.ColorBufferBit);
         GL.Viewport(0, 0, getWidth(), getHeight());
 
-        _shaderText.Use();
-
-        Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
-        GL.UniformMatrix4(1, false, ref projectionM);
-
-        foreach (TextToRender text in _textsToRender)
-        {
-            _font.RenderText(text.Text, text.XPos, text.YPos, text.Size,
-                new Vector3(text.R / 255.0f, text.G / 255.0f, text.B / 255.0f),
-                new Vector2(1f, 0f)
-            );
-        }
+        _shaderShape.Use();
+        
         foreach (LineToRender line in _linesToRender)
         {
             RenderLine(line);
@@ -198,6 +189,21 @@ class DisplayOpenGL3D : Display
         foreach (CubeObject cube in _cubesToRender)
         {
             RenderCube(cube);
+        }
+
+        // Text rendering
+
+        _shaderText.Use();
+
+        Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
+        GL.UniformMatrix4(1, false, ref projectionM);
+
+        foreach (TextToRender text in _textsToRender)
+        {
+            _font.RenderText(text.Text, text.XPos, text.YPos, text.Size,
+                new Vector3(text.R / 255.0f, text.G / 255.0f, text.B / 255.0f),
+                new Vector2(1f, 0f)
+            );
         }
 
         SwapBuffer();
@@ -352,8 +358,84 @@ class DisplayOpenGL3D : Display
 
     private void RenderCube(CubeObject cube)
     {
-        _shaderCube.Use();
+        float w, h, d;
+        w = cube.Transform.Scalex;
+        h = cube.Transform.Scaley;
+        d = cube.Transform.Scalez;
+
+        float[] _vertices = {
+            -w/2, -h/2, -d/2,  0.0f, 0.0f,
+             w/2, -h/2, -d/2,  w/2,    0.0f,
+             w/2,  h/2, -d/2,  w/2,    h/2,
+             w/2,  h/2, -d/2,  w/2,    h/2,
+            -w/2,  h/2, -d/2,  0.0f, h/2,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f,
+
+            -w/2, -h/2,  d/2,  0.0f, 0.0f,
+             w/2, -h/2,  d/2,  w/2,    0.0f,
+             w/2,  h/2,  d/2,  w/2,    h/2,
+             w/2,  h/2,  d/2,  w/2,    h/2,
+            -w/2,  h/2,  d/2,  0.0f, h/2,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f,
+
+            -w/2,  h/2,  d/2,  0.0f, h/2, //d,    0.0f,
+            -w/2,  h/2, -d/2,  d/2,    h/2,
+            -w/2, -h/2, -d/2,  d/2,    0.0f, //0.0f, h,
+            -w/2, -h/2, -d/2,  d/2,    0.0f, //0.0f, h,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f,
+            -w/2,  h/2,  d/2,  0.0f, h/2, //d,    0.0f,
+
+             w/2,  h/2,  d/2,  0.0f, h/2, //d/2,    0.0f,
+             w/2,  h/2, -d/2,  d/2,    h/2,
+             w/2, -h/2, -d/2,  d/2,    0.0f, //0.0f, h,
+             w/2, -h/2, -d/2,  d/2,    0.0f, //0.0f, h,
+             w/2, -h/2,  d/2,  0.0f, 0.0f,
+             w/2,  h/2,  d/2,  0.0f, h/2, //d,    0.0f,
+
+            -w/2, -h/2, -d/2,  0.0f, d/2,
+             w/2, -h/2, -d/2,  w/2,    d/2,
+             w/2, -h/2,  d/2,  w/2,    0.0f,
+             w/2, -h/2,  d/2,  w/2,    0.0f,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f,
+            -w/2, -h/2, -d/2,  0.0f, d/2,
+
+            -w/2,  h/2, -d/2,  0.0f, d/2,
+             w/2,  h/2, -d/2,  w/2,    d/2,
+             w/2,  h/2,  d/2,  w/2,    0.0f,
+             w/2,  h/2,  d/2,  w/2,    0.0f,
+            -w/2,  h/2,  d/2,  0.0f, 0.0f,
+            -w/2,  h/2, -d/2,  0.0f, d/2
+        };
+
+        uint[] _indices =
+            {
+            0, 1, 3,
+            1, 2, 3
+        };
+
+        _vaoCube = GL.GenVertexArray();
         GL.BindVertexArray(_vaoCube);
+
+        _vboCube = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vboCube);
+        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
+
+        _eboCube = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, _eboCube);
+        GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
+
+        var vertexLocation = _shaderCube.GetAttribLocation("aPosition");
+        GL.EnableVertexAttribArray(vertexLocation);
+        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+
+        var texCoordLocation = _shaderCube.GetAttribLocation("aTexCoord");
+        GL.EnableVertexAttribArray(texCoordLocation);
+        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+        
+
+
+        _shaderCube.Use();
+        //GL.BindVertexArray(_vaoCube);
         _model = cube.calcModel();
         _shaderCube.SetMatrix4("model", _model);
         _shaderCube.SetMatrix4("view", _view);

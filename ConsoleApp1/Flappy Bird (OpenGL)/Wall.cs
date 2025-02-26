@@ -1,11 +1,15 @@
-﻿using Shard;
+﻿/*
+*   @author Samuel Falck
+*/
+using Shard;
 
 namespace GameFlappyBird;
 
 internal class Wall : GameObject, CollisionHandler
 {
-    public bool BirdHasPassed { get; set; } = false;
     private const float WallSpeed = 100f;
+    
+    public bool BirdHasPassed { get; set; }
     
     public override void initialize()
     {
@@ -18,6 +22,7 @@ internal class Wall : GameObject, CollisionHandler
         MyBody.addRectCollider();
         
         addTag("Red");
+        BirdHasPassed = false;
     }
     
     public override void update()

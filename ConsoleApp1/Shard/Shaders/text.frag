@@ -3,7 +3,6 @@
 in vec2 vUV;
 
 layout (binding=0) uniform sampler2D u_texture;
-
 layout (location = 2) uniform vec3 textColor;
 
 out vec4 fragColor;

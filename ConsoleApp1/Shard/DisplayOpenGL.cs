@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+*   @author Xinglu Gong and Samuel Falck
+*/
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
@@ -15,6 +18,7 @@ internal class DisplayOpenGL : Display
     private Shader _shaderText, _shaderShape;
     private FreeTypeFont _font;
     private int _vao, _vbo;
+    private Matrix4 _projectionM;
     
     private List<TextToRender> _textsToRender;
     private List<LineToRender> _linesToRender;
@@ -33,27 +37,33 @@ internal class DisplayOpenGL : Display
             SDL.SDL_WindowFlags.SDL_WINDOW_OPENGL | SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE);
         _glContext = SDL.SDL_GL_CreateContext(_window);
 
-        if (_glContext == IntPtr.Zero)
-        {
-            Console.WriteLine("Fail to create OpenGL context：" + SDL.SDL_GetError());
-            SDL.SDL_DestroyWindow(_window);
-            SDL.SDL_Quit();
-            return;
-        }
+        if (FailedToCreateOpenGLContext()) return;
 
         GL.LoadBindings(new MySdlBindingsContext());
         GL.ClearColor(0f, 0f, 0f, 1.0f);
         GL.Enable(EnableCap.Blend);
         GL.BlendFunc(0, BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
-        _shaderText = new Shader("Shaders/text.vert", "Shaders/text.frag");
+        
         _shaderShape = new Shader("Shaders/simple.vert", "Shaders/simple.frag");
+        _shaderText = new Shader("Shaders/text.vert", "Shaders/text.frag");
 
         _font = new FreeTypeFont(32);
-
-        _textsToRender = new List<TextToRender>();
+        
         _linesToRender = new List<LineToRender>();
         _rectanglesToRender = new List<RectangleToRender>();
+        _textsToRender = new List<TextToRender>();
+    }
+
+    private bool FailedToCreateOpenGLContext()
+    {
+        if (_glContext == IntPtr.Zero)
+        {
+            Console.WriteLine("Fail to create OpenGL context：" + SDL.SDL_GetError());
+            SDL.SDL_DestroyWindow(_window);
+            SDL.SDL_Quit();
+            return true;
+        }
+        return false;
     }
 
     public override void display()
@@ -63,7 +73,7 @@ internal class DisplayOpenGL : Display
         GL.Viewport(0, 0, getWidth(), getHeight());
         
         // Create the projection matrix
-        Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(
+        _projectionM = Matrix4.CreateOrthographicOffCenter(
             -getWidth() / 2f,
             getWidth() / 2f,
             -getHeight() / 2f,
@@ -72,8 +82,8 @@ internal class DisplayOpenGL : Display
         );
 
         // Set projection for shape shader
-        SetShapeShaderProjection(projectionM);
-
+        _shaderShape.Use();
+        SetShaderProjection(GL.GetUniformLocation(_shaderShape.Program, "projection"));
         foreach (LineToRender line in _linesToRender)
         {
             RenderLine(line);
@@ -84,15 +94,14 @@ internal class DisplayOpenGL : Display
         }
         
         // Set projection for text shader
-        SetTextShaderProjection(projectionM);
-
+        _shaderText.Use();
+        SetShaderProjection(GL.GetUniformLocation(_shaderText.Program, "projection"));
         foreach (TextToRender text in _textsToRender)
         {
             _font.RenderText(text.Text, text.XPos, text.YPos, text.Scale,
                 new Vector3(text.RCol/255.0f, text.GCol/255.0f, text.BCol/255.0f)
             );
         }
-        
         SDL.SDL_GL_SwapWindow(_window);
     }
     
@@ -101,32 +110,16 @@ internal class DisplayOpenGL : Display
         SDL.SDL_GetWindowSize(_window, out int w, out int h);
         setSize(w, h);
     }
-    
-    private void SetShapeShaderProjection(Matrix4 projectionM)
-    {
-        _shaderShape.Use();
-        int shapeProjectionLocation = GL.GetUniformLocation(_shaderShape.Program, "projection");
-        if (shapeProjectionLocation != -1)
-        {
-            GL.UniformMatrix4(shapeProjectionLocation, false, ref projectionM);
-        }
-        else
-        {
-            Console.WriteLine("Warning: 'projection' uniform not found in shape shader.");
-        }
-    }
 
-    private void SetTextShaderProjection(Matrix4 projectionM)
+    private void SetShaderProjection(int projectionLocation)
     {
-        _shaderText.Use();
-        int textProjectionLocation = GL.GetUniformLocation(_shaderText.Program, "projection");
-        if (textProjectionLocation != -1)
+        if (projectionLocation != -1)
         {
-            GL.UniformMatrix4(textProjectionLocation, false, ref projectionM);
+            GL.UniformMatrix4(projectionLocation, false, ref _projectionM);
         }
         else
         {
-            Console.WriteLine("Warning: 'projection' uniform not found in text shader.");
+            Console.WriteLine("Warning: 'projection' uniform not found in shader!");
         }
     }
     
@@ -223,8 +216,6 @@ internal class DisplayOpenGL : Display
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
     }
     
-    public override void showText(char[,] text, double xPos, double yPos, int size, int rCol, int gCol, int bCol) {}
-    
     public override void showText(string text, double xPos, double yPos, int scale, int rCol, int gCol, int bCol)
     {
         _textsToRender.Add(new TextToRender(text, (float)xPos, (float)yPos, scale, rCol, gCol, bCol));
@@ -270,6 +261,8 @@ internal class DisplayOpenGL : Display
         }
         return gameObjectColor;
     }
+    
+    public override void showText(char[,] text, double xPos, double yPos, int size, int rCol, int gCol, int bCol) {}
 
     private class MySdlBindingsContext : IBindingsContext
     {
@@ -291,17 +284,6 @@ internal class DisplayOpenGL : Display
         public Color Color { get; } = color;
     }
     
-    private class TextToRender(string text, float xPos, float yPos, int scale, int rCol, int gCol, int bCol)
-    {
-        public string Text { get; } = text;
-        public float XPos { get; } = xPos;
-        public float YPos { get; } = yPos;
-        public int Scale { get; } = scale;
-        public int RCol { get; } = rCol;
-        public int GCol { get; } = gCol;
-        public int BCol { get; } = bCol;
-    }
-    
     private class RectangleToRender(float botLX, float botLY, float botRX, float botRY, float topLX, float topLY, float topRX, float topRY, Color color)
     {
         public float BotLX { get; } = botLX;
@@ -313,5 +295,16 @@ internal class DisplayOpenGL : Display
         public float TopRX { get; } = topRX;
         public float TopRY { get; } = topRY;
         public Color Color { get; } = color;
+    }
+    
+    private class TextToRender(string text, float xPos, float yPos, int scale, int rCol, int gCol, int bCol)
+    {
+        public string Text { get; } = text;
+        public float XPos { get; } = xPos;
+        public float YPos { get; } = yPos;
+        public int Scale { get; } = scale;
+        public int RCol { get; } = rCol;
+        public int GCol { get; } = gCol;
+        public int BCol { get; } = bCol;
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+*   @author Samuel Falck
+*/
+using System;
 using SDL2;
 using Shard;
 
@@ -6,9 +9,11 @@ namespace GameFlappyBird;
 
 internal class Bird : GameObject, CollisionHandler, InputListener
 {
-    private bool _spacePressed = false;
-    public Shard.GameFlappyBird Game { get; set; } = null;
+    private const float Mass = 0.1f;
     private const float FlyForce = 1.5f;
+    
+    public Shard.GameFlappyBird Game { init; get; }
+    private bool _spacePressed;
 
     public override void initialize()
     {
@@ -21,14 +26,29 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         
         setPhysicsEnabled();
         MyBody.addRectCollider();
-        MyBody.Mass = 0.1f;
+        MyBody.Mass = Mass;
         MyBody.Drag = 0;
         MyBody.MaxForce = 20;
         MyBody.UsesGravity = true;
         
         Bootstrap.getInput().addListener(this);
-        
         addTag("Green");
+        _spacePressed = false;
+    }
+    
+    public void handleInput(InputEvent inp, string eventType)
+    {
+        switch (eventType)
+        {
+            case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && !_spacePressed:
+                _spacePressed = true;
+                // Fly up
+                MyBody.addForce(Transform.Forward, FlyForce);
+                break;
+            case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && _spacePressed:
+                _spacePressed = false;
+                break;
+        }
     }
 
     public override void update()
@@ -40,10 +60,9 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     {
         if (MyBody.MinAndMaxY[0] <= -Bootstrap.getDisplay().getHeight() / 2f)
         {
-            Console.WriteLine("Bird hit flor!");
+            Console.WriteLine("Bird hit floor!");
             Die();
         }
-
         if (MyBody.MinAndMaxY[1] >= Bootstrap.getDisplay().getHeight() / 2f)
         {
             Console.WriteLine("Bird hit roof!");
@@ -60,31 +79,11 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     private void Die()
     {
         ToBeDestroyed = true;
-        Bootstrap.getInput().removeListener(this);
         Game.GameOver = true;
+        Bootstrap.getInput().removeListener(this);
     }
-
+    
     public void onCollisionExit(PhysicsBody x) {}
 
     public void onCollisionStay(PhysicsBody x) {}
-
-    public void handleInput(InputEvent inp, string eventType)
-    {
-        switch (eventType)
-        {
-            case "KeyDown" when
-                inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && !_spacePressed:
-                _spacePressed = true;
-                FlyUp();
-                break;
-            case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && _spacePressed:
-                _spacePressed = false;
-                break;
-        }
-    }
-
-    private void FlyUp()
-    {
-        MyBody.addForce(Transform.Forward, FlyForce);
-    }
 }

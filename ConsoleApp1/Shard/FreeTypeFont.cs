@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+*   @author Xinglu Gong and Samuel Falck
+*/
+using System;
 using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
@@ -9,8 +12,8 @@ namespace Shard;
 public class FreeTypeFont
 {
     private readonly Dictionary<uint, Character> _characters = new Dictionary<uint, Character>();
-    int _vao;
-    int _vbo;
+    private readonly int _vao;
+    private readonly int _vbo;
 
     public FreeTypeFont(uint pixelheight)
     {

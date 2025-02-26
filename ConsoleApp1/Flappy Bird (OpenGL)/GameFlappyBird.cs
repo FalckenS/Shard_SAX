@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+*   @author Samuel Falck
+*/
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using GameFlappyBird;
@@ -7,32 +10,32 @@ namespace Shard;
 
 internal class GameFlappyBird : Game
 {
-    public bool GameOver { get; set; } = false;
-    
-    private Random _random;
-    
-    private Bird _bird;
-    private List<List<Wall>> _walls; // Every pair of walls is a list
-    
-    private int _score = 0;
-
     private const int GapBetweenWallsX = 300;
     private const int GapBetweenWallsY = 300;
     private const int ShortestAllowedWall = 0;
+    
+    public bool GameOver { get; set; }
+    private Bird _bird;
+    private List<List<Wall>> _walls; // Every pair of walls is a list
+    private Random _random;
+    private int _score;
         
     public override void initialize()
     {
-        _random = new Random();
-        _bird = new Bird();
-        _bird.Game = this;
+        GameOver = false;
+        _bird = new Bird { Game = this };
         _walls = new List<List<Wall>>();
+        _random = new Random();
+        _score = 0;
         CheckWallSettings();
     }
 
-    private void CheckWallSettings()
+    // Checks if the wall settings are allowed
+    private static void CheckWallSettings()
     {
-        if (GapBetweenWallsY + ShortestAllowedWall*2 > Bootstrap.getDisplay().getHeight() ||
+        if (GapBetweenWallsX < 0 ||
             GapBetweenWallsY < 0 ||
+            GapBetweenWallsY + ShortestAllowedWall*2 > Bootstrap.getDisplay().getHeight() ||
             ShortestAllowedWall < 0)
         {
             throw new Exception("Invalid wall settings!");
@@ -42,37 +45,15 @@ internal class GameFlappyBird : Game
     public override void update()
     {
         DestroyWallsOutsideWindow();
-        if (ShouldNewWallsBeCreated())
-        {
-            CreateWalls();
-        }
+        CreateNewWalls();
         CheckIfBirdPassedWall();
         
         Bootstrap.getDisplay().showText("Score: " + _score, 0, 300, 2, Color.White);
     }
-
-    private void CheckIfBirdPassedWall()
-    {
-        foreach (List<Wall> wallPair in _walls)
-        {
-            if (!GameOver)
-            {
-                if (wallPair[0].MyBody.MinAndMaxX[1] < _bird.MyBody.MinAndMaxX[0] && !wallPair[0].BirdHasPassed)
-                {
-                    _score++;
-                    wallPair[0].BirdHasPassed = true;
-                    wallPair[1].BirdHasPassed = true;
-                }
-            }
-        }
-    }
-
+    
     private void DestroyWallsOutsideWindow()
     {
-        if (_walls.Count == 0)
-        {
-            return;
-        }
+        if (_walls.Count == 0) return;
         
         List<Wall> oldestWallPair = _walls[0];
         if (oldestWallPair[0].MyBody.MinAndMaxX[1] < -Bootstrap.getDisplay().getWidth() / 2f)
@@ -82,32 +63,17 @@ internal class GameFlappyBird : Game
             _walls.RemoveAt(0);
         }
     }
-
-    private bool ShouldNewWallsBeCreated()
+    
+    private void CreateNewWalls()
     {
-        if (_walls.Count == 0)
-        {
-            return true;
-        }
+        if (!ShouldNewWallsBeCreated()) return;
         
-        // The initial collider is always at 0, 0. If this is the case, don't generate any more walls
-        if (_walls[^1][0].MyBody.MinAndMaxX[1] == 0)
-        {
-            return false;
-        }
-        
-        // (Left window border x pos) - (latest created wall left x pos) > _gapBetweenWallsX
-        return Bootstrap.getDisplay().getWidth()/2f - _walls[^1][0].MyBody.MinAndMaxX[1] > GapBetweenWallsX;
-    }
-
-    private void CreateWalls()
-    {
         int topYPos = Bootstrap.getDisplay().getHeight() / 2;
         int botYPos = -topYPos;
         
         // Generate min Y position of the gap
         int gapMinYPos = _random.Next(
-            botYPos + ShortestAllowedWall,
+            botYPos + ShortestAllowedWall, 
             topYPos - ShortestAllowedWall - GapBetweenWallsY);
         
         Wall lowerWall = new Wall();
@@ -121,5 +87,30 @@ internal class GameFlappyBird : Game
         upperWall.Transform2D.Ht = Bootstrap.getDisplay().getHeight() - (lowerWall.Transform2D.Ht + GapBetweenWallsY);
 
         _walls.Add([lowerWall, upperWall]);
+    }
+
+    private void CheckIfBirdPassedWall()
+    {
+        if (GameOver) return;
+        foreach (List<Wall> wallPair in _walls)
+        {
+            if (wallPair[0].MyBody.MinAndMaxX[1] < _bird.MyBody.MinAndMaxX[0] && !wallPair[0].BirdHasPassed)
+            {
+                _score++;
+                wallPair[0].BirdHasPassed = true;
+                wallPair[1].BirdHasPassed = true;
+            }
+        }
+    }
+
+    private bool ShouldNewWallsBeCreated()
+    {
+        if (_walls.Count == 0) return true;
+        
+        // The initial collider is always at 0, 0. If this is the case, don't generate any more walls
+        if (_walls[^1][0].MyBody.MinAndMaxX[1] == 0) return false;
+        
+        // (Left window border x pos) - (latest created wall left x pos) > _gapBetweenWallsX
+        return Bootstrap.getDisplay().getWidth()/2f - _walls[^1][0].MyBody.MinAndMaxX[1] > GapBetweenWallsX;
     }
 }

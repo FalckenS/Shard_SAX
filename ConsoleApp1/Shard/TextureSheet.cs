@@ -19,13 +19,13 @@ namespace Shard.Shard
             _nrOfTexturesWide = nrOfTexturesWide;
             _nrOfTexturesHigh = nrOfTexturesHigh;
             _sheet = sheet;
-            double regionWidth = sheet.Width / _nrOfTexturesWide;
-            double regionHeight = sheet.Height / _nrOfTexturesHigh;
+            float regionWidth = sheet.Width / _nrOfTexturesWide;
+            float regionHeight = sheet.Height / _nrOfTexturesHigh;
             
             for ( int i = 0; i < nrOfTexturesWide * nrOfTexturesHigh; i++ ) 
             {
-                double xpos = (regionWidth * i) % sheet.Width;
-                double ypos = _sheet.Height - (regionHeight * ((i+1) % nrOfTexturesWide));
+                float xpos = (float)((regionWidth * i) % sheet.Width);
+                float ypos = (float)(_sheet.Height - (regionHeight * ((i+1) % nrOfTexturesWide)));
                 TextureRegions[i % (nrOfTexturesWide)][(int)Math.Floor(i / (double)nrOfTexturesWide)] = 
                     (new TextureRegion(sheet,xpos,ypos,regionWidth,regionHeight));
             }

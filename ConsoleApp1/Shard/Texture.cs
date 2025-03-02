@@ -9,7 +9,7 @@ using StbImageSharp;
 namespace Shard
 {
     /// <summary>
-    /// A loaded Texture, represented by an ImageResult object (StbImageSharp).
+    /// A loaded texture represented by an ImageResult object (StbImageSharp).
     /// Loads the texture in the constructor. If you want to use a Texture without loading
     /// it, use its path and handle loading yourself.
     /// </summary>
@@ -23,11 +23,11 @@ namespace Shard
         /// <summary>
         /// Width of the texture.
         /// </summary>
-        public readonly double Width;
+        public readonly float Width;
         /// <summary>
         /// Height of the texture.
         /// </summary>
-        public readonly double Height;
+        public readonly float Height;
         /// <summary>
         /// Absolute file path.
         /// </summary>

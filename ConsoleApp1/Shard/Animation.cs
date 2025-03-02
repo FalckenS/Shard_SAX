@@ -9,11 +9,12 @@ namespace Shard.Shard
     internal class Animation<T>
     {
         private T _last;
-        private float _lastTimeSeconds;
-        private float _secondsSinceStart = 0;
+        private long _lastTimeMilliSeconds;
+        private float _milliSecondsSinceStart = 0;
         
         public bool IsPaused { get; private set; }
-        public int KeyFramesPerSecond {  get; set; }
+        public float MilliSecondsBetweenKeyFrames {  get; set; }
+        private float _keyFramesPerMilliSecond { get { return ( 1f / MilliSecondsBetweenKeyFrames); } }
         private List<T> _keyFrames;
 
 
@@ -26,15 +27,16 @@ namespace Shard.Shard
             _keyFrames = [.. keyFrames];
         }
 
-        public T GetKeyFrame(float currentTimeSeconds,PlayMode playMode)
+        public T GetKeyFrame(long currentTimeMilli,PlayMode playMode)
         {
+            if (_lastTimeMilliSeconds == 0) { _lastTimeMilliSeconds = currentTimeMilli; }
             if (IsPaused) { return _last; };
-            float deltaTime = currentTimeSeconds - _lastTimeSeconds;
-            _lastTimeSeconds = currentTimeSeconds;
-            _secondsSinceStart += deltaTime;
-
+            float deltaTime = currentTimeMilli - _lastTimeMilliSeconds;
+            _lastTimeMilliSeconds = currentTimeMilli;
+            _milliSecondsSinceStart = _milliSecondsSinceStart + deltaTime;
+            
             bool hasLooped = false;
-            if (_secondsSinceStart + deltaTime >= (_keyFrames.Count * (1 / (float)KeyFramesPerSecond))) hasLooped = true;
+            if (_milliSecondsSinceStart >= (_keyFrames.Count * (1 / _keyFramesPerMilliSecond))) hasLooped = true;
             
             switch (playMode)
             {
@@ -49,7 +51,7 @@ namespace Shard.Shard
                 case PlayMode.REVERSED_LOOP:
                     return setLastAndReturn(_keyFrames[BackwardIndex]);
                 case PlayMode.PINGPONG_ONCE:
-                    if (hasLooped) { return setLastAndReturn(_keyFrames.First()); } 
+                    if (hasLooped && FramesSinceStart >= _keyFrames.Count * 2) { return setLastAndReturn(_keyFrames.First()); } 
                     else { return setLastAndReturn(_keyFrames[PingPongIndex]); }
                 case PlayMode.PINGPONG_LOOP:
                         return setLastAndReturn(_keyFrames[PingPongIndex]);
@@ -61,15 +63,15 @@ namespace Shard.Shard
         private T setLastAndReturn(T t) { _last = t; return t; }
         private bool IsEven(int i) { if(i % 2 == 0) {  return true; } else { return false; }}
         private bool IsOdd(int i) { return !IsEven(i); }
-        private float FramesSinceStart { get { return _secondsSinceStart * KeyFramesPerSecond; } }
+        private float FramesSinceStart { get { return _milliSecondsSinceStart * _keyFramesPerMilliSecond; } }
         private int ForwardIndex { get { return (int)Math.Floor(FramesSinceStart % _keyFrames.Count);}}
-        private int BackwardIndex { get { return _keyFrames.Count - ForwardIndex; } }
+        private int BackwardIndex { get { return _keyFrames.Count - ForwardIndex - 1; } }
         private int PingPongIndex { 
             get 
             {
                 int nrOfLoops = (int)Math.Floor(FramesSinceStart) / _keyFrames.Count;
-                if (IsEven(nrOfLoops)) { return ForwardIndex - (nrOfLoops / 2); }
-                else { return BackwardIndex - ((nrOfLoops - 1) / 2); }
+                if (IsEven(nrOfLoops)) { return ForwardIndex; }
+                else { return BackwardIndex; }
             } 
         }
 

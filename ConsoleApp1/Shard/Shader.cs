@@ -174,6 +174,11 @@ namespace Shard
             GL.UseProgram(Program);
             GL.UniformMatrix4(_uniformLocations[name], true, ref data);
         }
+        public void SetMatrix2(string name, Matrix2 data)
+        {
+            GL.UseProgram(Program);
+            GL.UniformMatrix2(_uniformLocations[name], true, ref data);
+        }
 
         /// <summary>
         /// Set a uniform Vector3 on this shader.

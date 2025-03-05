@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shard.Shard;
 using StbImageSharp;
 
 namespace Shard
@@ -23,11 +24,11 @@ namespace Shard
         /// <summary>
         /// Width of the texture.
         /// </summary>
-        public readonly float Width;
+        public readonly int Width;
         /// <summary>
         /// Height of the texture.
         /// </summary>
-        public readonly float Height;
+        public readonly int Height;
         /// <summary>
         /// Absolute file path.
         /// </summary>
@@ -37,6 +38,7 @@ namespace Shard
         /// If IsAlive = false, then ImageResult is null.
         /// </summary>
         public readonly ImageResult ImageResult;
+        private TextureLoader _textureLoader;
         /// <summary>
         /// Read texture from absolute file path. Use Bootstrap when specifying 
         /// paths relative to the assets folder.
@@ -45,19 +47,31 @@ namespace Shard
         public Texture(String absoluteFilePath) 
         { 
             AbsoluteFilePath = absoluteFilePath;
+            // Read image data the other way around. Prevents upside down images.
+            StbImage.stbi_set_flip_vertically_on_load(1);
             try
             {
                 Stream stream = File.OpenRead(absoluteFilePath);
                 ImageResult = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
                 Width = ImageResult.Width;
                 Height = ImageResult.Height;
-                IsAlive = true;
+                bool success = false;
+                try
+                {
+                    _textureLoader = TextureLoaderFactory.get();
+                    _textureLoader.Load(ImageResult.Data,Width,Height);
+                    success = true;
+                }
+                catch (Exception ex) { success = false;  Debug.Log("Error loading texture data. \"" + ex.Message + "\""); }
+                if (success) { IsAlive = true; } else { IsAlive = false; }
+                
             }
             catch (Exception ex)
             {
                 IsAlive = false;
-                Debug.Log("Error loading texture at : " + absoluteFilePath + ". \" " + ex.Message + "\"");
+                Debug.Log("Error loading texture file at : " + absoluteFilePath + ". \" " + ex.Message + "\"");
             }
         }
+        public void Use() { _textureLoader.Use(); }
     }
 }

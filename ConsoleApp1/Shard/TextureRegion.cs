@@ -11,10 +11,11 @@ namespace Shard.Shard
     {
         private Texture _texture;
 
-        public readonly float RegionX;
-        public readonly float RegionY;
-        public readonly float RegionWidth;
-        public readonly float RegionHeight;
+        public readonly int RegionX;
+        public readonly int RegionY;
+        public readonly int RegionWidth;
+        public readonly int RegionHeight;
+        public byte[] ImageData { get { return _texture.ImageResult.Data; } }
 
         /// <summary>
         /// Cover the whole of the given texture by default.
@@ -22,7 +23,7 @@ namespace Shard.Shard
         /// <param name="texture">Texture</param>
         public TextureRegion(Texture texture) : this(texture, 0, 0, texture.Width, texture.Height) { }
         
-        public TextureRegion(Texture texture, float x, float y, float width, float height)
+        public TextureRegion(Texture texture, int x, int y, int width, int height)
         {
             _texture = texture;
             RegionX = x;
@@ -36,9 +37,8 @@ namespace Shard.Shard
         //new Animation<TextureRegion>(0.033f, atlas.findRegions("running"), PlayMode.LOOP);
 
         // Getters for texture width / height
-        public float TextureWidth { get { return _texture.Width; } }
-        public float TextureHeight { get { return _texture.Height; } }
-
-
+        public int TextureWidth { get { return _texture.Width; } }
+        public int TextureHeight { get { return _texture.Height; } }
+        public void Use() { _texture.Use(); }
     }
 }

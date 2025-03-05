@@ -9,9 +9,9 @@ namespace Shard
     // Can be used for future optimiziations of sprite rendering by batching.
     class SpriteBatch
     {
-        private List<Sprite> _sprites;
+        public List<Sprite> Sprites { get; private set; }
         
-        public void Draw(Sprite sprite) { _sprites.Add(sprite); }
-        public void Draw(Sprite[] sprites) { _sprites.Concat(sprites); }
+        public void Draw(Sprite sprite) { Sprites.Add(sprite); }
+        public void Draw(Sprite[] sprites) { Sprites.Concat(sprites); }
     }
 }

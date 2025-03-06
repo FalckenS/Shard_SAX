@@ -97,6 +97,11 @@ namespace Shard
 
         }
 
+        public virtual void addToDrawLight(LightObject light)
+        {
+
+        }
+
         public virtual void LinkCamera(Camera camera)
         {
 

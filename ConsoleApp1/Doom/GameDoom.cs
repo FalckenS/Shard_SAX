@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using OpenTK.Mathematics;
 
 namespace Shard;
 
@@ -11,6 +12,7 @@ class GameDoom : Game
     private List<RectangleGameObject> _rectangleGameObjects;
     private CubeObject wall_1, wall_2, wall_3, wall_4, floor;
     private Player player;
+    private LightObject light;
 
     public override void initialize()
     {
@@ -18,11 +20,30 @@ class GameDoom : Game
 
         hello = new TextToRender("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
 
-        wall_1 = new CubeObject(0, 0, -25, 0, 0, 0, 50.0f, 20.0f, 1, Bootstrap.getAssetManager().getAssetPath("brick.jpg"));
-        wall_2 = new CubeObject(0, 0, 25, 0, 0, 0, 50.0f, 20.0f, 1, Bootstrap.getAssetManager().getAssetPath("brick.jpg"));
-        wall_3 = new CubeObject(25, 0, 0, 0, 90, 0, 50.0f, 20.0f, 1, Bootstrap.getAssetManager().getAssetPath("brick.jpg"));
-        wall_4 = new CubeObject(-25, 0, 0, 0, 90, 0, 50.0f, 20.0f, 1, Bootstrap.getAssetManager().getAssetPath("brick.jpg"));
-        floor = new CubeObject(0, 0, 0, 0, 0, 0, 50, 0.5f, 50, Bootstrap.getAssetManager().getAssetPath("floor.jpg"));
+        wall_1 = new CubeObject(0, 0, -25, 0, 0, 0, 10, 10, 4, 5.0f, 2.0f, 1);
+        wall_2 = new CubeObject(0, 0, 25, 0, 0, 0, 10, 10, 4, 5.0f, 2.0f, 1);
+        wall_3 = new CubeObject(25, 0, 0, 0, 90, 0, 10, 10, 4, 5.0f, 2.0f, 1);
+        wall_4 = new CubeObject(-25, 0, 0, 0, 90, 0, 10, 10, 4, 5.0f, 2.0f, 1);
+        RenderParams renderParamsBrick = new RenderParams();
+        renderParamsBrick.pathDiff = Bootstrap.getAssetManager().getAssetPath("stonewall.jpg");
+        renderParamsBrick.shininess = 8.0f;
+        renderParamsBrick.specular = new Vector3(0.3f);
+        wall_1.RParams = renderParamsBrick;
+        wall_2.RParams = renderParamsBrick;
+        wall_3.RParams = renderParamsBrick;
+        wall_4.RParams = renderParamsBrick;
+
+        floor = new CubeObject(0, 0, 0, 0, 0, 0, 10, 4, 10, 5.0f, 0.5f, 5.0f);
+        RenderParams renderParamsFloor = new RenderParams();
+        renderParamsFloor.pathDiff = Bootstrap.getAssetManager().getAssetPath("forest.jpg");
+        renderParamsFloor.shininess = 8.0f;
+        renderParamsFloor.specular = new Vector3(0.1f);
+        floor.RParams = renderParamsFloor;
+
+        light = new LightObject(15, 15, -15, 0, 0, 0, 1, 1, 1, new Vector3(1, 1, 1), LightSourceType.Point);
+        light.Ambient = new Vector3(0.1f);
+        light.Diffuse = new Vector3(1.0f);
+        light.Specular = new Vector3(1.0f);
         player = new Player(0, 3, 0);
         Camera playerCam = player.GetCamera();
         Bootstrap.getDisplay().LinkCamera(playerCam);
@@ -38,6 +59,7 @@ class GameDoom : Game
         Bootstrap.getDisplay().addToDrawCube(wall_3);
         Bootstrap.getDisplay().addToDrawCube(wall_4);
         Bootstrap.getDisplay().addToDrawCube(floor);
+        Bootstrap.getDisplay().addToDrawLight(light);
 
     }
 

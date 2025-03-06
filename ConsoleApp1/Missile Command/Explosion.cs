@@ -47,8 +47,8 @@ namespace MissileCommand
 
             currentRadius += (float)(radDir * Bootstrap.getDeltaTime() * explosionSpeed);
 
-            c.X = (float)Transform.Centre.X;
-            c.Y = (float)Transform.Centre.Y;
+            c.X = (float)Transform.Centre2d.X;
+            c.Y = (float)Transform.Centre2d.Y;
             c.Rad = currentRadius;
             c.recalculate();
 

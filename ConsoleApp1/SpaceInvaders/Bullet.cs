@@ -21,8 +21,8 @@ namespace SpaceInvaders
         {
             this.Transform.X = x;
             this.Transform.Y = y;
-            this.Transform.Wid = 1;
-            this.Transform.Ht = 20;
+            this.Transform.Width = 1;
+            this.Transform.Height = 20;
 
 
             setPhysicsEnabled();

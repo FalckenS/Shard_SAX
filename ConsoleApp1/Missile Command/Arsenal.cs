@@ -62,8 +62,8 @@ namespace MissileCommand
 
 
             numMissiles = 10;
-            Transform.Wid = 64;
-            Transform.Ht = 32;
+            Transform.Width = 64;
+            Transform.Height = 32;
 
 
         }

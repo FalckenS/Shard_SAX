@@ -11,144 +11,96 @@
 *   
 */
 
-
 using System;
 using System.Numerics;
 
-namespace Shard
+namespace Shard;
+
+internal class Transform
 {
+    private Vector2 forward2d, right2d, centre2d;
+    
+    internal GameObject Owner { get; set; }
+    internal float X { get; set; }
+    internal float Y { get; set; }
+    internal float Rotz { get; set; }
+    internal string SpritePath { get; set; }
+    internal int Width { get; set; }
+    internal int Height { get; set; }
+    internal ref Vector2 Forward2d => ref forward2d;
+    internal ref Vector2 Right2d => ref right2d;
+    internal ref Vector2 Centre2d => ref centre2d;
+    internal float ScaleX { get; set; }
+    internal float ScaleY { get; set; }
+    internal float Lx { get; set; }
+    internal float Ly { get; set; }
 
-    class Transform
+    internal Transform(GameObject ow)
     {
-        private GameObject owner;
-        private float x, y;
-        private float lx, ly;
-        private float rotz;
-        private int wid, ht;
-        private float scalex, scaley;
-        private string spritePath;
-        private Vector2 forward;
-        private Vector2 right, centre;
+        Owner = ow;
+        forward2d = new Vector2();
+        right2d = new Vector2();
+        centre2d = new Vector2();
 
-        public Vector2 getLastDirection()
-        {
-            float dx, dy;
-            dx = (X - Lx);
-            dy = (Y - Ly);
+        ScaleX = 1.0f;
+        ScaleY = 1.0f;
 
-            return new Vector2(-dx, -dy);
-        }
+        X = 0;
+        Y = 0;
 
-        public Transform(GameObject ow)
-        {
-            Owner = ow;
-            forward = new Vector2();
-            right = new Vector2();
-            centre = new Vector2();
+        Lx = 0;
+        Ly = 0;
 
-            scalex = 1.0f;
-            scaley = 1.0f;
+        rotate(0);
+    }
 
-            x = 0;
-            y = 0;
+    internal Vector2 getLastDirection()
+    {
+        float dx = X - Lx;
+        float dy = Y - Ly;
+        return new Vector2(-dx, -dy);
+    }
+    
+    internal void recalculateCentre()
+    {
+        centre2d.X = X + Width * ScaleX / 2;
+        centre2d.Y = Y + Height * ScaleY / 2;
+    }
 
-            lx = 0;
-            ly = 0;
+    internal void translate(double nx, double ny)
+    {
+        translate ((float)nx, (float)ny);
+    }
 
-            rotate(0);
-        }
+    internal void translate(float nx, float ny)
+    {
+        Lx = X;
+        Ly = Y;
 
+        X += nx;
+        Y += ny;
+        
+        recalculateCentre();
+    }
 
-        public void recalculateCentre()
-        {
+    internal void translate(Vector2 vect)
+    {
+        translate(vect.X, vect.Y);
+    }
 
-            centre.X = (float)(x + ((this.Wid * scalex) / 2));
-            centre.Y = (float)(y + ((this.Ht * scaley) / 2));
+    internal void rotate(float dir)
+    {
+        Rotz += dir;
+        Rotz %= 360;
 
-        }
+        float angle = (float)(Math.PI * Rotz / 180.0f);
+        float sin = (float)Math.Sin(angle);
+        float cos = (float)Math.Cos(angle);
 
-        public void translate(double nx, double ny)
-        {
-            translate ((float)nx, (float)ny);
-        }
-
-
-
-        public void translate(float nx, float ny)
-        {
-            Lx = X;
-            Ly = Y;
-
-            x += (float)nx;
-            y += (float)ny;
-
-
-            recalculateCentre();
-        }
-
-        public void translate(Vector2 vect)
-        {
-            translate(vect.X, vect.Y);
-        }
-
-
-
-        public void rotate(float dir)
-        {
-            rotz += (float)dir;
-
-            rotz %= 360;
-
-            float angle = (float)(Math.PI * rotz / 180.0f);
-            float sin = (float)Math.Sin(angle);
-            float cos = (float)Math.Cos(angle);
-
-            forward.X = cos;
-            forward.Y = sin;
-
-
-            right.X = -1 * forward.Y;
-            right.Y = forward.X;
-
-
-
-
-        }
-
-
-
-        public float X
-        {
-            get => x;
-            set => x = value;
-        }
-        public float Y
-        {
-            get => y;
-            set => y = value;
-        }
-
-        public float Rotz
-        {
-            get => rotz;
-            set => rotz = value;
-        }
-
-
-        public string SpritePath
-        {
-            get => spritePath;
-            set => spritePath = value;
-        }
-        public ref Vector2 Forward { get => ref forward; }
-        public int Wid { get => wid; set => wid = value; }
-        public int Ht { get => ht; set => ht = value; }
-        public ref Vector2 Right { get => ref right; }
-        internal GameObject Owner { get => owner; set => owner = value; }
-        public ref Vector2 Centre { get => ref centre; }
-        public float Scalex { get => scalex; set => scalex = value; }
-        public float Scaley { get => scaley; set => scaley = value; }
-        public float Lx { get => lx; set => lx = value; }
-        public float Ly { get => ly; set => ly = value; }
+        forward2d.X = cos;
+        forward2d.Y = sin;
+        
+        right2d.X = -1 * forward2d.Y;
+        right2d.Y = forward2d.X;
     }
 }

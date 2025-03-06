@@ -36,7 +36,7 @@ namespace GameTest
             //            MyBody.Kinematic = true;
 
 
-            MyBody.addForce(this.Transform.Right, 20.5f);
+            MyBody.addForce(this.Transform.Right2d, 20.5f);
             //            MyBody.addCircleCollider(32, 32, 30);
             MyBody.addRectCollider();
             Bootstrap.getInput().addListener(this);
@@ -90,7 +90,7 @@ namespace GameTest
 
         public override string ToString()
         {
-            return "Asteroid: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Wid + ", " + Transform.Ht + "]";
+            return "Asteroid: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Width + ", " + Transform.Height + "]";
         }
     }
 }

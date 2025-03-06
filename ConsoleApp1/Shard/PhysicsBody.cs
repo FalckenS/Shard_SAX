@@ -81,6 +81,11 @@ internal class PhysicsBody
         // Debug.getInstance().log ("Setting physics enabled");
         PhysicsManager.getInstance().addPhysicsObject(this);
     }
+    
+    public List<Collider> getColliders()
+    {
+        return myColliders;
+    }
 
     public void applyGravity(float modifier, Vector2 dir)
     {
@@ -240,47 +245,50 @@ internal class PhysicsBody
             this.force = (this.force / force) * (force - Drag);
         }
     }
-
-    public void addRectCollider()
-    {
-        ColliderRect cr = new ColliderRect(Parent.Transform);
-        addCollider(cr);
-    }
     
     private void addCollider(Collider col)
     {
         myColliders.Add(col);
     }
 
-    public void addRectCollider(int x, int y, int wid, int ht)
+    public ColliderRect addRectCollider()
     {
-        ColliderRect cr = new ColliderRect(Parent.Transform, x, y, wid, ht);
-        addCollider(cr);
-    }
-    
-    public void addCircleCollider()
-    {
-        ColliderCircle cr = new ColliderCircle(Parent.Transform);
-        addCollider(cr);
-    }
-
-    public ColliderCircle addCircleCollider(int x, int y, int rad)
-    {
-        ColliderCircle cr = new ColliderCircle(Parent.Transform, x, y, rad);
-        addCollider(cr);
-        return cr;
-    }
-    
-    public Collider3dRect add3dRectCollider()
-    {
-        Collider3dRect collider = new Collider3dRect(Parent.Transform);
+        ColliderRect collider = new ColliderRect(Parent.Transform);
         addCollider(collider);
         return collider;
     }
 
-    public List<Collider> getColliders()
+    public ColliderRect addRectCollider(int x, int y, int wid, int ht)
     {
-        return myColliders;
+        ColliderRect collider = new ColliderRect(Parent.Transform, x, y, wid, ht);
+        addCollider(collider);
+        return collider;
+    }
+    
+    public ColliderCircle addCircleCollider()
+    {
+        ColliderCircle collider = new ColliderCircle(Parent.Transform);
+        addCollider(collider);
+        return collider;
+    }
+
+    public ColliderCircle addCircleCollider(int x, int y, int rad)
+    {
+        ColliderCircle collider = new ColliderCircle(Parent.Transform, x, y, rad);
+        addCollider(collider);
+        return collider;
+    }
+    
+    public void addCuboidCollider()
+    {
+        ColliderCuboid collider = new ColliderCuboid(Parent.Transform);
+        addCollider(collider);
+    }
+    
+    public void addSphereCollider()
+    {
+        ColliderSphere collider = new ColliderSphere(Parent.Transform);
+        addCollider(collider);
     }
 
     public Vector2? checkCollisions(Vector2 other)

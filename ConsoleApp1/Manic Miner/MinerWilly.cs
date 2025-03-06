@@ -155,10 +155,10 @@ namespace ManicMiner
             float[] minAndMaxX = x.getMinAndMax("x");
             float[] minAndMaxY = x.getMinAndMax("y");
 
-            if (Transform.X + Transform.Wid >= minAndMaxX[0] && Transform.X <= minAndMaxX[1]) {
+            if (Transform.X + Transform.Width >= minAndMaxX[0] && Transform.X <= minAndMaxX[1]) {
                 // We're in the centre, so it's fine.
 
-                if (Transform.Y + Transform.Ht <= minAndMaxY[0]) {
+                if (Transform.Y + Transform.Height <= minAndMaxY[0]) {
                     return true;
                 }
 

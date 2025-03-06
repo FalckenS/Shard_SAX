@@ -79,12 +79,12 @@ internal class GameFlappyBird : Game
         Wall lowerWall = new Wall();
         lowerWall.Transform2D.Y = botYPos;
         // Calculate the height of lower wall (distance between botYPos to gapMinYPos)
-        lowerWall.Transform2D.Ht = gapMinYPos - botYPos; // botYPos will always be negative, so Ht will be positive
+        lowerWall.Transform2D.Height = gapMinYPos - botYPos; // botYPos will always be negative, so Height will be positive
         
         Wall upperWall = new Wall();
-        upperWall.Transform2D.Y = botYPos + lowerWall.Transform2D.Ht + GapBetweenWallsY;
+        upperWall.Transform2D.Y = botYPos + lowerWall.Transform2D.Height + GapBetweenWallsY;
         // Calculate the height of upper wall by doing (display height) - (lower wall height and gap)
-        upperWall.Transform2D.Ht = Bootstrap.getDisplay().getHeight() - (lowerWall.Transform2D.Ht + GapBetweenWallsY);
+        upperWall.Transform2D.Height = Bootstrap.getDisplay().getHeight() - (lowerWall.Transform2D.Height + GapBetweenWallsY);
 
         _walls.Add([lowerWall, upperWall]);
     }

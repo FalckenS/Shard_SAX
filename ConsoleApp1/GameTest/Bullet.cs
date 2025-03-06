@@ -12,8 +12,8 @@ namespace GameTest
         {
             this.Transform.X = x;
             this.Transform.Y = y;
-            this.Transform.Wid = 10;
-            this.Transform.Ht = 10;
+            this.Transform.Width = 10;
+            this.Transform.Height = 10;
 
             this.origin = or;
 
@@ -40,7 +40,7 @@ namespace GameTest
 
         public override void physicsUpdate()
         {
-            MyBody.addForce(this.Transform.Forward, 100.0f);
+            MyBody.addForce(this.Transform.Forward2d, 100.0f);
         }
 
         public override void update()

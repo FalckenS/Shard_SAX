@@ -84,8 +84,8 @@ namespace MissileCommand
             yDist = Math.Abs(yDist);
 
             // Since we're not building a collider around a sprite or forces, we have to do this manually.
-            c.X = (float)Transform.Centre.X;
-            c.Y = (float)Transform.Centre.Y;
+            c.X = (float)Transform.Centre2d.X;
+            c.Y = (float)Transform.Centre2d.Y;
             c.Rad = 2;
             //            c.recalculate();
 
@@ -117,8 +117,8 @@ namespace MissileCommand
 
                         m.Transform.translate(m.Originx, m.Originy);
 
-                        m.Targetx = remainingCities[i].Transform.Centre.X;
-                        m.Targety = remainingCities[i].Transform.Centre.Y;
+                        m.Targetx = remainingCities[i].Transform.Centre2d.X;
+                        m.Targety = remainingCities[i].Transform.Centre2d.Y;
 
                         m.addTag("EnemyMissile");
 

@@ -91,14 +91,14 @@ namespace SpaceInvaders
 
         public override string ToString()
         {
-            return "Asteroid: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Wid + ", " + Transform.Ht + "]";
+            return "Asteroid: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Width + ", " + Transform.Height + "]";
         }
 
         public void fire()
         {
             Bullet b = new Bullet();
 
-            b.setupBullet(this.Transform.Centre.X, this.Transform.Centre.Y);
+            b.setupBullet(this.Transform.Centre2d.X, this.Transform.Centre2d.Y);
             b.Dir = 1;
             b.DestroyTag = "Player";
         }

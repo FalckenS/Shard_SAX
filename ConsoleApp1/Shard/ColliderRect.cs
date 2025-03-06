@@ -53,13 +53,13 @@ internal class ColliderRect : Collider
         if (myRect == null) return;
         if (fromTrans)
         {
-            wid = myRect.Wid * myRect.Scalex;
-            ht = myRect.Ht * myRect.Scaley;
+            wid = myRect.Width * myRect.ScaleX;
+            ht = myRect.Height * myRect.ScaleY;
         }
         else
         {
-            wid = baseWid * myRect.Scalex;
-            ht = baseHt * myRect.Scaley;
+            wid = baseWid * myRect.ScaleX;
+            ht = baseHt * myRect.ScaleY;
         }
 
         float angle = (float)(Math.PI * myRect.Rotz / 180.0f);
@@ -78,14 +78,14 @@ internal class ColliderRect : Collider
         if (RotateAtOffset)
         {
             // Now we work out the X and Y based on the rotation of the body to which this belongs.
-            float x1 = x - myRect.Centre.X;
-            float y1 = y - myRect.Centre.Y;
+            float x1 = x - myRect.Centre2d.X;
+            float y1 = y - myRect.Centre2d.Y;
 
             float x2 = (float)(x1 * Math.Cos(angle) - y1 * Math.Sin(angle));
             float y2 = (float)(x1 * Math.Sin(angle) + y1 * Math.Cos(angle));
 
-            x = x2 + myRect.Centre.X;
-            y = y2 + myRect.Centre.Y;
+            x = x2 + myRect.Centre2d.X;
+            y = y2 + myRect.Centre2d.Y;
         }
         MinAndMaxX[0] = x - wid / 2;
         MinAndMaxX[1] = x + wid / 2;
@@ -93,7 +93,7 @@ internal class ColliderRect : Collider
         MinAndMaxY[1] = y + ht / 2;
     }
 
-    public override void recalculate()
+    internal override void recalculate()
     {
         calculateBoundingBox();
     }
@@ -149,7 +149,7 @@ internal class ColliderRect : Collider
         return impulse;
     }
 
-    public override Vector2? checkCollision(ColliderRect other)
+    internal override Vector2? checkCollision(ColliderRect other)
     {
         ColliderRect cr = calculateMinkowskiDifference(other);
         if (cr.Left <= 0 && cr.Right >= 0 && cr.Top <= 0 && cr.Bottom >= 0)
@@ -159,7 +159,7 @@ internal class ColliderRect : Collider
         return null;
     }
 
-    public override void drawMe(Color col)
+    internal override void drawMe(Color col)
     {
         Display d = Bootstrap.getDisplay();
 
@@ -171,7 +171,7 @@ internal class ColliderRect : Collider
         d.drawCircle((int)x, (int)y, 2, col);
     }
 
-    public override Vector2? checkCollision(ColliderCircle c)
+    internal override Vector2? checkCollision(ColliderCircle c)
     {
         Vector2? possibleV = c.checkCollision(this);
 
@@ -184,7 +184,7 @@ internal class ColliderRect : Collider
         return null;
     }
 
-    public override Vector2? checkCollision(Vector2 other)
+    internal override Vector2? checkCollision(Vector2 other)
     {
         if (other.X >= Left &&
             other.X <= Right &&

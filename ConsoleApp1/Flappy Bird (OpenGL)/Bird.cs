@@ -20,8 +20,8 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         // Transform X, Y is bottom right of GameObject
         Transform2D.X = -300;
         Transform2D.Y = 300;
-        Transform2D.Wid = 50;
-        Transform2D.Ht = 50;
+        Transform2D.Width = 50;
+        Transform2D.Height = 50;
         Transform2D.rotate(90);
         
         setPhysicsEnabled();
@@ -43,7 +43,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
             case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && !_spacePressed:
                 _spacePressed = true;
                 // Fly up
-                MyBody.addForce(Transform.Forward, FlyForce);
+                MyBody.addForce(Transform.Forward2d, FlyForce);
                 break;
             case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && _spacePressed:
                 _spacePressed = false;

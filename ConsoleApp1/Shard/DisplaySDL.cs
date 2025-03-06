@@ -80,8 +80,8 @@ namespace Shard
             ret = loadTexture(trans.SpritePath);
 
             SDL.SDL_QueryTexture(ret, out format, out access, out w, out h);
-            trans.Ht = h;
-            trans.Wid = w;
+            trans.Height = h;
+            trans.Width = w;
             trans.recalculateCentre();
 
             return ret;
@@ -224,8 +224,8 @@ namespace Shard
 
                 sRect.x = 0;
                 sRect.y = 0;
-                sRect.w = (int)(trans.Wid * trans.Scalex);
-                sRect.h = (int)(trans.Ht * trans.Scaley);
+                sRect.w = (int)(trans.Width * trans.ScaleX);
+                sRect.h = (int)(trans.Height * trans.ScaleY);
 
                 tRect.x = (int)trans.X;
                 tRect.y = (int)trans.Y;

@@ -55,7 +55,7 @@ internal class ColliderCircle : Collider
 
         if (fromTrans)
         {
-            float intWid = myRect.Wid * myRect.Scalex;
+            float intWid = myRect.Width * myRect.ScaleX;
             Rad = intWid / 2;
             X = myRect.X + xOff + Rad;
             Y = myRect.Y + yOff + Rad;
@@ -69,14 +69,14 @@ internal class ColliderCircle : Collider
         if (RotateAtOffset)
         {
             // Now we work out the X and Y based on the rotation of the body to which this belongs.
-            float x1 = X - myRect.Centre.X;
-            float y1 = Y - myRect.Centre.Y;
+            float x1 = X - myRect.Centre2d.X;
+            float y1 = Y - myRect.Centre2d.Y;
 
             float x2 = (float)(x1 * Math.Cos(angle) - y1 * Math.Sin(angle));
             float y2 = (float)(x1 * Math.Sin(angle) + y1 * Math.Cos(angle));
 
-            X = x2 + myRect.Centre.X;
-            Y = y2 + myRect.Centre.Y;
+            X = x2 + myRect.Centre2d.X;
+            Y = y2 + myRect.Centre2d.Y;
         }
         MinAndMaxX[0] = X - Rad;
         MinAndMaxX[1] = X + Rad;
@@ -84,12 +84,12 @@ internal class ColliderCircle : Collider
         MinAndMaxY[1] = Y + Rad;
     }
 
-    public override void recalculate()
+    internal override void recalculate()
     {
         calculateBoundingBox();
     }
     
-    public override Vector2? checkCollision(Vector2 c)
+    internal override Vector2? checkCollision(Vector2 c)
     {
         if (c.X >= Left &&
             c.X <= Right &&
@@ -101,7 +101,7 @@ internal class ColliderCircle : Collider
         return null;
     }
 
-    public override Vector2? checkCollision(ColliderRect other)
+    internal override Vector2? checkCollision(ColliderRect other)
     {
         double tx = X;
         double ty = Y;
@@ -159,7 +159,7 @@ internal class ColliderCircle : Collider
         return null;
     }
 
-    public override Vector2? checkCollision(ColliderCircle c)
+    internal override Vector2? checkCollision(ColliderCircle c)
     {
         double xpen = Math.Pow(c.X - this.X, 2);
         double ypen = Math.Pow(c.Y - this.Y, 2);
@@ -177,7 +177,7 @@ internal class ColliderCircle : Collider
         return null;
     }
     
-    public override void drawMe(Color col)
+    internal override void drawMe(Color col)
     {
         Bootstrap.getDisplay().drawCircle((int)X, (int)Y, (int)Rad, col);
     }

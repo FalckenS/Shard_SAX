@@ -230,6 +230,7 @@ internal class DisplayOpenGL : Display
     {
         Color gameObjectColor = GetGameObjectColor(gob);
 
+        // For rectangles, just draw the hit box
         // Min x, y is bottom left
         // Max x, y is top right
         _rectanglesToRender.Add(new RectangleToRender(

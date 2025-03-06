@@ -41,7 +41,7 @@ namespace SpaceInvaders
 
             Bullet b = new Bullet();
 
-            b.setupBullet(this.Transform.Centre.X, this.Transform.Centre.Y);
+            b.setupBullet(this.Transform.Centre2d.X, this.Transform.Centre2d.Y);
             b.Dir = -1;
             b.DestroyTag = "Invader";
 
@@ -136,7 +136,7 @@ namespace SpaceInvaders
 
         public override string ToString()
         {
-            return "Spaceship: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Wid + ", " + Transform.Ht + "]";
+            return "Spaceship: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Width + ", " + Transform.Height + "]";
         }
 
     }

@@ -51,7 +51,7 @@ namespace GameTest
         {
             Bullet b = new Bullet();
 
-            b.setupBullet(this, this.Transform.Centre.X, this.Transform.Centre.Y);
+            b.setupBullet(this, this.Transform.Centre2d.X, this.Transform.Centre2d.Y);
 
             b.Transform.rotate(this.Transform.Rotz);
 
@@ -138,13 +138,13 @@ namespace GameTest
             if (up)
             {
 
-                MyBody.addForce(this.Transform.Forward, 0.5f);
+                MyBody.addForce(this.Transform.Forward2d, 0.5f);
 
             }
 
             if (down)
             {
-                MyBody.addForce(this.Transform.Forward, -0.2f);
+                MyBody.addForce(this.Transform.Forward2d, -0.2f);
             }
 
 
@@ -176,7 +176,7 @@ namespace GameTest
 
         public override string ToString()
         {
-            return "Spaceship: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Wid + ", " + Transform.Ht + "]";
+            return "Spaceship: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Width + ", " + Transform.Height + "]";
         }
 
     }

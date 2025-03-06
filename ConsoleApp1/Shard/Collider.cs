@@ -9,6 +9,7 @@
 *   
 */
 
+using System;
 using System.Drawing;
 using System.Numerics;
 
@@ -16,12 +17,12 @@ namespace Shard;
 
 internal abstract class Collider
 {
-    public float[] MinAndMaxX { get; protected set; } = new float[2];
-    public float[] MinAndMaxY { get; protected set; } = new float[2];
-    public float[] MinAndMaxZ { get; protected set; } = new float[2];
-    public bool RotateAtOffset { get; init; }
+    internal float[] MinAndMaxX { get; set; } = new float[2];
+    internal float[] MinAndMaxY { get; set; } = new float[2];
+    internal float[] MinAndMaxZ { get; set; } = new float[2];
+    internal bool RotateAtOffset { get; init; }
     
-    public Vector2? checkCollision(Collider c)
+    internal Vector2? checkCollision(Collider c)
     {
         switch (c)
         {
@@ -29,11 +30,13 @@ internal abstract class Collider
                 return checkCollision(rect);
             case ColliderCircle circle:
                 return checkCollision(circle);
-            case Collider3dRect rect3d:
-                if (checkCollision(rect3d))
-                {
-                    return new Vector2(0, 0);
-                }
+            case ColliderCuboid cuboid:
+                // Dont care about impulse for 3d collisions
+                if (checkCollision(cuboid)) return new Vector2(0, 0);
+                return null;
+            case ColliderSphere sphere:
+                // Dont care about impulse for 3d collisions
+                if (checkCollision(sphere)) return new Vector2(0, 0);
                 return null;
             default:
                 Debug.getInstance().log("Bug");
@@ -42,20 +45,32 @@ internal abstract class Collider
         }
     }
     
-    public abstract void recalculate();
+    internal abstract void recalculate();
 
-    public abstract Vector2? checkCollision(Vector2 c);
-    
-    public abstract Vector2? checkCollision(ColliderRect c);
-
-    public abstract Vector2? checkCollision(ColliderCircle c);
-
-    public virtual bool checkCollision(Collider3dRect collider3dRect)
+    internal virtual Vector2? checkCollision(Vector2 c)
     {
-        throw new System.NotImplementedException();
+        throw new Exception("Check collision with Vector2 not supported with 2d collider");
     }
-    
-    // TODO sphere
 
-    public abstract void drawMe(Color col);
+    internal virtual Vector2? checkCollision(ColliderRect c)
+    {
+        throw new Exception("Check collision with ColliderRect not supported with 2d collider");
+    }
+
+    internal virtual Vector2? checkCollision(ColliderCircle c)
+    {
+        throw new Exception("Check collision with ColliderCircle not supported with 2d collider");
+    }
+
+    internal virtual bool checkCollision(ColliderCuboid c)
+    {
+        throw new Exception("Check collision with ColliderCuboid not supported with 3d collider");
+    }
+
+    internal virtual bool checkCollision(ColliderSphere c)
+    {
+        throw new Exception("Check collision with ColliderSphere not supported with 3d collider");
+    }
+
+    internal abstract void drawMe(Color col);
 }

@@ -16,8 +16,8 @@ namespace GameBreakout
             this.Transform.X = 500.0f;
             this.Transform.Y = 800.0f;
             this.Transform.SpritePath = Bootstrap.getAssetManager().getAssetPath("test.png");
-            this.Transform.Scaley = 0.5f;
-            this.Transform.Scalex = 1.5f;
+            this.Transform.ScaleY = 0.5f;
+            this.Transform.ScaleX = 1.5f;
 
 
             Bootstrap.getInput().addListener(this);
@@ -87,13 +87,13 @@ namespace GameBreakout
 
             if (left)
             {
-                MyBody.addForce(this.Transform.Forward, -1 * 2000f);
+                MyBody.addForce(this.Transform.Forward2d, -1 * 2000f);
             }
 
 
             if (right)
             {
-                MyBody.addForce(this.Transform.Forward, 2000f);
+                MyBody.addForce(this.Transform.Forward2d, 2000f);
             }
 
 
@@ -103,7 +103,7 @@ namespace GameBreakout
             }
 
 
-            boundsx = wid - (this.Transform.X + this.Transform.Wid);
+            boundsx = wid - (this.Transform.X + this.Transform.Width);
 
             if (boundsx < 0)
             {
@@ -132,7 +132,7 @@ namespace GameBreakout
 
         public override string ToString()
         {
-            return "Paddle: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Wid + ", " + Transform.Ht + "]";
+            return "Paddle: [" + Transform.X + ", " + Transform.Y + ", " + Transform.Width + ", " + Transform.Height + "]";
         }
 
     }

@@ -27,8 +27,8 @@ namespace GameBreakout
             MyBody.StopOnCollision = false;
             MyBody.ReflectOnCollision = true;
 
-            Transform.Scalex = 2;
-            Transform.Scaley = 2;
+            Transform.ScaleX = 2;
+            Transform.ScaleY = 2;
 
 
             Transform.rotate(90);
@@ -54,7 +54,7 @@ namespace GameBreakout
                         if (other.Parent.checkTag("Paddle"))
                         {
 //                            Debug.Log ("Hit the Paddle");
-                            Dir = new Vector2(Transform.Centre.X - other.Trans.Centre.X, LastDir.Y * -1);
+                            Dir = new Vector2(Transform.Centre2d.X - other.Trans.Centre2d.X, LastDir.Y * -1);
                         }
 
                         if (other.Parent.checkTag("Brick"))
@@ -62,8 +62,8 @@ namespace GameBreakout
 //                            Debug.Log("Hit the Brick");
 
 //                            Dir = new Shard.Vector();
-//                            Dir.X = (float)(Transform.Centre.X - other.Trans.Centre.X);
-//                            Dir.Y = (float)(Transform.Centre.Y - other.Trans.Centre.Y);
+//                            Dir.X = (float)(Transform.Centre2d.X - other.Trans.Centre2d.X);
+//                            Dir.Y = (float)(Transform.Centre2d.Y - other.Trans.Centre2d.Y);
 
                         }
 
@@ -99,39 +99,39 @@ namespace GameBreakout
         {
 
 
-            if (Transform.Centre.Y - Transform.Ht <= 0)
+            if (Transform.Centre2d.Y - Transform.Height <= 0)
             {
                 changeDir(0, 1);
-                Transform.translate(0, -1 * Transform.Centre.Y);
+                Transform.translate(0, -1 * Transform.Centre2d.Y);
 
                 Debug.Log("Top wall");
             }
 
-            if (Transform.Centre.Y + Transform.Ht >= Bootstrap.getDisplay().getHeight())
+            if (Transform.Centre2d.Y + Transform.Height >= Bootstrap.getDisplay().getHeight())
             {
                 changeDir(0, -1);
-                Transform.translate(0, Transform.Centre.Y - Bootstrap.getDisplay().getHeight());
+                Transform.translate(0, Transform.Centre2d.Y - Bootstrap.getDisplay().getHeight());
 
                 Debug.Log("Bottom wall");
 
             }
 
 
-            if (Transform.Centre.X - Transform.Wid <= 0)
+            if (Transform.Centre2d.X - Transform.Width <= 0)
             {
                 changeDir(1, 0);
-                Transform.translate(-1 * Transform.Centre.X, 0);
+                Transform.translate(-1 * Transform.Centre2d.X, 0);
 
                 Debug.Log("Left wall");
 
             }
 
-            if (Transform.Centre.X + Transform.Wid >= Bootstrap.getDisplay().getWidth())
+            if (Transform.Centre2d.X + Transform.Width >= Bootstrap.getDisplay().getWidth())
             {
                 changeDir(-1, 0);
-                Transform.translate(Transform.Centre.X - Bootstrap.getDisplay().getWidth(), 0);
+                Transform.translate(Transform.Centre2d.X - Bootstrap.getDisplay().getWidth(), 0);
 
-                Debug.Log("Right wall");
+                Debug.Log("Right2d wall");
 
             }
 

@@ -15,7 +15,7 @@ internal class Wall : GameObject, CollisionHandler
     {
         // Transform X, Y is bottom right of GameObject
         Transform2D.X = Bootstrap.getDisplay().getWidth() / 2f;
-        Transform2D.Wid = 100;
+        Transform2D.Width = 100;
         
         setPhysicsEnabled();
         MyBody.Kinematic = true;

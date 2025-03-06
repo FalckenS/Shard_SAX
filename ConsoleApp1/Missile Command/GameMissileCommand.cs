@@ -133,8 +133,8 @@ namespace Shard
 
             target = theCities[rand.Next(0, theCities.Count)];
 
-            m.Targetx = (float)target.Transform.Centre.X;
-            m.Targety = (float)target.Transform.Centre.Y;
+            m.Targetx = (float)target.Transform.Centre2d.X;
+            m.Targety = (float)target.Transform.Centre2d.Y;
 
             // Some of our missiles will split before they explode.
             if (rand.Next(0, 100) < 10)
@@ -161,7 +161,7 @@ namespace Shard
 
                 if (inp.Button == 3)
                 {
-                    // Right mouse button.
+                    // Right2d mouse button.
                     which = 2;
                 }
 
@@ -195,8 +195,8 @@ namespace Shard
 
                 a.fireMissile();
 
-                m.Originx = (float)a.Transform.Centre.X;
-                m.Originy = (float)a.Transform.Centre.Y;
+                m.Originx = (float)a.Transform.Centre2d.X;
+                m.Originy = (float)a.Transform.Centre2d.Y;
 
                 m.Transform.translate(m.Originx, m.Originy);
 

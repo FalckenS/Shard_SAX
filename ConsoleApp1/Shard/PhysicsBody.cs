@@ -19,7 +19,8 @@
 *       once every half hour...
 *       
 *   @author Michael Heron
-*   @version 1.0
+*   @author Samuel Falck (added some stuff for 3d collision detection and did some refactoring)
+*   @version 1.0 (SAX)
 *   
 *   Several substantial contributions to the code made by others:
 *   @author Mårten Åsberg (see Changelog for 1.0.1)
@@ -29,387 +30,266 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Numerics;
 
-namespace Shard
+namespace Shard;
+
+internal class PhysicsBody
 {
-    class PhysicsBody
+    private readonly List<Collider> myColliders;
+    private float torque;
+    private Vector2 force;
+    
+    public float[] MinAndMaxX { get; private set; }
+    public float[] MinAndMaxY { get; private set; }
+    public float[] MinAndMaxZ { get; private set; }
+    public Color DebugColor { get; set; }
+    public float AngularDrag { get; set; }
+    public float Drag { get; set; }
+    public GameObject Parent { get; }
+    public Transform Trans { get; }
+    public float Mass { get; set; }
+    public float MaxForce { get; set; }
+    public float MaxTorque { get; set; }
+    public bool Kinematic { get; set; }
+    public bool PassThrough { get; set; }
+    public bool UsesGravity { get; set; }
+    public bool StopOnCollision { get; set; }
+    public bool ReflectOnCollision { get; set; }
+    public bool ImpartForce { get; set; }
+    public CollisionHandler Colh { get; }
+    
+    public PhysicsBody(GameObject p)
     {
-        List<Collider> myColliders;
-        List<Collider> collisionCandidates;
-        GameObject parent;
-        CollisionHandler colh;
-        Transform trans;
-        private float angularDrag;
-        private float drag;
-        private float torque;
-        private Vector2 force;
-        private float mass;
-        private double timeInterval;
-        private float maxForce, maxTorque;
-        private bool kinematic;
-        private bool stopOnCollision;
-        private bool reflectOnCollision;
-        private bool impartForce;
-        private bool passThrough;
-        private bool usesGravity;
-        private Color debugColor;
-        public Color DebugColor { get => debugColor; set => debugColor = value; }
+        DebugColor = Color.Green;
+        myColliders = new List<Collider>();
+        Parent = p;
+        Trans = p.Transform;
+        Colh = (CollisionHandler)p;
+        AngularDrag = 0.01f;
+        Drag = 0.01f;
+        Drag = 0.01f;
+        Mass = 1;
+        MaxForce = 10;
+        MaxTorque = 2;
+        UsesGravity = false;
+        StopOnCollision = true;
+        ReflectOnCollision = false;
+        MinAndMaxX = new float[2];
+        MinAndMaxY = new float[2];
+        MinAndMaxZ = new float[2];
+        // Debug.getInstance().log ("Setting physics enabled");
+        PhysicsManager.getInstance().addPhysicsObject(this);
+    }
 
-        private float[] minAndMaxX;
-        private float[] minAndMaxY;
-
-        public void applyGravity(float modifier, Vector2 dir)
+    public void applyGravity(float modifier, Vector2 dir)
+    {
+        Vector2 gf = dir * modifier;
+        addForce(gf);
+    }
+    
+    private void addForce(Vector2 dir)
+    {
+        if (Kinematic) { return; }
+        
+        dir /= Mass;
+        
+        // Set a lower bound.
+        if (dir.LengthSquared() < 0.0001) { return; }
+        
+        force += dir;
+        
+        // Set a higher bound.
+        if (force.Length() > MaxForce)
         {
-
-            Vector2 gf = dir * modifier;
-
-            addForce(gf);
-
+            force = Vector2.Normalize(force) * MaxForce;
         }
-
-        public float AngularDrag { get => angularDrag; set => angularDrag = value; }
-        public float Drag { get => drag; set => drag = value; }
-        internal GameObject Parent { get => parent; set => parent = value; }
-        internal Transform Trans { get => trans; set => trans = value; }
-        public float Mass { get => mass; set => mass = value; }
-        public float[] MinAndMaxX { get => minAndMaxX; set => minAndMaxX = value; }
-        public float[] MinAndMaxY { get => minAndMaxY; set => minAndMaxY = value; }
-        public float MaxForce { get => maxForce; set => maxForce = value; }
-        public float MaxTorque { get => maxTorque; set => maxTorque = value; }
-        public bool Kinematic { get => kinematic; set => kinematic = value; }
-        public bool PassThrough { get => passThrough; set => passThrough = value; }
-        public bool UsesGravity { get => usesGravity; set => usesGravity = value; }
-        public bool StopOnCollision { get => stopOnCollision; set => stopOnCollision = value; }
-        public bool ReflectOnCollision { get => reflectOnCollision; set => reflectOnCollision = value; }
-        public bool ImpartForce { get => this.impartForce; set => this.impartForce = value; }
-        internal CollisionHandler Colh { get => colh; set => colh = value; }
-
-        public void drawMe()
+    }
+    
+    public void drawMe()
+    {
+        foreach (Collider col in myColliders)
         {
-            foreach (Collider col in myColliders)
-            {
-                col.drawMe(DebugColor);
-            }
+            col.drawMe(DebugColor);
         }
+    }
 
-        public float[] getMinAndMax(bool x)
+    public float[] getMinAndMax(string axis)
+    {
+        float min = int.MaxValue;
+        float max = -1 * min;
+        
+        foreach (Collider col in myColliders)
         {
-            float min = Int32.MaxValue;
-            float max = -1 * min;
             float[] tmp;
-
-            foreach (Collider col in myColliders)
+            switch (axis)
             {
-
-                if (x)
-                {
+                case "x":
                     tmp = col.MinAndMaxX;
-                }
-                else
-                {
+                    break;
+                case "y":
                     tmp = col.MinAndMaxY;
-                }
-
-
-                if (tmp[0] < min)
-                {
-                    min = tmp[0];
-                }
-
-                if (tmp[1] > max)
-                {
-                    max = tmp[1];
-                }
+                    break;
+                case "z":
+                    tmp = col.MinAndMaxZ;
+                    break;
+                default:
+                    throw new Exception("Axis " + axis + " is not supported");
             }
-
-
-            return new float[2] { min, max };
+            if (tmp[0] < min)
+            {
+                min = tmp[0];
+            }
+            if (tmp[1] > max)
+            {
+                max = tmp[1];
+            }
         }
+        return [min, max];
+    }
 
-        public PhysicsBody(GameObject p)
+    public void addTorque(float dir)
+    {
+        if (Kinematic) return;
+        
+        torque += dir / Mass;
+        if (torque > MaxTorque)
         {
-            DebugColor = Color.Green;
-
-            myColliders = new List<Collider>();
-            collisionCandidates = new List<Collider>();
-
-            Parent = p;
-            Trans = p.Transform;
-            Colh = (CollisionHandler)p;
-
-            AngularDrag = 0.01f;
-            Drag = 0.01f;
-            Drag = 0.01f;
-            Mass = 1;
-            MaxForce = 10;
-            MaxTorque = 2;
-            usesGravity = false;
-            stopOnCollision = true;
-            reflectOnCollision = false;
-
-            MinAndMaxX = new float[2];
-            MinAndMaxY = new float[2];
-
-            timeInterval = PhysicsManager.getInstance().TimeInterval;
-            //            Debug.getInstance().log ("Setting physics enabled");
-
-            PhysicsManager.getInstance().addPhysicsObject(this);
+            torque = MaxTorque;
         }
-
-        public void addTorque(float dir)
+        if (torque < -1 * MaxTorque)
         {
-            if (Kinematic)
-            {
-                return;
-            }
-
-            torque += dir / Mass;
-
-            if (torque > MaxTorque)
-            {
-                torque = MaxTorque;
-            }
-
-            if (torque < -1 * MaxTorque)
-            {
-                torque = -1 * MaxTorque;
-            }
-
-
+            torque = -1 * MaxTorque;
         }
+    }
 
-        public void reverseForces(float prop)
+    public void impartForces(PhysicsBody other, float massProp)
+    {
+        other.addForce(force * massProp);
+        recalculateColliders();
+    }
+
+    public void stopForces()
+    {
+        force = Vector2.Zero;
+    }
+
+    public void reflectForces(Vector2 impulse)
+    {
+        Vector2 reflect = new Vector2(0, 0);
+        Debug.Log ("Reflecting " + impulse);
+
+        // We're being pushed to the right or left, so we must have collided with the right or left.
+        if (impulse.X is > 0 or < 0)
         {
-            if (Kinematic)
-            {
-                return;
-            }
-
-            force *= -prop;
+            reflect.X = -1;
         }
 
-        public void impartForces(PhysicsBody other, float massProp)
+        // We're being pushed upwards or downwards, so we must have collided with the top or bottom.
+        if (impulse.Y is < 0 or > 0)
         {
-            other.addForce(force * massProp);
-
-            recalculateColliders();
-
+            reflect.Y = -1;
         }
+        
+        force *= reflect;
+        Debug.Log("Reflect is " + reflect);
+    }
 
-        public void stopForces()
+    public void reduceForces(float prop) {
+        force *= prop;
+    }
+
+    public void addForce(Vector2 dir, float force) {
+        addForce(dir * force);
+    }
+
+    public void recalculateColliders()
+    {
+        foreach (Collider col in getColliders())
         {
-            force = Vector2.Zero;
+            col.recalculate();
         }
+        MinAndMaxX = getMinAndMax("x");
+        MinAndMaxY = getMinAndMax("y");
+        MinAndMaxZ = getMinAndMax("z");
+    }
 
-        public void reflectForces(Vector2 impulse)
+    public void physicsTick()
+    {
+        float rot = torque;
+
+        if (Math.Abs(torque) < AngularDrag)
         {
-            Vector2 reflect = new Vector2(0, 0);
-
-            Debug.Log ("Reflecting " + impulse);
-
-            // We're being pushed to the right, so we must have collided with the right.
-            if (impulse.X > 0)
-            {
-                reflect.X = -1;
-            }
-
-            // We're being pushed to the left, so we must have collided with the left.
-            if (impulse.X < 0)
-            {
-                reflect.X = -1;
-
-            }
-
-            // We're being pushed upwards, so we must have collided with the top.
-            if (impulse.Y < 0)
-            {
-                reflect.Y = -1;
-            }
-
-            // We're being pushed downwards, so we must have collided with the bottom.
-            if (impulse.Y > 0)
-            {
-                reflect.Y = -1;
-
-            }
-
-
-            force *= reflect;
-
-            Debug.Log("Reflect is " + reflect);
-
+            torque = 0;
         }
-
-        public void reduceForces(float prop) {
-            force *= prop;
-        }
-
-        public void addForce(Vector2 dir, float force) {
-            addForce(dir * force);
-        }
-
-        public void addForce(Vector2 dir)
+        else
         {
-            if (Kinematic)
-            {
-                return;
-            }
-
-            dir /= Mass;
-
-            // Set a lower bound.
-            if (dir.LengthSquared() < 0.0001)
-            {
-                return;
-            }
-
-            force += dir;
-
-            // Set a higher bound.
-            if (force.Length() > MaxForce)
-            {
-                force = Vector2.Normalize(force) * MaxForce;
-            }
+            torque -= Math.Sign(torque) * AngularDrag;
         }
-
-        public void recalculateColliders()
+        
+        Trans.rotate(rot);
+		Trans.translate(this.force);
+        
+        float force = this.force.Length();
+        if (force < Drag)
         {
-            foreach (Collider col in getColliders())
-            {
-                col.recalculate();
-            }
-
-            MinAndMaxX = getMinAndMax(true);
-            MinAndMaxY = getMinAndMax(false);
+            stopForces();
         }
-
-        public void physicsTick()
+        else if (force > 0)
         {
-            List<Vector2> toRemove;
-            float force;
-            float rot = 0;
-
-
-            toRemove = new List<Vector2>();
-
-            rot = torque;
-
-            if (Math.Abs(torque) < AngularDrag)
-            {
-                torque = 0;
-            }
-            else
-            {
-                torque -= Math.Sign(torque) * AngularDrag;
-            }
-
-
-
-            trans.rotate(rot);
-
-            force = this.force.Length();
-
-			trans.translate(this.force);
-
-            if (force < Drag)
-            {
-                stopForces();
-            }
-            else if (force > 0)
-            {
-                this.force = (this.force / force) * (force - Drag);
-            }
-
-
-
+            this.force = (this.force / force) * (force - Drag);
         }
+    }
 
+    public void addRectCollider()
+    {
+        ColliderRect cr = new ColliderRect(Parent.Transform);
+        addCollider(cr);
+    }
+    
+    private void addCollider(Collider col)
+    {
+        myColliders.Add(col);
+    }
 
-        public ColliderRect addRectCollider()
+    public void addRectCollider(int x, int y, int wid, int ht)
+    {
+        ColliderRect cr = new ColliderRect(Parent.Transform, x, y, wid, ht);
+        addCollider(cr);
+    }
+    
+    public void addCircleCollider()
+    {
+        ColliderCircle cr = new ColliderCircle(Parent.Transform);
+        addCollider(cr);
+    }
+
+    public ColliderCircle addCircleCollider(int x, int y, int rad)
+    {
+        ColliderCircle cr = new ColliderCircle(Parent.Transform, x, y, rad);
+        addCollider(cr);
+        return cr;
+    }
+    
+    public Collider3dRect add3dRectCollider()
+    {
+        Collider3dRect collider = new Collider3dRect(Parent.Transform);
+        addCollider(collider);
+        return collider;
+    }
+
+    public List<Collider> getColliders()
+    {
+        return myColliders;
+    }
+
+    public Vector2? checkCollisions(Vector2 other)
+    {
+        foreach (Collider c in myColliders)
         {
-            ColliderRect cr = new ColliderRect((CollisionHandler)parent, parent.Transform);
-
-            addCollider(cr);
-
-            return cr;
+            Vector2? d = c.checkCollision(other);
+            if (d != null) return d;
         }
-
-        public ColliderCircle addCircleCollider()
-        {
-            ColliderCircle cr = new ColliderCircle((CollisionHandler)parent, parent.Transform);
-
-            addCollider(cr);
-
-            return cr;
-        }
-
-        public ColliderCircle addCircleCollider(int x, int y, int rad)
-        {
-            ColliderCircle cr = new ColliderCircle((CollisionHandler)parent, parent.Transform, x, y, rad);
-
-            addCollider(cr);
-
-            return cr;
-        }
-
-
-        public ColliderRect addRectCollider(int x, int y, int wid, int ht)
-        {
-            ColliderRect cr = new ColliderRect((CollisionHandler)parent, parent.Transform, x, y, wid, ht);
-
-            addCollider(cr);
-
-            return cr;
-        }
-
-
-        public void addCollider(Collider col)
-        {
-            myColliders.Add(col);
-        }
-
-        public List<Collider> getColliders()
-        {
-            return myColliders;
-        }
-
-        public Vector2? checkCollisions(Vector2 other)
-        {
-            Vector2? d;
-
-
-            foreach (Collider c in myColliders)
-            {
-                d = c.checkCollision(other);
-
-                if (d != null)
-                {
-                    return d;
-                }
-            }
-
-            return null;
-        }
-
-
-        public Vector2? checkCollisions(Collider other)
-        {
-            Vector2? d;
-
-//            Debug.Log("Checking collision with " + other);
-            foreach (Collider c in myColliders)
-            {
-                d = c.checkCollision(other);
-
-                if (d != null)
-                {
-                    return d;
-                }
-            }
-
-            return null;
-        }
+        return null;
     }
 }

@@ -14,307 +14,208 @@
 *       let all that happen.
 *       
 *   @author Michael Heron
-*   @version 1.0
-
+*   @author Samuel Falck (added some stuff for 3d collision detection and did some refactoring)
+*   @version 1.0 (SAX)
+*
 *   Several substantial contributions to the code made by others:
 *   @author Mårten Åsberg (see Changelog for 1.0.1)
-*
 *   
 */
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Numerics;
 
-namespace Shard
+namespace Shard;
+
+// An internal class used to hold a combination of two potentially colliding objects. 
+internal class CollidingObject
 {
+    internal PhysicsBody A { get; set; }
+    internal PhysicsBody B { get; set; }
 
+    public override bool Equals(object other) {
+        return other is CollidingObject otherObject && (
+            A == otherObject.A && B == otherObject.B ||
+            A == otherObject.B && B == otherObject.A);
+    }
 
-    /*
-     * An internal class used to hold a combination of two potentially colliding objects. 
-     */
+    public override int GetHashCode() {
+        return A.GetHashCode() ^ B.GetHashCode();
+    }
 
-    class CollidingObject
+    public override String ToString()
     {
-        PhysicsBody a, b;
+        return "[" + A.Parent.ToString() + " v " + B.Parent.ToString() + "]";
+    }
+}
 
-        public CollidingObject() {
-        }
-
-        public CollidingObject (PhysicsBody x, PhysicsBody y) {
-            A = x;
-            B = y;
-        }
-
-        internal PhysicsBody A { get => a; set => a = value; }
-        internal PhysicsBody B { get => b; set => b = value; }
-
-        public override bool Equals(object other) {
-            return other is CollidingObject co &&
-                (A == co.A && B == co.B ||
-                A == co.B && B == co.A);
-        }
-
-        public override int GetHashCode() {
-            return A.GetHashCode() ^ B.GetHashCode();
-        }
-
-        public override String ToString()
+/*
+*   SAP is Search and Prune, a broad pass collision detection algorithm and the one used in the course. This is an
+*   internal class used to contain a node in what will be a linked list used elsewhere in this code.
+*/
+public class SAPEntry
+{
+    private SAPEntry previous;
+    
+    internal float StartPos { get; set; }
+    internal float EndPos { get; set; }
+    internal PhysicsBody Owner { get; set; }
+    internal SAPEntry Next { get; set; }
+    
+    public static void clearList(SAPEntry node)
+    {
+        // Let's clear everything so the garbage collector can do its work
+        
+        if (node == null) return;
+        
+        while (node != null && node.Next != null)
         {
-            return "[" + A.Parent.ToString() + " v " + B.Parent.ToString() + "]";
+            node = node.Next;
+            node.previous.Next = null;
+            node.previous = null;
         }
+        node.previous = null;
     }
 
-    /*
-     * SAP is Search and Prune, a broad pass collision detection algorithm and the one used
-     * in the course.   This is an internal class used to contain a node in what will be a 
-     * linked list used elsewhere in this code.
-     */
-
-    class SAPEntry
+    public static SAPEntry addToList(SAPEntry node, SAPEntry entry)
     {
-        PhysicsBody owner;
-        float start, end;
-        SAPEntry previous, next;
+        SAPEntry current = node;
 
-        public float Start { get => start; set => start = value; }
-        public float End { get => end; set => end = value; }
-        internal PhysicsBody Owner { get => owner; set => owner = value; }
-        internal SAPEntry Previous { get => previous; set => previous = value; }
-        internal SAPEntry Next { get => next; set => next = value; }
-    }
-
-
-    class PhysicsManager
-    {
-        private static PhysicsManager me;
-        private List<CollidingObject> collisionsToCheck;
-        HashSet<CollidingObject> colliding;
-            
-        private long timeInterval;
-        SAPEntry sapX, sapY;
-        float gravityModifier;
-        Vector2 gravityDir;
-
-        List<PhysicsBody> allPhysicsObjects;
-        private long lastUpdate;
-        private long lastDebugDraw;
-        private PhysicsManager()
+        // Start our list.
+        if (current == null)
         {
-            string tmp = "";
-            string[] tmpbits;
-
-            allPhysicsObjects = new List<PhysicsBody>();
-            colliding = new HashSet<CollidingObject>();
-
-            lastUpdate = Bootstrap.getCurrentMillis();
-
-            collisionsToCheck = new List<CollidingObject>();
-
-            gravityDir = new Vector2(0, 1);
-            // 50 FPS            
-
-            TimeInterval = 20;
-            
-            if (Bootstrap.checkEnvironmentalVariable("gravity_modifier"))
-            {
-                gravityModifier = float.Parse
-                    (Bootstrap.getEnvironmentalVariable("gravity_modifier"), CultureInfo.InvariantCulture);
-            }
-            else
-            {
-                gravityModifier = 0.1f;
-            }
-
-            if (Bootstrap.checkEnvironmentalVariable("gravity_dir")) {
-                tmp = Bootstrap.getEnvironmentalVariable("gravity_dir");
-
-                tmpbits = tmp.Split(",");
-
-                gravityDir = new Vector2(int.Parse(tmpbits[0]), int.Parse(tmpbits[1]));
-            }
-            else {
-                gravityDir = new Vector2 (0, 1);
-            }
-
-            
+            return entry;
+        }
+        
+        // Is this our new head?
+        if (entry.StartPos < current.StartPos)
+        {
+            current.previous = entry;
+            entry.Next = current;
+            return entry;
+        }
+        
+        // Look for where we get inserted.
+        while (current.Next != null && entry.StartPos > current.Next.StartPos)
+        {
+            current = current.Next;
+        }
+        
+        if (current.Next != null)
+        {
+            // Insert ourselves into a chain.
+            entry.previous = current;
+            entry.Next = current.Next;
+            current.Next = entry;
+        }
+        else
+        {
+            // We're at the end.
+            current.Next = entry;
+            entry.previous = current;
+        }
+        return node;
     }
+
+    public static void outputList(SAPEntry node)
+    {
+        SAPEntry pointer = node;
+        int counter = 0;
+        string text = "";
+
+        if (pointer == null)
+        {
+            Debug.getInstance().log("No List");
+            return;
+        }
+        while (pointer != null)
+        {
+            text += "[" + counter + "]: " + pointer.Owner.Parent + ", ";
+            pointer = pointer.Next;
+            counter += 1;
+        }
+        Debug.getInstance().log("List:" + text);
+    }
+}
+
+internal class PhysicsManager
+{
+    private static PhysicsManager me;
+    private readonly HashSet<CollidingObject> colliding;
+    private readonly Vector2 gravityDir;
+    private readonly List<PhysicsBody> allPhysicsObjects;
+    private readonly long timeInterval;
+    private long lastUpdate;
+    
+    public float GravityModifier { get; set; }
 
     public static PhysicsManager getInstance()
-        {
-            if (me == null)
-            {
-                me = new PhysicsManager();
-            }
+    {
+        return me ??= new PhysicsManager();
+    }
+    
+    private PhysicsManager()
+    {
+        allPhysicsObjects = new List<PhysicsBody>();
+        colliding = new HashSet<CollidingObject>();
+        lastUpdate = Bootstrap.getCurrentMillis();
 
-            return me;
+        gravityDir = new Vector2(0, 1);
+        
+        // 50 FPS            
+        timeInterval = 20;
+        
+        if (Bootstrap.checkEnvironmentalVariable("gravity_modifier"))
+        {
+            GravityModifier =
+                float.Parse(Bootstrap.getEnvironmentalVariable("gravity_modifier"), CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            GravityModifier = 0.1f;
         }
 
-
-        public long LastUpdate { get => lastUpdate; set => lastUpdate = value; }
-        public long TimeInterval { get => timeInterval; set => timeInterval = value; }
-        public long LastDebugDraw { get => lastDebugDraw; set => lastDebugDraw = value; }
-        public float GravityModifier { get => gravityModifier; set => gravityModifier = value; }
-
-        public void addPhysicsObject(PhysicsBody body)
-        {
-            if (allPhysicsObjects.Contains(body))
-            {
-                return;
-            }
-
-            allPhysicsObjects.Add(body);
-
+        if (Bootstrap.checkEnvironmentalVariable("gravity_dir")) {
+            string tmp = Bootstrap.getEnvironmentalVariable("gravity_dir");
+            string[] tmpBits = tmp.Split(",");
+            gravityDir = new Vector2(int.Parse(tmpBits[0]), int.Parse(tmpBits[1]));
         }
-
-        public void removePhysicsObject(PhysicsBody body)
-        {
-                allPhysicsObjects.Remove(body);           
+        else {
+            gravityDir = new Vector2 (0, 1);
         }
+    }
+    
+    public bool update()
+    {
+        if (willTick() == false) return false;
+        // Debug.Log("Tick: " + Bootstrap.TimeElapsed);
 
-        public void clearList(SAPEntry node)
+        lastUpdate = Bootstrap.getCurrentMillis();
+
+        foreach (PhysicsBody body in allPhysicsObjects)
         {
-            //Let's clear everything so the garbage collector can do its
-            // work
-
-            if (node == null)
-            {
-                return;
+            if (body.UsesGravity) {
+                body.applyGravity(GravityModifier, gravityDir);
             }
-
-            while (node != null && node.Next != null)
-            {
-                node = node.Next;
-                node.Previous.Next = null;
-                node.Previous = null;
-            }
-
-            node.Previous = null;
-
+            body.physicsTick();
+            body.recalculateColliders();
         }
-
-        public SAPEntry addToList(SAPEntry node, SAPEntry entry)
+        
+        if (!Bootstrap.getRunningGame().Is3d)
         {
-            SAPEntry current;
-
-            current = node;
-
-
-            // Start our list.
-            if (current == null)
-            {
-                return entry;
-            }
-
-            // Is this our new head?
-            if (entry.Start < current.Start)
-            {
-                current.Previous = entry;
-                entry.Next = current;
-                return entry;
-            }
-
-            // Look for where we get inserted.
-            while (current.Next != null && entry.Start > current.Next.Start)
-            {
-                current = current.Next;
-            }
-
-
-            if (current.Next != null)
-            {
-                // Insert ourselves into a chain.
-                entry.Previous = current;
-                entry.Next = current.Next;
-                current.Next = entry;
-            }
-            else
-            {
-                // We're at the end.
-                current.Next = entry;
-                entry.Previous = current;
-            }
-
-
-            return node;
-
-        }
-
-        public void outputList(SAPEntry node)
-        {
-            SAPEntry pointer = node;
-            int counter = 0;
-            string text = "";
-
-
-            if (pointer == null)
-            {
-                Debug.getInstance().log("No List");
-                return;
-            }
-
-            while (pointer != null)
-            {
-                text += "[" + counter + "]: " + pointer.Owner.Parent + ", ";
-                pointer = pointer.Next;
-                counter += 1;
-            }
-
-            Debug.getInstance().log("List:" + text);
-
-        }
-
-        public bool willTick()
-        {
-            if (Bootstrap.getCurrentMillis() - lastUpdate > TimeInterval)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool update()
-        {
-            CollisionHandler ch, ch2;
-            List<CollidingObject> toRemove;
-
-            if (willTick() == false)
-            {
-                return false;
-            }
-
-            //            Debug.Log("Tick: " + Bootstrap.TimeElapsed);
-
-            lastUpdate = Bootstrap.getCurrentMillis();
-
-
-            toRemove = new List<CollidingObject>();
-
-            foreach (PhysicsBody body in allPhysicsObjects)
-            {
-
-                if (body.UsesGravity) {
-                    body.applyGravity(gravityModifier, gravityDir);
-                }
-
-                body.physicsTick();
-                body.recalculateColliders();
-
-
-            }
-
-
+            // Only for 2d
+            
+            List<CollidingObject> toRemove = new List<CollidingObject>();
             // Check for old collisions that should be persisted
             foreach (CollidingObject col in colliding)
             {
-                ch = col.A.Colh;
-                ch2 = col.B.Colh;
-                Vector2? impulse;
+                CollisionHandler ch = col.A.Colh;
+                CollisionHandler ch2 = col.B.Colh;
 
-                // If the object has been destroyed in the interim, it should still 
-                // trigger a collision exit.
+                // If the object has been destroyed in the interim, it should still trigger a collision exit.
                 if (col.A.Parent.ToBeDestroyed) {
                     ch2.onCollisionExit (null);
                     toRemove.Add(col);
@@ -326,7 +227,7 @@ namespace Shard
                     toRemove.Add(col);
                 }
 
-                impulse = checkCollisionBetweenObjects(col.A, col.B);
+                Vector2? impulse = checkCollisionBetweenObjects2d(col.A, col.B);
 
                 if (impulse != null)
                 {
@@ -339,340 +240,265 @@ namespace Shard
                     ch2.onCollisionExit(col.A);
                     toRemove.Add(col);
                 }
-
             }
-
+            
             foreach (CollidingObject col in toRemove)
             {
                 colliding.Remove(col);
             }
-
             toRemove.Clear();
-            // Check for new collisions
-            checkForCollisions();
-
-
-
-                //            Debug.Log("Time Interval is " + (Bootstrap.getCurrentMillis() - lastUpdate) + ", " + colliding.Count);
-
-
-                return true;
         }
-
-        public void drawDebugColliders()
+        
+        // Check for new collisions
+        checkForCollisions();
+        
+        // Debug.Log("Time Interval is " + (Bootstrap.getCurrentMillis() - lastUpdate) + ", " + colliding.Count);
+        return true;
+    }
+    
+    private void checkForCollisions()
+    {
+        if (!Bootstrap.getRunningGame().Is3d)
         {
-            foreach (PhysicsBody body in allPhysicsObjects)
+            // 2d
+            
+            HashSet<CollidingObject> potentialCollisions = getObjectsOverlappingForAxis(allPhysicsObjects, "x");
+            narrowPass2d(potentialCollisions);
+        }
+        else
+        {
+            // 3d
+            
+            // Get collisions in the x-axis
+            HashSet<CollidingObject> potentialCollisionsInXAxis = getObjectsOverlappingForAxis(allPhysicsObjects, "x");
+
+            // For the y-axis, only look at the objects that overlap in the x-axis
+            HashSet<PhysicsBody> xAxisOverlappingBodies = new HashSet<PhysicsBody>();
+            foreach (CollidingObject collidingObject in potentialCollisionsInXAxis)
             {
-                // Debug drawing - always happens.
-                body.drawMe();
+                xAxisOverlappingBodies.Add(collidingObject.A);
+                xAxisOverlappingBodies.Add(collidingObject.B);
             }
-        }
+            HashSet<CollidingObject> potentialCollisionsInYAxis = getObjectsOverlappingForAxis(xAxisOverlappingBodies.ToList(), "y");
 
-        private Vector2? checkCollisionBetweenObjects(PhysicsBody a, PhysicsBody b)
-        {
-            Vector2? impulse;
-
-            foreach (Collider col in a.getColliders())
+            // Get the potential collisions, the bodies overlapping in both x and y-axis
+            HashSet<CollidingObject> potentialCollisions = new HashSet<CollidingObject>();
+            foreach (CollidingObject collidingObjectX in potentialCollisionsInXAxis)
             {
-                foreach (Collider col2 in b.getColliders())
+                foreach (CollidingObject collidingObjectY in potentialCollisionsInYAxis)
                 {
-                    impulse = col.checkCollision(col2);
-
-
-                    if (impulse != null)
+                    if (collidingObjectX.Equals(collidingObjectY))
                     {
-                        return impulse;
+                        potentialCollisions.Add(collidingObjectX);
                     }
                 }
             }
-
-            return null;
-
+            narrowPass3d(potentialCollisions);
         }
-
-        // omg this won't scale omg
-        private void broadPassBruteForce()
+    }
+    
+    private HashSet<CollidingObject> getObjectsOverlappingForAxis(List<PhysicsBody> physicsBodies, string axis)
+    {
+        SAPEntry sap = null;
+        foreach (PhysicsBody body in physicsBodies)
         {
-            CollidingObject tmp;
-
-            if (allPhysicsObjects.Count < 2)
+            SAPEntry newEntery = new SAPEntry();
+            float[] pos;
+            switch (axis)
             {
-                // Nothing to collide.
-                return;
+                case "x":
+                    pos = body.MinAndMaxX;
+                    break;
+                case "y":
+                    pos = body.MinAndMaxY;
+                    break;
+                case "z":
+                    pos = body.MinAndMaxZ;
+                    break;
+                default:
+                    throw new Exception("Axis not supported for search and sweep!");
             }
-
-            for (int i = 0; i < allPhysicsObjects.Count; i++)
+            newEntery.Owner = body;
+            newEntery.StartPos = pos[0];
+            newEntery.EndPos = pos[1];
+            sap = SAPEntry.addToList(sap, newEntery);
+        }
+        
+        HashSet<CollidingObject> collisionsInAxis = new HashSet<CollidingObject>();
+        List<SAPEntry> activeObjects = new List<SAPEntry>();
+        List<int> toRemove = new List<int>();
+        SAPEntry start = sap;
+        
+        // Search and prune
+        while (start != null)
+        {
+            activeObjects.Add(start);
+            for (int i = 0; i < activeObjects.Count; i++)
             {
-                for (int j = 0; j < allPhysicsObjects.Count; j++)
+                if (start == activeObjects[i])
                 {
-
-                    if (i == j)
-                    {
-                        continue;
-                    }
-
-                    if (findColliding(allPhysicsObjects[i], allPhysicsObjects[j]))
-                    {
-                        continue;
-                    }
-
-                    if (findColliding(allPhysicsObjects[j], allPhysicsObjects[i]))
-                    {
-                        continue;
-                    }
-
-                    tmp = new CollidingObject();
-
-                    tmp.A = allPhysicsObjects[i];
-                    tmp.B = allPhysicsObjects[j];
-
-                    collisionsToCheck.Add(tmp);
-
+                    continue;
                 }
-            }
-
-//            Debug.Log("Checking " + collisionsToCheck.Count + " collisions");
-
-        }
-
-        public bool findColliding(PhysicsBody a, PhysicsBody b) {
-            CollidingObject col = new CollidingObject (a, b);
-              
-            return colliding.Contains(col);
-        }
-
-        private void narrowPass()
-        {
-            Vector2 impulse;
-            Vector2? possibleImpulse;
-            float massTotal, massa, massb;
-            float massProp = 0.0f;
-
-            //            Debug.getInstance().log("Active objects " + collisionsToCheck.Count);
-
-            foreach (CollidingObject ob in collisionsToCheck)
-            {
-
-                possibleImpulse = checkCollisionBetweenObjects(ob.A, ob.B);
-
-                if (possibleImpulse.HasValue)
+                if (start.StartPos >= activeObjects[i].EndPos)
                 {
-                    impulse = possibleImpulse.Value;
-                    Debug.Log("Col is " + ob + ", impulse " + possibleImpulse);
-
-                    if (ob.A.PassThrough != true && ob.B.PassThrough != true)
-                    {
-
-
-                        massTotal = ob.A.Mass + ob.B.Mass;
-
-                        if (ob.A.Kinematic)
-                        {
-                            massProp = 1;
-                        }
-                        else
-                        {
-                            massProp = ob.A.Mass / massTotal;
-
-                        }
-
-
-                        if (ob.A.ImpartForce)
-                        {
-                            ob.A.impartForces(ob.B, massProp);
-                            ob.A.reduceForces(1.0f - massProp);
-                        }
-
-                        massb = massProp;
-
-                        if (ob.B.Kinematic == false)
-                        {
-                            ob.B.Parent.Transform.translate(-1 * (impulse.X * massProp), -1 * (impulse.Y * massProp));
-                        }
-
-
-                        if (ob.B.Kinematic)
-                        {
-                            massProp = 1;
-                        }
-                        else
-                        {
-                            massProp = 1.0f - massProp;
-                        }
-
-                        massa = massProp;
-
-
-                        if (ob.A.Kinematic == false)
-                        {
-
-                            ob.A.Parent.Transform.translate((impulse.X * massProp), (impulse.Y * massProp));
-                        }
-
-
-                        if (ob.A.StopOnCollision)
-                        {
-                            ob.A.stopForces();
-                        }
-
-                        if (ob.B.StopOnCollision)
-                        {
-                            ob.B.stopForces();
-                        }
-
-
-                    }
-
-
-                    ((CollisionHandler)ob.A.Parent).onCollisionEnter(ob.B);
-                    ((CollisionHandler)ob.B.Parent).onCollisionEnter(ob.A);
-                    colliding.Add(ob);
-
-
-
-                    if (ob.A.ReflectOnCollision)
-                    {                        
-                        ob.A.reflectForces(impulse);
-                    }
-                    if (ob.B.ReflectOnCollision)
-                    {
-                        ob.B.reflectForces(impulse);
-                    }
-
-
+                    toRemove.Add(i);
                 }
-
-
-            }
-        }
-
-        public void reportCollisionsInAxis(SAPEntry start)
-        {
-            List<SAPEntry> activeObjects;
-            List<int> toRemove;
-            CollidingObject col;
-            activeObjects = new List<SAPEntry>();
-            toRemove = new List<int>();
-            col = new CollidingObject();
-
-
-
-            while (start != null)
-            {
-
-                activeObjects.Add(start);
-
-
-                for (int i = 0; i < activeObjects.Count; i++)
+                else
                 {
+                    CollidingObject col = new CollidingObject();
 
-                    if (start == activeObjects[i])
+                    if (start.Owner.Mass > activeObjects[i].Owner.Mass)
                     {
-                        continue;
-                    }
-
-                    if (start.Start >= activeObjects[i].End)
-                    {
-                        toRemove.Add(i);
+                        col.A = start.Owner;
+                        col.B = activeObjects[i].Owner;
                     }
                     else
                     {
-                        col = new CollidingObject();
-
-                        if (start.Owner.Mass > activeObjects[i].Owner.Mass)
-                        {
-                            col.A = start.Owner;
-                            col.B = activeObjects[i].Owner;
-                        }
-                        else
-                        {
-                            col.B = start.Owner;
-                            col.A = activeObjects[i].Owner;
-                        }
-
-                        if (!findColliding(col.A, col.B))
-                        {
-                            collisionsToCheck.Add(col);
-                        }
-                        // Debug.getInstance().log("Adding potential collision: " + col.ToString());
-
+                        col.B = start.Owner;
+                        col.A = activeObjects[i].Owner;
                     }
 
-
+                    if (!colliding.Contains(col))
+                    {
+                        collisionsInAxis.Add(col);
+                    }
+                    // Debug.getInstance().log("Adding potential collision: " + col.ToString());
                 }
-
-
-                for (int j = toRemove.Count - 1; j >= 0; j--)
-                {
-                    activeObjects.RemoveAt(toRemove[j]);
-                }
-
-                toRemove.Clear();
-
-                start = start.Next;
-
             }
-
-            //            Debug.Log("Checking " + collisionsToCheck.Count + " collisions");
-
-        }
-
-
-        public void broadPassSearchAndSweep()
-        {
-            SAPEntry sx, sy;
-            float[] x, y;
-            sapX = null;
-            sapY = null;
-            List<PhysicsBody> candidates = new List<PhysicsBody>();
-
-
-            foreach (PhysicsBody body in allPhysicsObjects)
+            for (int j = toRemove.Count - 1; j >= 0; j--)
             {
-                sx = new SAPEntry();
-
-                x = body.MinAndMaxX;
-
-                sx.Owner = body;
-                sx.Start = x[0];
-                sx.End = x[1];
-
-
-                sapX = addToList(sapX, sx);
-
+                activeObjects.RemoveAt(toRemove[j]);
             }
-
-            //            outputList (sapX);
-            // What we have at this point is a sorted linked list of all
-            // our objects in order.  So now we go over them all to see 
-            // what are viable collision candidates.  If they don't overlap 
-            // in the axis, they can't collide so don't bother checking them.
-
-            // Now we find all the candidates that overlap in 
-            // the Y axis from those that overlap in the X axis.
-            // A two pass sweep and prune.
-
-            reportCollisionsInAxis(sapX);
-            clearList(sapX);
-
+            toRemove.Clear();
+            start = start.Next;
         }
-        public void broadPass()
+        // Debug.Log("Checking " + collisionsToCheck.Count + " collisions");
+        SAPEntry.clearList(sap);
+        return collisionsInAxis;
+    }
+    
+    private void narrowPass2d(HashSet<CollidingObject> collisionsToCheck)
+    {
+        // Debug.getInstance().log("Active objects " + collisionsToCheck.Count);
+
+        foreach (CollidingObject ob in collisionsToCheck)
         {
-            broadPassSearchAndSweep();
-//          broadPassBruteForce();
+            Vector2? possibleImpulse = checkCollisionBetweenObjects2d(ob.A, ob.B);
+
+            // Only proceed if colliding objects has impulse!
+            if (!possibleImpulse.HasValue) continue;
+            
+            Vector2 impulse = possibleImpulse.Value;
+            Debug.Log("Col is " + ob + ", impulse " + possibleImpulse);
+
+            if (ob.A.PassThrough != true && ob.B.PassThrough != true)
+            {
+                float massTotal = ob.A.Mass + ob.B.Mass;
+                float massProp;
+                if (ob.A.Kinematic)
+                {
+                    massProp = 1;
+                }
+                else
+                {
+                    massProp = ob.A.Mass / massTotal;
+                }
+                if (ob.A.ImpartForce)
+                {
+                    ob.A.impartForces(ob.B, massProp);
+                    ob.A.reduceForces(1.0f - massProp);
+                }
+                if (ob.B.Kinematic == false)
+                {
+                    ob.B.Parent.Transform.translate(-1 * (impulse.X * massProp), -1 * (impulse.Y * massProp));
+                }
+                if (ob.B.Kinematic)
+                {
+                    massProp = 1;
+                }
+                else
+                {
+                    massProp = 1.0f - massProp;
+                }
+                if (ob.A.Kinematic == false)
+                {
+                    ob.A.Parent.Transform.translate((impulse.X * massProp), (impulse.Y * massProp));
+                }
+                if (ob.A.StopOnCollision)
+                {
+                    ob.A.stopForces();
+                }
+
+                if (ob.B.StopOnCollision)
+                {
+                    ob.B.stopForces();
+                }
+            }
+            
+            ((CollisionHandler)ob.A.Parent).onCollisionEnter(ob.B);
+            ((CollisionHandler)ob.B.Parent).onCollisionEnter(ob.A);
+            colliding.Add(ob);
+            
+            if (ob.A.ReflectOnCollision)
+            {                        
+                ob.A.reflectForces(impulse);
+            }
+            if (ob.B.ReflectOnCollision)
+            {
+                ob.B.reflectForces(impulse);
+            }
         }
-
-
-
-        private void checkForCollisions()
+    }
+    
+    private void narrowPass3d(HashSet<CollidingObject> collisionsToCheck)
+    {
+        foreach (CollidingObject ob in collisionsToCheck)
         {
-            broadPass();
-            narrowPass();
+            Vector2? possibleImpulse = checkCollisionBetweenObjects2d(ob.A, ob.B);
 
-            collisionsToCheck.Clear();
-
-
+            // Only proceed if colliding objects has impulse!
+            if (!possibleImpulse.HasValue) continue;
+            
+            ((CollisionHandler)ob.A.Parent).onCollisionStay(ob.B);
+            ((CollisionHandler)ob.B.Parent).onCollisionStay(ob.A);
         }
+    }
 
+    public void addPhysicsObject(PhysicsBody body)
+    {
+        if (allPhysicsObjects.Contains(body)) return;
+        allPhysicsObjects.Add(body);
+    }
+
+    public void removePhysicsObject(PhysicsBody body)
+    {
+        allPhysicsObjects.Remove(body);           
+    }
+
+    public bool willTick()
+    {
+        return Bootstrap.getCurrentMillis() - lastUpdate > timeInterval;
+    }
+
+    public void drawDebugColliders()
+    {
+        foreach (PhysicsBody body in allPhysicsObjects)
+        {
+            // Debug drawing - always happens.
+            body.drawMe();
+        }
+    }
+
+    private static Vector2? checkCollisionBetweenObjects2d(PhysicsBody a, PhysicsBody b)
+    {
+        foreach (Collider col in a.getColliders())
+        {
+            foreach (Collider col2 in b.getColliders())
+            {
+                Vector2? impulse = col.checkCollision(col2);
+                if (impulse != null) return impulse;
+            }
+        }
+        return null;
     }
 }

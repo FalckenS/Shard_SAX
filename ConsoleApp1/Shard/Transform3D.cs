@@ -1,39 +1,16 @@
 ﻿/*
 *
-*   Our game engine functions in 2D, but all its features except for graphics can mostly be extended
-*       from existing data structures.
-*       
 *   @author Michael Heron
-*   @version 1.0
+*   @author Samuel Falck
+*   @version 2.0
 *   
 */
 
-namespace Shard
+namespace Shard;
+
+internal class Transform3D(GameObject o) : Transform(o)
 {
-    class Transform3D : Transform
-    {
-        private double z;
-        private double rotx, roty;
-        private int scalez;
-
-        public Transform3D(GameObject o) : base(o)
-        {
-        }
-
-        public double Z
-        {
-            get => z;
-            set => z = value;
-        }
-
-
-
-        public int Scalez
-        {
-            get => scalez;
-            set => scalez = value;
-        }
-        public double Rotx { get => rotx; set => rotx = value; }
-        public double Roty { get => roty; set => roty = value; }
-    }
+    public float Z { get; set; } = 0f;
+    public float Depth { get; set; } = 1f;
+    public float ScaleZ { get; set; } = 1f;
 }

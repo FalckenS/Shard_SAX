@@ -143,11 +143,13 @@ public class SAPEntry
 
 internal class PhysicsManager
 {
+    // 50 FPS = 20
+    private const long TimeInterval = 20;
+    
     private static PhysicsManager me;
     private readonly HashSet<CollidingObject> colliding;
     private readonly Vector2 gravityDir;
     private readonly List<PhysicsBody> allPhysicsObjects;
-    private readonly long timeInterval;
     private long lastUpdate;
     
     public float GravityModifier { get; set; }
@@ -164,9 +166,6 @@ internal class PhysicsManager
         lastUpdate = Bootstrap.getCurrentMillis();
 
         gravityDir = new Vector2(0, 1);
-        
-        // 50 FPS            
-        timeInterval = 20;
         
         if (Bootstrap.checkEnvironmentalVariable("gravity_modifier"))
         {
@@ -472,12 +471,12 @@ internal class PhysicsManager
 
     public void removePhysicsObject(PhysicsBody body)
     {
-        allPhysicsObjects.Remove(body);           
+        allPhysicsObjects.Remove(body);
     }
 
     public bool willTick()
     {
-        return Bootstrap.getCurrentMillis() - lastUpdate > timeInterval;
+        return Bootstrap.getCurrentMillis() - lastUpdate > TimeInterval;
     }
 
     public void drawDebugColliders()

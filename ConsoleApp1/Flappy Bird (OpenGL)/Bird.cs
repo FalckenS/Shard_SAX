@@ -53,11 +53,6 @@ internal class Bird : GameObject, CollisionHandler, InputListener
 
     public override void update()
     {
-        Bootstrap.getDisplay().addToDraw(this);
-    }
-
-    public override void physicsUpdate()
-    {
         if (MyBody.MinAndMaxY[0] <= -Bootstrap.getDisplay().getHeight() / 2f)
         {
             Console.WriteLine("Bird hit floor!");
@@ -68,6 +63,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
             Console.WriteLine("Bird hit roof!");
             Die();
         }
+        Bootstrap.getDisplay().addToDraw(this);
     }
 
     public void onCollisionEnter(PhysicsBody x)

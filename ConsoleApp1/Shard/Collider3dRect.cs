@@ -7,7 +7,6 @@ namespace Shard;
 internal class Collider3dRect : Collider
 {
     private readonly Transform3D transform;
-    private float xCenterPos, yCenterPos, zCenterPos;
     private float width, height, depth;
     
     public Collider3dRect(Transform3D transform)
@@ -18,25 +17,18 @@ internal class Collider3dRect : Collider
 
     public override void recalculate()
     {
-        if (transform == null)
-        {
-            return;
-        }
+        if (transform == null) return;
         
         width = transform.Wid * transform.Scalex;
         height = transform.Ht * transform.Scaley;
         depth = transform.Depth * transform.ScaleZ;
 
-        xCenterPos = transform.X + (width / 2);
-        yCenterPos = transform.Y + (height / 2);
-        zCenterPos = transform.Z + (depth / 2);
-
-        MinAndMaxX[0] = xCenterPos - width  / 2;
-        MinAndMaxX[1] = xCenterPos + width  / 2;
-        MinAndMaxY[0] = yCenterPos - height / 2;
-        MinAndMaxY[1] = yCenterPos + height / 2;
-        MinAndMaxZ[0] = zCenterPos - depth  / 2;
-        MinAndMaxZ[1] = zCenterPos + depth  / 2;
+        MinAndMaxX[0] = transform.X - width  / 2;
+        MinAndMaxX[1] = transform.X + width  / 2;
+        MinAndMaxY[0] = transform.Y - height / 2;
+        MinAndMaxY[1] = transform.Y + height / 2;
+        MinAndMaxZ[0] = transform.Z - depth  / 2;
+        MinAndMaxZ[1] = transform.Z + depth  / 2;
     }
 
     public override Vector2? checkCollision(Vector2 c)

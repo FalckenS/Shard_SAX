@@ -279,9 +279,9 @@ internal class PhysicsBody
         return collider;
     }
     
-    public void addCuboidCollider()
+    public void addBoxCollider()
     {
-        ColliderCuboid collider = new ColliderCuboid(Parent.Transform);
+        ColliderBox collider = new ColliderBox(Parent.Transform);
         addCollider(collider);
     }
     
@@ -299,5 +299,15 @@ internal class PhysicsBody
             if (d != null) return d;
         }
         return null;
+    }
+    
+    public bool checkCollisions(Vector3 rayOrigin, Vector3 rayDirection)
+    {
+        foreach (Collider collider in myColliders)
+        {
+            bool collison = collider.checkCollision(rayOrigin, rayDirection);
+            if (collison) return true;
+        }
+        return false;
     }
 }

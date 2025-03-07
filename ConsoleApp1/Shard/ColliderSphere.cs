@@ -23,9 +23,9 @@ internal class ColliderSphere : Collider
         MinAndMaxZ[1] = transform.Z + transform.Radius;
     }
     
-    internal override bool checkCollision(ColliderCuboid other)
+    internal override bool checkCollision(ColliderBox other)
     {
-        // Find the point in/on the cuboid that is the closest to the sphere center
+        // Find the point in/on the box that is the closest to the sphere center
         float x = Math.Max(other.MinAndMaxX[0], Math.Min(transform.X, other.MinAndMaxX[1]));
         float y = Math.Max(other.MinAndMaxY[0], Math.Min(transform.Y, other.MinAndMaxY[1]));
         float z = Math.Max(other.MinAndMaxZ[0], Math.Min(transform.Z, other.MinAndMaxZ[1]));

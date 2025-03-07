@@ -30,9 +30,9 @@ internal abstract class Collider
                 return checkCollision(rect);
             case ColliderCircle circle:
                 return checkCollision(circle);
-            case ColliderCuboid cuboid:
+            case ColliderBox box:
                 // Dont care about impulse for 3d collisions
-                if (checkCollision(cuboid)) return new Vector2(0, 0);
+                if (checkCollision(box)) return new Vector2(0, 0);
                 return null;
             case ColliderSphere sphere:
                 // Dont care about impulse for 3d collisions
@@ -49,27 +49,32 @@ internal abstract class Collider
 
     internal virtual Vector2? checkCollision(Vector2 c)
     {
-        throw new Exception("Check collision with Vector2 not supported with 2d collider");
+        throw new Exception("Check collision with Vector2 not supported with 3d collider");
     }
 
     internal virtual Vector2? checkCollision(ColliderRect c)
     {
-        throw new Exception("Check collision with ColliderRect not supported with 2d collider");
+        throw new Exception("Check collision with ColliderRect not supported with 3d collider");
     }
 
     internal virtual Vector2? checkCollision(ColliderCircle c)
     {
-        throw new Exception("Check collision with ColliderCircle not supported with 2d collider");
+        throw new Exception("Check collision with ColliderCircle not supported with 3d collider");
+    }
+    
+    internal virtual bool checkCollision(Vector3 rayOrigin, Vector3 rayDirection)
+    {
+        throw new Exception("Check collision with Vector3 not supported with 2d collider");
     }
 
-    internal virtual bool checkCollision(ColliderCuboid c)
+    internal virtual bool checkCollision(ColliderBox c)
     {
-        throw new Exception("Check collision with ColliderCuboid not supported with 3d collider");
+        throw new Exception("Check collision with ColliderBox not supported with 2d collider");
     }
 
     internal virtual bool checkCollision(ColliderSphere c)
     {
-        throw new Exception("Check collision with ColliderSphere not supported with 3d collider");
+        throw new Exception("Check collision with ColliderSphere not supported with 2d collider");
     }
 
     internal abstract void drawMe(Color col);

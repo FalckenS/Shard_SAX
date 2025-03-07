@@ -33,11 +33,11 @@ internal class ColliderBox : Collider
     
     internal override bool checkCollision(Vector3 rayOrigin, Vector3 rayDirection)
     {
-        // Uses slab method
         // ray(t) = rayOrigin + t×rayDirection
         // t is distance along the array
         // t > 0 means in front rayOrigin
         
+        // Uses slab method
         // A slab is the range of values the box occupies along a particular axis (for x the slab is from MinAndMaxX[0]
         // to MinAndMaxX[1]).
         // tmin and tmax are points along the ray where intersections with the slab occur. This is the interval for

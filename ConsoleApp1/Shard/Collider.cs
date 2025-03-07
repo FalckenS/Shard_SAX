@@ -64,7 +64,7 @@ internal abstract class Collider
     
     internal virtual bool checkCollision(Vector3 rayOrigin, Vector3 rayDirection)
     {
-        throw new Exception("Check collision with Vector3 not supported with 2d collider");
+        throw new Exception("Check collision with rays not supported with 2d collider");
     }
 
     internal virtual bool checkCollision(ColliderBox c)

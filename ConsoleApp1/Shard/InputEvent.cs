@@ -15,6 +15,10 @@ namespace Shard
     {
         private int x;
         private int y;
+        private int lx;
+        private int ly;
+        private int dx;
+        private int dy;
         private int button;
         private int key;
         private string classification;
@@ -29,6 +33,29 @@ namespace Shard
             get => y;
             set => y = value;
         }
+
+        public int Lx
+        {
+            get => lx;
+            set => lx = value;
+        }
+        public int Ly
+        {
+            get => ly;
+            set => ly = value;
+        }
+
+        public int Dx
+        {
+            get => dx;
+            set => dx = value;
+        }
+        public int Dy
+        {
+            get => dy;
+            set => dy = value;
+        }
+
         public int Button
         {
             get => button;

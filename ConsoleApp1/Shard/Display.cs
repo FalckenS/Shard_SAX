@@ -87,5 +87,20 @@ namespace Shard
 
         public abstract void showText(string text, double x, double y, int size, int r, int g, int b);
         public abstract void showText(char[,] text, double x, double y, int size, int r, int g, int b);
+
+        public virtual void addToDrawCube(CubeObject cube)
+        {
+
+        }
+
+        public virtual void addToDrawLight(LightObject light)
+        {
+
+        }
+
+        public virtual void LinkCamera(Camera camera)
+        {
+
+        }
     }
 }

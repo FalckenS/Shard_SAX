@@ -276,13 +276,15 @@ namespace Shard
                 // Clear the screen.
                 Bootstrap.getDisplay().clearDisplay();
 
-                // Update 
-                runningGame.update();
+                
 
                 // Input
                 // Get input, which works at 50 FPS to make sure it doesn't interfere with the 
                 // variable frame rates.
                 input.getInput();
+
+                // Update 
+                runningGame.update();
 
                 if (runningGame.isRunning() == true)
                 {

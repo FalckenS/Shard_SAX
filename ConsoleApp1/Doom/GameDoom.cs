@@ -9,7 +9,6 @@ class GameDoom : Game
 {
     private int _frame;
     private TextToRender hello;
-    private List<RectangleGameObject> _rectangleGameObjects;
     private CubeObject wall_1, wall_2, wall_3, wall_4, floor;
     private Player player;
     private LightObject light;
@@ -60,7 +59,7 @@ class GameDoom : Game
     public override void update()
     {
         _frame++;
-        Bootstrap.getDisplay().showText("Hello", 60.0f, 50.0f, 1, 255, 255, 255);
+        Bootstrap.getDisplay().showText("Hello", -380, 350, 1, 255, 255, 255);
         Bootstrap.getDisplay().addToDrawCube(wall_1);
         Bootstrap.getDisplay().addToDrawCube(wall_2);
         Bootstrap.getDisplay().addToDrawCube(wall_3);

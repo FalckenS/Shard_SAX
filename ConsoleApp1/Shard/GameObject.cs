@@ -171,9 +171,9 @@ namespace Shard
             Transform.Rotx = rx;
             Transform.Roty = ry;
             Transform.Rotz = rz;
-            Transform.Scalex = sx;
-            Transform.Scaley = sy;
-            Transform.Scalez = sz;
+            Transform.ScaleX = sx;
+            Transform.ScaleY = sy;
+            Transform.ScaleZ = sz;
             w = _w;
             h = _h;
             d = _d;
@@ -191,7 +191,7 @@ namespace Shard
             Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
             Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
-            Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
+            Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
             return scale * rotZ * rotY * rotX * trans;
             // return rotZ * rotY * rotX * trans;
 
@@ -224,9 +224,9 @@ namespace Shard
             Transform.Rotx = rx;
             Transform.Roty = ry;
             Transform.Rotz = rz;
-            Transform.Scalex = sx;
-            Transform.Scaley = sy;
-            Transform.Scalez = sz;
+            Transform.ScaleX = sx;
+            Transform.ScaleY = sy;
+            Transform.ScaleZ = sz;
             color = _color;
             position = new Vector3(tx, ty, tz);
             type = _type;
@@ -238,7 +238,7 @@ namespace Shard
             Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
             Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
-            Matrix4 scale = Matrix4.CreateScale(Transform.Scalex, Transform.Scaley, Transform.Scalez);
+            Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
             return scale * rotZ * rotY * rotX * trans;
         }
 

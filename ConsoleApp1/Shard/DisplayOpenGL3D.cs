@@ -211,14 +211,20 @@ class DisplayOpenGL3D : Display
 
         _shaderText.Use();
 
-        Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
+        //Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(0.0f, getWidth(), getHeight(), 0.0f, -1.0f, 1.0f);
+        Matrix4 projectionM = Matrix4.CreateOrthographicOffCenter(
+            -getWidth() / 2f,
+            getWidth() / 2f,
+            -getHeight() / 2f,
+            getHeight() / 2f,
+            -1.0f, 1.0f
+        );
         GL.UniformMatrix4(1, false, ref projectionM);
 
         foreach (TextToRender text in _textsToRender)
         {
             _font.RenderText(text.Text, text.XPos, text.YPos, text.Size,
-                new Vector3(text.R / 255.0f, text.G / 255.0f, text.B / 255.0f),
-                new Vector2(1f, 0f)
+                new Vector3(text.R / 255.0f, text.G / 255.0f, text.B / 255.0f)
             );
         }
 
@@ -250,7 +256,7 @@ class DisplayOpenGL3D : Display
         _linesToRender.Add(new LineToRender(x, y, x2, y2, col));
     }
 
-    public override void drawRectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
+    public void drawRectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
     {
         _rectanglesToRender.Add(new RectangleToRender(x1, y1, x2, y2, x3, y3, x4, y4, color));
     }
@@ -585,26 +591,26 @@ class DisplayOpenGL3D : Display
     }
 }
 
-//internal class TextToRender(string text, float xPos, float yPos, int size, int r, int g, int b)
-//{
-//    public string Text { get; } = text;
-//    public float XPos { get; } = xPos;
-//    public float YPos { get; } = yPos;
-//    public int Size { get; } = size;
-//    public int R { get; } = r;
-//    public int G { get; } = g;
-//    public int B { get; } = b;
-//}
+internal class TextToRender(string text, float xPos, float yPos, int size, int r, int g, int b)
+{
+    public string Text { get; } = text;
+    public float XPos { get; } = xPos;
+    public float YPos { get; } = yPos;
+    public int Size { get; } = size;
+    public int R { get; } = r;
+    public int G { get; } = g;
+    public int B { get; } = b;
+}
 
-//public class RectangleToRender(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
-//{
-//    public float X1 { get; } = x1;
-//    public float Y1 { get; } = y1;
-//    public float X2 { get; } = x2;
-//    public float Y2 { get; } = y2;
-//    public float X3 { get; } = x3;
-//    public float Y3 { get; } = y3;
-//    public float X4 { get; } = x4;
-//    public float Y4 { get; } = y4;
-//    public Color Color { get; } = color;
-//}
+public class RectangleToRender(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color color)
+{
+    public float X1 { get; } = x1;
+    public float Y1 { get; } = y1;
+    public float X2 { get; } = x2;
+    public float Y2 { get; } = y2;
+    public float X3 { get; } = x3;
+    public float Y3 { get; } = y3;
+    public float X4 { get; } = x4;
+    public float Y4 { get; } = y4;
+    public Color Color { get; } = color;
+}

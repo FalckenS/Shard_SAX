@@ -258,11 +258,21 @@ class DisplayOpenGL3D : Display
     public override void addToDrawCube(CubeObject cube)
     {
         _cubesToRender.Add(cube);
-        if (!_textureBuffer.ContainsKey(cube.RParams.pathDiff))
+        if (cube.RParams.pathDiff != null)
         {
-            _textureBuffer[cube.RParams.pathDiff] = Texture.LoadFromFile(cube.RParams.pathDiff);
+            if (!_textureBuffer.ContainsKey(cube.RParams.pathDiff))
+            {
+                _textureBuffer[cube.RParams.pathDiff] = Texture.LoadFromFile(cube.RParams.pathDiff);
+            }
         }
-        // TODO: add pathNormal
+        if (cube.RParams.pathNormal != null)
+        {
+            if (!_textureBuffer.ContainsKey(cube.RParams.pathNormal))
+            {
+                _textureBuffer[cube.RParams.pathNormal] = Texture.LoadFromFile(cube.RParams.pathNormal);
+            }
+        }
+        
     }
 
     public override void addToDrawLight(LightObject light)
@@ -387,48 +397,48 @@ class DisplayOpenGL3D : Display
         d = cube.D;
 
         float[] _vertices = {
-            // Position,      //TexCoord  //Normal
-            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, -1,
-             w/2, -h/2, -d/2,  w,    0.0f, 0, 0, -1,
-             w/2,  h/2, -d/2,  w,    h,    0, 0, -1,
-             w/2,  h/2, -d/2,  w,    h,    0, 0, -1,
-            -w/2,  h/2, -d/2,  0.0f, h,    0, 0, -1,
-            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, -1,
+            // Position,      //TexCoord  //Tangent  //Bitangent
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0, 0, 1, 0,
+             w/2, -h/2, -d/2,  w,    0.0f, -1, 0, 0, 0, 1, 0,
+             w/2,  h/2, -d/2,  w,    h,    -1, 0, 0, 0, 1, 0,
+             w/2,  h/2, -d/2,  w,    h,    -1, 0, 0, 0, 1, 0,
+            -w/2,  h/2, -d/2,  0.0f, h,    -1, 0, 0, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0, 0, 1, 0,
 
-            -w/2, -h/2,  d/2,  0.0f, 0.0f, 0, 0, 1,
-             w/2, -h/2,  d/2,  w,    0.0f, 0, 0, 1,
-             w/2,  h/2,  d/2,  w,    h,    0, 0, 1,
-             w/2,  h/2,  d/2,  w,    h,    0, 0, 1,
-            -w/2,  h/2,  d/2,  0.0f, h,    0, 0, 1,
-            -w/2, -h/2,  d/2,  0.0f, 0.0f, 0, 0, 1,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f, 1, 0, 0, 0, 1, 0,
+             w/2, -h/2,  d/2,  w,    0.0f, 1, 0, 0, 0, 1, 0,
+             w/2,  h/2,  d/2,  w,    h,    1, 0, 0, 0, 1, 0,
+             w/2,  h/2,  d/2,  w,    h,    1, 0, 0, 0, 1, 0,
+            -w/2,  h/2,  d/2,  0.0f, h,    1, 0, 0, 0, 1, 0,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f, 1, 0, 0, 0, 1, 0,
 
-            -w/2,  h/2,  d/2,  d,    h,    -1, 0, 0,
-            -w/2,  h/2, -d/2,  0.0f, h,    -1, 0, 0,
-            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0,
-            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0,
-            -w/2, -h/2,  d/2,  d,    0.0f, -1, 0, 0,
-            -w/2,  h/2,  d/2,  d,    h,    -1, 0, 0,
+            -w/2,  h/2,  d/2,  d,    h,    0, 0, 1, 0, 1, 0,
+            -w/2,  h/2, -d/2,  0.0f, h,    0, 0, 1, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, 1, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, 1, 0, 1, 0,
+            -w/2, -h/2,  d/2,  d,    0.0f, 0, 0, 1, 0, 1, 0,
+            -w/2,  h/2,  d/2,  d,    h,    0, 0, 1, 0, 1, 0,
 
-             w/2,  h/2,  d/2,  0.0f, h,    1, 0, 0,
-             w/2,  h/2, -d/2,  d,    h,    1, 0, 0,
-             w/2, -h/2, -d/2,  d,    0.0f, 1, 0, 0,
-             w/2, -h/2, -d/2,  d,    0.0f, 1, 0, 0,
-             w/2, -h/2,  d/2,  0.0f, 0.0f, 1, 0, 0,
-             w/2,  h/2,  d/2,  0.0f, h,    1, 0, 0,
+             w/2,  h/2,  d/2,  0.0f, h,    0, 0, -1, 0, 1, 0,
+             w/2,  h/2, -d/2,  d,    h,    0, 0, -1, 0, 1, 0,
+             w/2, -h/2, -d/2,  d,    0.0f, 0, 0, -1, 0, 1, 0,
+             w/2, -h/2, -d/2,  d,    0.0f, 0, 0, -1, 0, 1, 0,
+             w/2, -h/2,  d/2,  0.0f, 0.0f, 0, 0, -1, 0, 1, 0,
+             w/2,  h/2,  d/2,  0.0f, h,    0, 0, -1, 0, 1, 0,
 
-            -w/2, -h/2, -d/2,  0.0f, d,    0, -1, 0,
-             w/2, -h/2, -d/2,  w,    d,    0, -1, 0,
-             w/2, -h/2,  d/2,  w,    0.0f, 0, -1, 0,
-             w/2, -h/2,  d/2,  w,    0.0f, 0, -1, 0,
-            -w/2, -h/2,  d/2,  0.0f, 0.0f, 0, -1, 0,
-            -w/2, -h/2, -d/2,  0.0f, d,    0, -1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 1, 0, 0, 0, 0, 1,
+             w/2, -h/2, -d/2,  w,    0.0f, 1, 0, 0, 0, 0, 1,
+             w/2, -h/2,  d/2,  w,    d,    1, 0, 0, 0, 0, 1,
+             w/2, -h/2,  d/2,  w,    d,    1, 0, 0, 0, 0, 1,
+            -w/2, -h/2,  d/2,  0.0f, d,    1, 0, 0, 0, 0, 1,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 1, 0, 0, 0, 0, 1,
 
-            -w/2,  h/2, -d/2,  0.0f, d,    0, 1, 0, 
-             w/2,  h/2, -d/2,  w,    d,    0, 1, 0,
-             w/2,  h/2,  d/2,  w,    0.0f, 0, 1, 0,
-             w/2,  h/2,  d/2,  w,    0.0f, 0, 1, 0,
-            -w/2,  h/2,  d/2,  0.0f, 0.0f, 0, 1, 0,
-            -w/2,  h/2, -d/2,  0.0f, d,    0, 1, 0
+            -w/2,  h/2, -d/2,  0.0f, d,    1, 0, 0, 0, 0, -1, 
+             w/2,  h/2, -d/2,  w,    d,    1, 0, 0, 0, 0, -1,
+             w/2,  h/2,  d/2,  w,    0.0f, 1, 0, 0, 0, 0, -1,
+             w/2,  h/2,  d/2,  w,    0.0f, 1, 0, 0, 0, 0, -1,
+            -w/2,  h/2,  d/2,  0.0f, 0.0f, 1, 0, 0, 0, 0, -1,
+            -w/2,  h/2, -d/2,  0.0f, d,    1, 0, 0, 0, 0, -1
         };
 
 
@@ -441,15 +451,20 @@ class DisplayOpenGL3D : Display
 
         var vertexLocation = _shaderLighting.GetAttribLocation("aPosition");
         GL.EnableVertexAttribArray(vertexLocation);
-        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
+        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 11 * sizeof(float), 0);
 
         var texCoordLocation = _shaderLighting.GetAttribLocation("aTexCoord");
         GL.EnableVertexAttribArray(texCoordLocation);
-        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
+        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 11 * sizeof(float), 3 * sizeof(float));
 
-        var normalLocation = _shaderLighting.GetAttribLocation("aNormal");
-        GL.EnableVertexAttribArray(normalLocation);
-        GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
+        var tangentLocation = _shaderLighting.GetAttribLocation("aTangent");
+        GL.EnableVertexAttribArray(tangentLocation);
+        GL.VertexAttribPointer(tangentLocation, 3, VertexAttribPointerType.Float, false, 11 * sizeof(float), 5 * sizeof(float));
+
+        var bitangentLocation = _shaderLighting.GetAttribLocation("aBitangent");
+        GL.EnableVertexAttribArray(bitangentLocation);
+        GL.VertexAttribPointer(bitangentLocation, 3, VertexAttribPointerType.Float, false, 11 * sizeof(float), 8 * sizeof(float));
+
 
         _shaderLighting.Use();
 
@@ -457,21 +472,26 @@ class DisplayOpenGL3D : Display
         _shaderLighting.SetMatrix4("model", _model);
         _shaderLighting.SetMatrix4("view", _view);
         _shaderLighting.SetMatrix4("projection", _projection);
-
         _shaderLighting.SetVector3("viewPos", _camera.Position);
+        //_shaderLighting.SetVector3("tangentViewPos", _camera.Position);
 
         // TODO: Handle all lights in the list
         LightObject light_temp = _lightsToRender[0];
-        _shaderLighting.SetVector3("light.position", light_temp.getPosition());
+        _shaderLighting.SetVector3("lightPos", light_temp.getPosition());
+        //_shaderLighting.SetVector3("tangentLightPos", light_temp.getPosition());
         _shaderLighting.SetVector3("light.ambient", light_temp.Ambient);
         _shaderLighting.SetVector3("light.diffuse", light_temp.Diffuse);
         _shaderLighting.SetVector3("light.specular", light_temp.Specular);
 
         _shaderLighting.SetFloat("material.shininess", cube.RParams.shininess);
         _shaderLighting.SetVector3("material.specular", cube.RParams.specular);
+
         _shaderLighting.SetInt("material.textureDiff", 0);
-        Texture tex = _textureBuffer[cube.RParams.pathDiff];
-        tex.Use(TextureUnit.Texture0);
+        Texture texDiff = _textureBuffer[cube.RParams.pathDiff];
+        texDiff.Use(TextureUnit.Texture0);
+        _shaderLighting.SetInt("material.textureNormal", 1);
+        Texture texNormal = _textureBuffer[cube.RParams.pathNormal];
+        texNormal.Use(TextureUnit.Texture1);
 
         GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
     }

@@ -1,4 +1,4 @@
-ï»¿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL4;
 using System.Drawing;
 using System.Drawing.Imaging;
 using PixelFormat = OpenTK.Graphics.OpenGL4.PixelFormat;
@@ -67,8 +67,8 @@ namespace Shard
             // Mipmaps are smaller copies of the texture, scaled down. Each mipmap level is half the size of the previous one
             // Generated mipmaps go all the way down to just one pixel.
             // OpenGL will automatically switch between mipmaps when an object gets sufficiently far away.
-            // This prevents moirÃ© effects, as well as saving on texture bandwidth.
-            // Here you can see and read about the moriÃ© effect https://en.wikipedia.org/wiki/Moir%C3%A9_pattern
+            // This prevents moiré effects, as well as saving on texture bandwidth.
+            // Here you can see and read about the morié effect https://en.wikipedia.org/wiki/Moir%C3%A9_pattern
             // Here is an example of mips in action https://en.wikipedia.org/wiki/File:Mipmap_Aliasing_Comparison.png
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 

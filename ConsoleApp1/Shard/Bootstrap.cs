@@ -37,6 +37,8 @@ namespace Shard
         private static string baseDir;
         private static Dictionary<string,string> enVars;
 
+        public static DisplayEngine DisplayEngine { get; private set; }
+
         public static bool checkEnvironmentalVariable (string id) {
             return enVars.ContainsKey (id);
         }
@@ -138,6 +140,13 @@ namespace Shard
                     case "display":
                         displayEngine = (Display)ob;
                         displayEngine.initialize();
+                        // Set the global display engine type reference.
+                        switch (kvp.Value) 
+                        {
+                            case "DisplayOpenGL": DisplayEngine = DisplayEngine.OpenGL; break;
+                            case "DisplayOpenGL2":DisplayEngine = DisplayEngine.OpenGL; break;
+                            case "DisplaySDL":DisplayEngine = DisplayEngine.SDL; break;
+                        }
                         break;
                     case "sound":
                         soundEngine = (Sound)ob;

@@ -48,7 +48,7 @@ internal class GameFlappyBird : Game
         CreateNewWalls();
         CheckIfBirdPassedWall();
         
-        Bootstrap.getDisplay().showText("Score: " + _score, 0, 300, 2, Color.White);
+        Bootstrap.getDisplay().showText("Score: " + _score, 0, 0.75f*Bootstrap.getDisplay().getHeight()/2f, 2, Color.White);
     }
     
     private void DestroyWallsOutsideWindow()

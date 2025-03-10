@@ -301,11 +301,11 @@ internal class PhysicsBody
         return null;
     }
     
-    public bool checkCollisions(Vector3 lineOrigin, Vector3 lineDirection)
+    public bool checkCollisions(Vector3 rayOrigin, Vector3 rayDirection)
     {
         foreach (Collider collider in myColliders)
         {
-            bool collison = collider.checkCollision(lineOrigin, lineDirection);
+            bool collison = collider.checkCollision(rayOrigin, rayDirection);
             if (collison) return true;
         }
         return false;

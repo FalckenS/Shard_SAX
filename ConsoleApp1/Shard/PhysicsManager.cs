@@ -500,4 +500,6 @@ internal class PhysicsManager
         }
         return null;
     }
+    
+    // TODO fix method that checks ray collision with all colliders
 }

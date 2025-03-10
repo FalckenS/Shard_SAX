@@ -24,37 +24,37 @@ internal class ColliderSphere : Collider
         MinAndMaxZ[1] = transform.Z + transform.Radius;
     }
 
-    internal override bool checkCollision(Vector3 lineOrigin, Vector3 lineDirection)
+    internal override bool checkCollision(Vector3 rayOrigin, Vector3 rayDirection)
     {
-        // line(t) = lineOrigin + t×lineDirection
-        // t is distance along the arline
-        // t > 0 means in front lineOrigin
+        // ray(t) = rayOrigin + t×rayDirection
+        // t is distance along the array
+        // t > 0 means in front rayOrigin
         // A point is on the sphere if: ∥point − sphereCenter∥^2 = radius^2
         
-        // ∥(lineOrigin + t×lineDirection) − sphereCenter∥^2 = radius^2
+        // ∥(rayOrigin + t×rayDirection) − sphereCenter∥^2 = radius^2
         // This gives us: at^2 + bt + c = 0
-        // oc = lineOrigin − sphereCenter
-        // a  = lineDirection ⋅ lineDirection
-        // b  = 2× (oc ⋅ lineDirection)
+        // oc = rayOrigin − sphereCenter
+        // a  = rayDirection ⋅ rayDirection
+        // b  = 2× (oc ⋅ rayDirection)
         // c  = oc ⋅ oc − radius2
         // Discriminant: b^2 − 4ac
-        // If < 0: No real roots --> the line misses the sphere
-        // If < 0: Real roots --> the line intersects the sphere
+        // If < 0: No real roots --> the ray misses the sphere
+        // If < 0: Real roots --> the ray intersects the sphere
         
-        Vector3 oc = lineOrigin - new Vector3(transform.X, transform.Y, transform.Z);
-        float a = Vector3.Dot(lineDirection, lineDirection);
-        float b = 2.0f * Vector3.Dot(oc, lineDirection);
+        Vector3 oc = rayOrigin - new Vector3(transform.X, transform.Y, transform.Z);
+        float a = Vector3.Dot(rayDirection, rayDirection);
+        float b = 2.0f * Vector3.Dot(oc, rayDirection);
         float c = Vector3.Dot(oc, oc) - transform.Radius * transform.Radius;
     
         float discriminant = b * b - 4 * a * c;
         if (discriminant < 0) return false; // No real roots
     
         float sqrtDiscriminant = (float)Math.Sqrt(discriminant);
-        // Roots (the points where the line enters/leaves the sphere):
+        // Roots (the points where the ray enters/leaves the sphere):
         float t0 = (-b - sqrtDiscriminant) / (2 * a);
         float t1 = (-b + sqrtDiscriminant) / (2 * a);
     
-        // If both t0 and t1 < 0, the entire intersections occurs behind the lineOrigin
+        // If both t0 and t1 < 0, the entire intersections occurs behind the rayOrigin
         return t0 >= 0 || t1 >= 0;
     }
     

@@ -3,20 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\texturesheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\texturesheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\textureregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\textureregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\flappy bird (opengl)\\gameflappybird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\flappy bird (opengl)\\gameflappybird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\flappy bird (opengl)\\wall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\flappy bird (opengl)\\wall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\flappy bird (opengl)\\bird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\flappy bird (opengl)\\bird.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\assetmanagerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\assetmanagerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\spritebatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\spritebatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\gameobjectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\gameobjectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displayopengl3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\doom\\gamedoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\assetmanager2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,92 +59,96 @@
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\assetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\collidercircle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\collidercircle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\soundbeep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\soundbeep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\collider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\collider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\sound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\sound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\spaceinvaders\\invader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\spaceinvaders\\invader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\gltextureloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\gltextureloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\textureregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\textureregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displaytext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaytext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\texturesheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\texturesheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\colliderrect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\colliderrect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\flappy bird (opengl)\\gametestopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\flappy bird (opengl)\\gametestopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\display.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\textureloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\textureloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayopengl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputframework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputframework.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displayengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displayengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\breakout\\brick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\breakout\\brick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\debug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\debug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\breakout\\paddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\breakout\\paddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\displaysdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\Shaders\\simple.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\Shaders\\simple.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GLWindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\GLWindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\inputbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\inputbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\Shard\\DisplayOpenGL2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\freetypefont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\freetypefont.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\MyApplication\\Application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ConsoleApp1\\MyApplication\\Application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|c:\\users\\alex\\desktop\\coding\\c#\\shard_sax\\consoleapp1\\shard\\textureloaderfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00D677B6-B5C6-4F5E-B8BB-663F2FC31C9E}|ConsoleApp1\\Shard.csproj|solutionrelative:consoleapp1\\shard\\textureloaderfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -122,344 +158,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TextureSheet.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureSheet.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureSheet.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureSheet.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureSheet.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA1wBgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T15:30:30.556Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TextureRegion.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureRegion.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureRegion.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureRegion.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureRegion.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:52:30.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Transform.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Transform.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Transform.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Transform.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Transform.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:06:41.531Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Animation.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Animation.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Animation.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Animation.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Animation.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T19:26:52.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Texture.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Texture.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Texture.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwBkAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T19:45:13.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AssetManager.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManager.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T07:26:12.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Collider.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Collider.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Collider.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Collider.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Collider.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:50:36.716Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ColliderCircle.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\ColliderCircle.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\ColliderCircle.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\ColliderCircle.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\ColliderCircle.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:50:43.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AssetManager2.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager2.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManager2.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager2.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManager2.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T08:54:40.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AssetManagerBase.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManagerBase.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManagerBase.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManagerBase.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManagerBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T07:33:00.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Bootstrap.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Bootstrap.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Bootstrap.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAArwDwBAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:55:03.843Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Shader.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shader.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shader.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shader.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Shader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T13:09:44.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "InputSystem.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputSystem.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputSystem.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputSystem.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\InputSystem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:23:12.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DisplayText.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayText.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayText.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayText.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayText.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJcAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T12:45:16.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ColliderRect.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\ColliderRect.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\ColliderRect.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\ColliderRect.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\ColliderRect.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:50:44.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Display.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Display.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Display.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\Display.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAiwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T13:09:05.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DisplayOpenGL.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T13:13:26.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Invader.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "RelativeToolTip": "ConsoleApp1\\SpaceInvaders\\Invader.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAmwCQAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T11:57:17.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "InputListener.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputListener.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputListener.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputListener.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\InputListener.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:23:10.881Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "InputEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputEvent.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputEvent.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputEvent.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\InputEvent.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:22:56.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "InputFramework.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputFramework.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputFramework.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\InputFramework.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T14:23:00.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Brick.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Breakout\\Brick.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Breakout\\Brick.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Breakout\\Brick.cs",
-              "RelativeToolTip": "ConsoleApp1\\Breakout\\Brick.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAADgvyYAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T13:54:00.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Paddle.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Breakout\\Paddle.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Breakout\\Paddle.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Breakout\\Paddle.cs",
-              "RelativeToolTip": "ConsoleApp1\\Breakout\\Paddle.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAhwBEAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T13:52:51.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Shard",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard.csproj",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard.csproj",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard.csproj",
-              "RelativeToolTip": "ConsoleApp1\\Shard.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-20T09:11:09.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "DisplaySDL.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplaySDL.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplaySDL.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplaySDL.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAAwNgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T13:09:17.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "InputBasic.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputBasic.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputBasic.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputBasic.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\InputBasic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T08:38:53.878Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Bookmark",
@@ -467,29 +170,447 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 2,
+              "Title": "Wall.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\Wall.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Flappy Bird (OpenGL)\\Wall.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\Wall.cs",
+              "RelativeToolTip": "ConsoleApp1\\Flappy Bird (OpenGL)\\Wall.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T20:15:27.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Bird.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\Bird.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Flappy Bird (OpenGL)\\Bird.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\Bird.cs",
+              "RelativeToolTip": "ConsoleApp1\\Flappy Bird (OpenGL)\\Bird.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAkwDMAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T15:09:23.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Sound.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Sound.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Sound.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Sound.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Sound.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:34:28.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GameDoom.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Doom\\GameDoom.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Doom\\GameDoom.cs",
+              "RelativeToolTip": "ConsoleApp1\\Doom\\GameDoom.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCoAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:33:48.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameObjectManager.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GameObjectManager.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GameObjectManager.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GameObjectManager.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\GameObjectManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:32:50.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InputBasic.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputBasic.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputBasic.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputBasic.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\InputBasic.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:23:15.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GameObject.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GameObject.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GameObject.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GameObject.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\GameObject.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAYwLMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:30:40.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DisplayOpenGL.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAIAwwGgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T00:52:58.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameFlappyBird.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\GameFlappyBird.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Flappy Bird (OpenGL)\\GameFlappyBird.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\GameFlappyBird.cs",
+              "RelativeToolTip": "ConsoleApp1\\Flappy Bird (OpenGL)\\GameFlappyBird.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAewE0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:46:13.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DisplayOpenGL3D.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL3D.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAAAUwAgBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T10:12:44.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SpriteBatch.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\SpriteBatch.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\SpriteBatch.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\SpriteBatch.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\SpriteBatch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Texture.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Texture.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Texture.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Texture.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAewE0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T10:34:25.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InputListener.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputListener.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\InputListener.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\InputListener.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\InputListener.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T15:24:52.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SoundBeep.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\SoundBeep.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\SoundBeep.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\SoundBeep.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\SoundBeep.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwBkAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T13:53:48.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AssetManager2.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager2.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManager2.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager2.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManager2.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAqwGEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Game.cs",
               "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Game.cs",
               "RelativeToolTip": "ConsoleApp1\\Shard\\Game.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBZwCMAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T12:57:34.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T12:57:34.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AssetManager.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\AssetManager.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\AssetManager.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\AssetManager.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAADwvyUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T09:16:46.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GameTestOpenGL.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\GameTestOpenGL.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Flappy Bird (OpenGL)\\GameTestOpenGL.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Flappy Bird (OpenGL)\\GameTestOpenGL.cs",
+              "RelativeToolTip": "ConsoleApp1\\Flappy Bird (OpenGL)\\GameTestOpenGL.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wA0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T14:19:23.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TextureLoader.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureLoader.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureLoader.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureLoader.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureLoader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Sprite.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Sprite.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Sprite.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Sprite.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Sprite.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowCMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.91Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GLTextureLoader.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GLTextureLoader.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GLTextureLoader.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GLTextureLoader.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\GLTextureLoader.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TextureRegion.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureRegion.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureRegion.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureRegion.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureRegion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Shader.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shader.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shader.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shader.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shader.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBYAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T16:22:08.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TextureSheet.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureSheet.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureSheet.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureSheet.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureSheet.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAADgvycAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Animation.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Animation.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Animation.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Animation.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Animation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "GLWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GLWindow.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\GLWindow.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\GLWindow.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\GLWindow.cs",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAQwM0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Bootstrap.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Bootstrap.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Bootstrap.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Bootstrap.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAiwCUAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-18T11:55:03.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "TextureLoaderFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureLoaderFactory.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\TextureLoaderFactory.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\TextureLoaderFactory.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\TextureLoaderFactory.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.901Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 27,
-              "Title": "FreeTypeFont.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\FreeTypeFont.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\FreeTypeFont.cs",
-              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\FreeTypeFont.cs",
-              "RelativeToolTip": "ConsoleApp1\\Shard\\FreeTypeFont.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAiwCUAAAAnAAAAAAAAAA==",
+              "Title": "Debug.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Debug.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Debug.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Debug.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Debug.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T12:14:56.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T10:08:06.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DisplayEngine.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayEngine.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayEngine.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayEngine.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayEngine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "DisplayOpenGL2.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL2.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\DisplayOpenGL2.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\DisplayOpenGL2.cs",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\DisplayOpenGL2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Application.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\MyApplication\\Application.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\MyApplication\\Application.cs",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\MyApplication\\Application.cs",
+              "RelativeToolTip": "ConsoleApp1\\MyApplication\\Application.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T09:31:32.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "simple.frag",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.frag",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\simple.frag",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.frag",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\simple.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-04T10:22:47.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "helloTriangle.vert",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\helloTriangle.vert",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-04T16:21:27.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "helloTriangle.frag",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\helloTriangle.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-04T16:21:25.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "simple.vert",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.vert",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard\\Shaders\\simple.vert",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard\\Shaders\\simple.vert",
+              "RelativeToolTip": "ConsoleApp1\\Shard\\Shaders\\simple.vert",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-04T10:22:31.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Shard",
+              "DocumentMoniker": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard.csproj",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Shard.csproj",
+              "ToolTip": "C:\\Users\\Alex\\Desktop\\Coding\\C#\\shard_SAX\\ConsoleApp1\\Shard.csproj",
+              "RelativeToolTip": "ConsoleApp1\\Shard.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-20T09:11:09.722Z"
             }
           ]
         }

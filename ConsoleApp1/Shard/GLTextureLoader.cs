@@ -44,9 +44,9 @@ namespace Shard
         /// <summary>
         /// Binds gl texture.
         /// </summary>
-        public void Use()
+        public void Use(TextureUnit textureUnit)
         {
-            //GL.ActiveTexture(TextureUnit.Texture0);
+            GL.ActiveTexture(textureUnit);
             GL.BindTexture(TextureTarget.Texture2D, _handle);
         }
     }

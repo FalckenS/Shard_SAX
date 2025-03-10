@@ -9,13 +9,14 @@ using SDL2;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using System.IO;
 
 namespace Shard;
 
 internal class DisplayOpenGL : Display
 {
     private IntPtr _window, _glContext;
-    private Shader _shaderText, _shaderShape;
+    private Shader _shaderText, _shaderShape,_texture2dShader;
     private FreeTypeFont _font;
     private int _vao, _vbo;
     private Matrix4 _projectionM;
@@ -23,7 +24,8 @@ internal class DisplayOpenGL : Display
     private List<TextToRender> _textsToRender;
     private List<LineToRender> _linesToRender;
     private List<RectangleToRender> _rectanglesToRender;
-    
+    public SpriteBatch SpriteBatch { get; private set; }
+
     public override void initialize()
     {
         setSize(800, 800);
@@ -46,12 +48,17 @@ internal class DisplayOpenGL : Display
         
         _shaderShape = new Shader("Shaders/simple.vert", "Shaders/simple.frag");
         _shaderText = new Shader("Shaders/text.vert", "Shaders/text.frag");
+        _shaderText = new Shader("Shaders/text.vert", "Shaders/text.frag");
+        _shaderShape = new Shader("Shaders/simple.vert", "Shaders/simple.frag");
+     
+        _texture2dShader = new Shader("Shaders/texture2d.vert", "Shaders/texture2d.frag");
 
         _font = new FreeTypeFont(32);
         
         _linesToRender = new List<LineToRender>();
         _rectanglesToRender = new List<RectangleToRender>();
         _textsToRender = new List<TextToRender>();
+        SpriteBatch = new SpriteBatch(); // Default empty spritebatch
     }
 
     private bool FailedToCreateOpenGLContext()
@@ -92,7 +99,11 @@ internal class DisplayOpenGL : Display
         {
             RenderRectangle(rectangle);
         }
-        
+        foreach (Sprite s in SpriteBatch.GetCurrent())
+        {
+            renderSprite(s);
+        }
+
         // Set projection for text shader
         _shaderText.Use();
         SetShaderProjection(GL.GetUniformLocation(_shaderText.Program, "projection"));
@@ -102,6 +113,7 @@ internal class DisplayOpenGL : Display
                 new Vector3(text.RCol/255.0f, text.GCol/255.0f, text.BCol/255.0f)
             );
         }
+        
         SDL.SDL_GL_SwapWindow(_window);
     }
     
@@ -208,11 +220,59 @@ internal class DisplayOpenGL : Display
         GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
     }
 
+    private void renderSprite(Sprite sprite)
+    {
+        float[] vertices = {
+                sprite.X                , sprite.Y              ,0, sprite.RegionX                      ,sprite.RegionY,                    // Bottom left
+                sprite.X+sprite.Width   , sprite.Y              ,0, sprite.RegionX+sprite.RegionWidth   ,sprite.RegionY,                    // Bottom right
+                sprite.X+sprite.Width   , sprite.Y+sprite.Height,0, sprite.RegionX+sprite.RegionWidth   ,sprite.RegionY+sprite.RegionHeight,// Top right
+                sprite.X                , sprite.Y+sprite.Height,0, sprite.RegionX                      ,sprite.RegionY+sprite.RegionHeight // Top left
+            };
+
+        uint[] indices = {
+                0,1,2,
+                0,3,2
+            };
+
+        int vao = GL.GenVertexArray();
+        GL.BindVertexArray(vao);
+
+        int vbo = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+        GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+        int ebo = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
+        GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
+        var vertexLocation = _texture2dShader.GetAttribLocation("aPosition");
+        GL.EnableVertexAttribArray(vertexLocation);
+        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+
+        var texCoordLocation = _texture2dShader.GetAttribLocation("aTexCoord");
+        GL.EnableVertexAttribArray(texCoordLocation);
+        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+
+        var transform = Matrix4.Identity;
+        transform = transform * Matrix4.CreateTranslation(-_width / 2, -_height / 2, 0);
+        transform = transform * Matrix4.CreateScale(1f / (_width / 2), 1f / (_height / 2), 1f);
+
+        var textureTransform = Matrix2.Identity;
+        textureTransform = textureTransform * Matrix2.CreateScale(1f / sprite.TextureWidth, 1f / sprite.TextureHeight);
+
+        sprite.Use();
+        _texture2dShader.Use();
+        _texture2dShader.SetMatrix4("transform", transform);
+        _texture2dShader.SetMatrix2("textureTransform", textureTransform);
+        GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+    }
+
     public override void clearDisplay()
     {
         _textsToRender.Clear();
         _linesToRender.Clear();
         _rectanglesToRender.Clear();
+        SpriteBatch.Clear();
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
     }
     

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Graphics.OpenGL4;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -39,6 +40,6 @@ namespace Shard.Shard
         // Getters for texture width / height
         public int TextureWidth { get { return _texture.Width; } }
         public int TextureHeight { get { return _texture.Height; } }
-        public void Use() { _texture.Use(); }
+        public void Use() { _texture.Use(TextureUnit.Texture0); }
     }
 }

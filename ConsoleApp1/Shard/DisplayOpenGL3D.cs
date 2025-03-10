@@ -12,8 +12,8 @@ using OpenTK.Mathematics;
 
 struct RenderParams
 {
-    public string pathDiff;
-    public string pathNormal;
+    public Texture diff;
+    public Texture normal;
     public Vector3 specular;
     public float shininess;
 }
@@ -31,7 +31,7 @@ class DisplayOpenGL3D : Display
     private Matrix4 _model, _view, _projection;
     private Camera _camera;
 
-    private Dictionary<string, Texture> _textureBuffer;
+
     private List<TextToRender> _textsToRender;
     private List<LineToRender> _linesToRender;
     private List<RectangleToRender> _rectanglesToRender;
@@ -167,7 +167,6 @@ class DisplayOpenGL3D : Display
         _rectanglesToRender = new List<RectangleToRender>();
         _cubesToRender = new List<CubeObject>();
         _lightsToRender = new List<LightObject>();
-        _textureBuffer = new Dictionary<string, Texture>();
     }
 
     public override void LinkCamera(Camera camera)
@@ -264,21 +263,6 @@ class DisplayOpenGL3D : Display
     public override void addToDrawCube(CubeObject cube)
     {
         _cubesToRender.Add(cube);
-        if (cube.RParams.pathDiff != null)
-        {
-            if (!_textureBuffer.ContainsKey(cube.RParams.pathDiff))
-            {
-                _textureBuffer[cube.RParams.pathDiff] = Texture.LoadFromFile(cube.RParams.pathDiff);
-            }
-        }
-        if (cube.RParams.pathNormal != null)
-        {
-            if (!_textureBuffer.ContainsKey(cube.RParams.pathNormal))
-            {
-                _textureBuffer[cube.RParams.pathNormal] = Texture.LoadFromFile(cube.RParams.pathNormal);
-            }
-        }
-        
     }
 
     public override void addToDrawLight(LightObject light)
@@ -493,11 +477,9 @@ class DisplayOpenGL3D : Display
         _shaderLighting.SetVector3("material.specular", cube.RParams.specular);
 
         _shaderLighting.SetInt("material.textureDiff", 0);
-        Texture texDiff = _textureBuffer[cube.RParams.pathDiff];
-        texDiff.Use(TextureUnit.Texture0);
+        cube.RParams.diff.Use(TextureUnit.Texture0);
         _shaderLighting.SetInt("material.textureNormal", 1);
-        Texture texNormal = _textureBuffer[cube.RParams.pathNormal];
-        texNormal.Use(TextureUnit.Texture1);
+        cube.RParams.diff.Use(TextureUnit.Texture1);
 
         GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
     }

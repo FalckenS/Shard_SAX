@@ -19,6 +19,8 @@ internal class GameFlappyBird : Game
     private List<List<Wall>> _walls; // Every pair of walls is a list
     private Random _random;
     private int _score;
+    private Sprite _background1;
+    private Sprite _background2;
         
     public override void initialize()
     {
@@ -28,6 +30,9 @@ internal class GameFlappyBird : Game
         _random = new Random();
         _score = 0;
         CheckWallSettings();
+        _background1 = new Sprite(AssetManager2.getTexture("background-night.png"), 800, 0, 800, 800);
+        _background2 = new Sprite(AssetManager2.getTexture("background-night.png"),0,0,800,800);
+        
     }
 
     // Checks if the wall settings are allowed
@@ -49,6 +54,21 @@ internal class GameFlappyBird : Game
         CheckIfBirdPassedWall();
         
         Bootstrap.getDisplay().showText("Score: " + _score, 0, 300, 2, Color.White);
+
+        DisplayOpenGL display = (DisplayOpenGL)Bootstrap.getDisplay();
+
+        _background1.X -= 1f;
+        _background2.X -= 1f;
+        if(_background1.X == -800) 
+        {
+            _background1.X = 800;
+        }
+        if (_background2.X == -800)
+        {
+            _background2.X = 800;
+        }
+        display.SpriteBatch.Draw(_background1);
+        display.SpriteBatch.Draw(_background2);
     }
     
     private void DestroyWallsOutsideWindow()
@@ -85,6 +105,8 @@ internal class GameFlappyBird : Game
         upperWall.Transform2D.Y = botYPos + lowerWall.Transform2D.Height + GapBetweenWallsY;
         // Calculate the height of upper wall by doing (display height) - (lower wall height and gap)
         upperWall.Transform2D.Height = Bootstrap.getDisplay().getHeight() - (lowerWall.Transform2D.Height + GapBetweenWallsY);
+        upperWall.Transform2D.Height *= -1;
+        upperWall.Transform2D.Y += (upperWall.Transform2D.Height * (-1));
 
         _walls.Add([lowerWall, upperWall]);
     }

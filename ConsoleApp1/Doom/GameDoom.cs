@@ -28,8 +28,8 @@ class GameDoom : Game
         //wall_3 = new CubeObject(25, 0, 0, 0, 90, 0, 50, 20, 4, 1, 1, 1);
         //wall_4 = new CubeObject(-25, 0, 0, 0, 90, 0, 50, 20, 4, 1, 1, 1);
         RenderParams renderParamsBrick = new RenderParams();
-        renderParamsBrick.pathDiff = Bootstrap.getAssetManager().getAssetPath("brick_diff.jpg");
-        renderParamsBrick.pathNormal = Bootstrap.getAssetManager().getAssetPath("brick_normal.jpg");
+        renderParamsBrick.diff = AssetManager2.getTexture("brick_diff.jpg");
+        renderParamsBrick.normal = AssetManager2.getTexture("brick_normal.jpg");
         renderParamsBrick.shininess = 8.0f;
         renderParamsBrick.specular = new Vector3(0.3f);
         wall_1.RParams = renderParamsBrick;
@@ -39,8 +39,8 @@ class GameDoom : Game
 
         floor = new CubeObject(0, 0, 0, 0, 0, 0, 10, 4, 10, 5.0f, 0.5f, 5.0f);
         RenderParams renderParamsFloor = new RenderParams();
-        renderParamsFloor.pathDiff = Bootstrap.getAssetManager().getAssetPath("forest_diff.jpg");
-        renderParamsFloor.pathNormal = Bootstrap.getAssetManager().getAssetPath("forest_normal.jpg");
+        renderParamsFloor.diff = AssetManager2.getTexture("forest_diff.jpg");
+        renderParamsFloor.normal = AssetManager2.getTexture("forest_normal.jpg");
         renderParamsFloor.shininess = 8.0f;
         renderParamsFloor.specular = new Vector3(0.1f);
         floor.RParams = renderParamsFloor;

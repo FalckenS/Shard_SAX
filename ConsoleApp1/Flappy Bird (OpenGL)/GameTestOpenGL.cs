@@ -10,8 +10,8 @@ internal class GameTestOpenGL : Game
         RectangleGameObject rectangle = new RectangleGameObject();
         rectangle.Transform.X = 0;
         rectangle.Transform.Y = 0;
-        rectangle.Transform.Wid = 100;
-        rectangle.Transform.Ht = 100;
+        rectangle.Transform.Width = 100;
+        rectangle.Transform.Height = 100;
     }
 
     public override void update()

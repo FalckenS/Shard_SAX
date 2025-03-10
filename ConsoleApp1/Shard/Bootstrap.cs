@@ -25,7 +25,7 @@ namespace Shard
         private static Sound soundEngine;
         private static InputSystem input;
         private static PhysicsManager phys;
-        private static AssetManagerBase asset;
+        private static AssetManager2 asset;
 
         private static int targetFrameRate;
         private static int millisPerFrame;
@@ -102,7 +102,7 @@ namespace Shard
             return input;
         }
 
-        public static AssetManagerBase getAssetManager() {
+        public static AssetManager2 getAssetManager() {
             return asset;
         }
 
@@ -144,7 +144,7 @@ namespace Shard
                         switch (kvp.Value) 
                         {
                             case "DisplayOpenGL": DisplayEngine = DisplayEngine.OpenGL; break;
-                            case "DisplayOpenGL2":DisplayEngine = DisplayEngine.OpenGL; break;
+                            case "DisplayOpenGL3D":DisplayEngine = DisplayEngine.OpenGL; break;
                             case "DisplaySDL":DisplayEngine = DisplayEngine.SDL; break;
                         }
                         break;
@@ -152,8 +152,8 @@ namespace Shard
                         soundEngine = (Sound)ob;
                         break;
                     case "asset":
-                        asset = (AssetManagerBase)ob;
-                        asset.registerAssets();
+                        asset = AssetManager2.Instance;
+                        //asset.registerAssets();
                         break;
                     case "game":
                         runningGame = (Game)ob;

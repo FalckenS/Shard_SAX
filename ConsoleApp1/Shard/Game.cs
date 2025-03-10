@@ -14,13 +14,13 @@ namespace Shard;
 
 abstract class Game
 {
-    private AssetManagerBase assetManagerBase;
+    private AssetManager2 assetManager;
     
     public bool Is3d { get; private set; } = false;
 
-    protected AssetManagerBase getAssetManager()
+    protected AssetManager2 getAssetManager()
     {
-        return assetManagerBase ??= Bootstrap.getAssetManager();
+        return assetManager ??= Bootstrap.getAssetManager();
     }
 
     public abstract void initialize();

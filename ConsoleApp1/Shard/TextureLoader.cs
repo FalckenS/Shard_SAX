@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Graphics.OpenGL4;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace Shard
     interface TextureLoader
     {
         void Load(byte[] imgdata, int width, int height);
-        void Use();
+        void Use(TextureUnit textureUnit);
     }
 }

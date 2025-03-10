@@ -8,6 +8,7 @@
 
 using SDL2;
 using System;
+using System.IO;
 
 namespace Shard
 {
@@ -22,7 +23,7 @@ namespace Shard
             IntPtr buffer;
 
             
-            file = Bootstrap.getAssetManager().getAssetPath(file);
+            file = Path.Combine(Bootstrap.getEnvironmentalVariable("assetpath"), file);
 
 
             SDL.SDL_LoadWAV(file, out have, out buffer, out length);

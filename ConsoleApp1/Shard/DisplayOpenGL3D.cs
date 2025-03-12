@@ -8,6 +8,7 @@ using SDL2;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using Shard.SAX.Graphics3D;
 
 
 struct RenderParams
@@ -22,7 +23,7 @@ struct RenderParams
 class DisplayOpenGL3D : Display
 {
     private const float RenderDownscale = 0.5f;
-    private IntPtr _window, _glContext;
+    private nint _window, _glContext;
     private Shader _shaderText, _shaderShape, _shaderCube, _shaderLight, _shaderLighting;
     private FreeTypeFont _font;
     private int _vao, _vbo;
@@ -49,7 +50,7 @@ class DisplayOpenGL3D : Display
         //    -0.5f,  0.5f, 0.0f, 0.0f, 1.0f  // top left
         //};
 
-       float[] _vertices = {
+        float[] _vertices = {
             -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
              0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
              0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
@@ -93,8 +94,8 @@ class DisplayOpenGL3D : Display
             -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
         };
 
-    uint[] _indices =
-        {
+        uint[] _indices =
+            {
             0, 1, 3,
             1, 2, 3
         };
@@ -140,7 +141,7 @@ class DisplayOpenGL3D : Display
 
         _glContext = SDL.SDL_GL_CreateContext(_window);
 
-        if (_glContext == IntPtr.Zero)
+        if (_glContext == nint.Zero)
         {
             OpenGLContextFail();
             return;
@@ -182,7 +183,7 @@ class DisplayOpenGL3D : Display
         GL.Viewport(0, 0, getWidth(), getHeight());
 
         _shaderShape.Use();
-        
+
         foreach (LineToRender line in _linesToRender)
         {
             RenderLine(line);
@@ -278,7 +279,7 @@ class DisplayOpenGL3D : Display
                 _textureBuffer[cube.RParams.pathNormal] = Texture.LoadFromFile(cube.RParams.pathNormal);
             }
         }
-        
+
     }
 
     public override void addToDrawLight(LightObject light)
@@ -439,7 +440,7 @@ class DisplayOpenGL3D : Display
             -w/2, -h/2,  d/2,  0.0f, d,    1, 0, 0, 0, 0, 1,
             -w/2, -h/2, -d/2,  0.0f, 0.0f, 1, 0, 0, 0, 0, 1,
 
-            -w/2,  h/2, -d/2,  0.0f, d,    1, 0, 0, 0, 0, -1, 
+            -w/2,  h/2, -d/2,  0.0f, d,    1, 0, 0, 0, 0, -1,
              w/2,  h/2, -d/2,  w,    d,    1, 0, 0, 0, 0, -1,
              w/2,  h/2,  d/2,  w,    0.0f, 1, 0, 0, 0, 0, -1,
              w/2,  h/2,  d/2,  w,    0.0f, 1, 0, 0, 0, 0, -1,
@@ -505,44 +506,44 @@ class DisplayOpenGL3D : Display
     private void RenderLight(LightObject light)
     {
         float[] _vertices = {
-            -0.5f, -0.5f, -0.5f, 
-             0.5f, -0.5f, -0.5f, 
+            -0.5f, -0.5f, -0.5f,
+             0.5f, -0.5f, -0.5f,
              0.5f,  0.5f, -0.5f,
-             0.5f,  0.5f, -0.5f, 
-            -0.5f,  0.5f, -0.5f, 
+             0.5f,  0.5f, -0.5f,
+            -0.5f,  0.5f, -0.5f,
             -0.5f, -0.5f, -0.5f,
 
-            -0.5f, -0.5f,  0.5f, 
+            -0.5f, -0.5f,  0.5f,
              0.5f, -0.5f,  0.5f,
-             0.5f,  0.5f,  0.5f, 
+             0.5f,  0.5f,  0.5f,
              0.5f,  0.5f,  0.5f,
             -0.5f,  0.5f,  0.5f,
-            -0.5f, -0.5f,  0.5f, 
+            -0.5f, -0.5f,  0.5f,
 
-            -0.5f,  0.5f,  0.5f,  
+            -0.5f,  0.5f,  0.5f,
             -0.5f,  0.5f, -0.5f,
             -0.5f, -0.5f, -0.5f,
             -0.5f, -0.5f, -0.5f,
             -0.5f, -0.5f,  0.5f,
-            -0.5f,  0.5f,  0.5f, 
+            -0.5f,  0.5f,  0.5f,
 
              0.5f,  0.5f,  0.5f,
              0.5f,  0.5f, -0.5f,
              0.5f, -0.5f, -0.5f,
              0.5f, -0.5f, -0.5f,
              0.5f, -0.5f,  0.5f,
-             0.5f,  0.5f,  0.5f, 
+             0.5f,  0.5f,  0.5f,
 
             -0.5f, -0.5f, -0.5f,
              0.5f, -0.5f, -0.5f,
              0.5f, -0.5f,  0.5f,
              0.5f, -0.5f,  0.5f,
             -0.5f, -0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f, 
+            -0.5f, -0.5f, -0.5f,
 
             -0.5f,  0.5f, -0.5f,
-             0.5f,  0.5f, -0.5f, 
-             0.5f,  0.5f,  0.5f, 
+             0.5f,  0.5f, -0.5f,
+             0.5f,  0.5f,  0.5f,
              0.5f,  0.5f,  0.5f,
             -0.5f,  0.5f,  0.5f,
             -0.5f,  0.5f, -0.5f
@@ -573,10 +574,10 @@ class DisplayOpenGL3D : Display
 
     private class MySdlBindingsContext : IBindingsContext
     {
-        public IntPtr GetProcAddress(string procName)
+        public nint GetProcAddress(string procName)
         {
             [DllImport("SDL2")]
-            static extern IntPtr SDL_GL_GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procName);
+            static extern nint SDL_GL_GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procName);
             return SDL_GL_GetProcAddress(procName);
         }
     }

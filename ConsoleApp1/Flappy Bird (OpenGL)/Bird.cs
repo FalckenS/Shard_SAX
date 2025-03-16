@@ -48,11 +48,11 @@ internal class Bird : GameObject, CollisionHandler, InputListener
 
 
         _birdSheet = new TextureSheet(AssetManager2.getTexture("flappy_spritesheet.png"), 4, 1);
-        _birdAnim = new Animation<TextureRegion>(_birdSheet.TextureRegionsList);
-        _birdAnim.MilliSecondsBetweenKeyFrames = 1000;
-        _birdAnim.Play();
-        _birb = new Sprite(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis(), PlayMode.FORWARD_LOOP), 100, 0, 100, 100);
-
+        AnimationFactory animFactory = new AnimationFactory(_birdSheet,1000);
+        // Uncaught exception
+        _birdAnim = animFactory.GenerateAnimations("flap",1)[0];
+        _birdAnim.Play(Bootstrap.getCurrentMillis());
+        _birb = new Sprite(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis()), 100, 0, 100, 100);
         _display.SpriteBatch.Draw(_birb);
     }
 
@@ -88,7 +88,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
             Die();
         }
 
-        _birb.SetTextureRegion(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis(), PlayMode.FORWARD_LOOP));
+        _birb.SetTextureRegion(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis()));
         _display.SpriteBatch.Draw(_birb);
 
         _birb.Y = Transform.Y + 400;

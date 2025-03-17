@@ -500,6 +500,18 @@ internal class PhysicsManager
         }
         return null;
     }
-    
-    // TODO fix method that checks ray collision with all colliders
+
+    // Returns all objects hit by a ray.
+    public List<PhysicsBody> checkCollisionsWithRay(Vector3 rayOrigin, Vector3 rayDirection)
+    {
+        List<PhysicsBody> bodiesHit = new List<PhysicsBody>();
+        foreach (PhysicsBody physicsBody in allPhysicsObjects)
+        {
+            if (physicsBody.checkCollisions(rayOrigin, rayDirection))
+            {
+                bodiesHit.Add(physicsBody);
+            }
+        }
+        return bodiesHit;
+    }
 }

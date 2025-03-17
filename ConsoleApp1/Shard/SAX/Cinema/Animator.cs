@@ -22,7 +22,8 @@ namespace Shard.SAX.Cinema
         /// </summary>
         public Animator(Animation<T>[] animations) 
         {
-            _animations = default(Dictionary<string, Animation<T>>);
+            _animations = new Dictionary<string, Animation<T>>();
+            _queue = new List<string>();
             AddAll(animations);
             if (animations.Length > 0) { _currentAnimation = animations[0]; }
         }
@@ -51,6 +52,7 @@ namespace Shard.SAX.Cinema
             RemoveAnim(anim.Name); 
         }
         public Animation<T> GetAnimation(string name) { return _animations[name]; }
+        public Animation<T> GetCurrentAnim(){ return _currentAnimation; }
         public bool Exists(Animation<T> anim) { return Exists(anim.Name); }
         public bool Exists(string name) { return _animations.ContainsKey(name); }
 
@@ -62,28 +64,29 @@ namespace Shard.SAX.Cinema
         {
             _currentAnimation.Pause();
         }
-        public void Switch(string name) 
+        public void Switch(string name,long currentTimeMilli) 
         {
             _currentAnimation.Reset();
             _currentAnimation = _animations[name];
+            _currentAnimation.Play(currentTimeMilli);
         }
-        public void Switch(Animation<T> anim) 
+        public void Switch(Animation<T> anim, long currentTimeMilli) 
         {
             if (!Exists(anim)) { AddAnim(anim); }
-            Switch(anim.Name);
+            Switch(anim.Name,currentTimeMilli);
         }
         public void Queue(string name) 
         { 
             _queue.Add(name);
         }
         public void Queue(Animation<T> anim) { Queue(anim.Name); }
-        public T Get(long currentTimeMilliSeconds) 
+        public T GetKeyFrame(long currentTimeMilliSeconds) 
         {
             // If the current is done playing and there is one queued, switch to the next one.
             if (_currentAnimation.HasLoopedSinceLastGet(currentTimeMilliSeconds) && _queue.Count > 0) 
             {
-                Switch(_queue[0]);
-                _currentAnimation.Play(currentTimeMilliSeconds);
+                Switch(_queue[0],currentTimeMilliSeconds);
+                _queue.RemoveAt(0);
             }
             
             return _currentAnimation.GetKeyFrame(currentTimeMilliSeconds);   

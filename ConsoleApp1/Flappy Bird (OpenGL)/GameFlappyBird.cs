@@ -33,8 +33,8 @@ internal class GameFlappyBird : Game
         _random = new Random();
         _score = 0;
         CheckWallSettings();
-        _background1 = new Sprite(AssetManager2.getTexture("background-night.png"), 800, 0, 800, 800);
-        _background2 = new Sprite(AssetManager2.getTexture("background-night.png"), 0, 0, 800, 800);
+        _background1 = new Sprite(AssetManager2.GetTexture("background-night.png"), 800, 0, 800, 800);
+        _background2 = new Sprite(AssetManager2.GetTexture("background-night.png"), 0, 0, 800, 800);
 
     }
 

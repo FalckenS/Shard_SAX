@@ -26,7 +26,7 @@ internal class Wall : GameObject, CollisionHandler
 
         addTag("Red");
         BirdHasPassed = false;
-        _sprite = new Sprite(AssetManager2.getTexture("pipe-red.png"), 0, 0, 100, 0);
+        _sprite = new Sprite(AssetManager2.GetTexture("pipe-red.png"), 0, 0, 100, 0);
     }
 
     public override void update()

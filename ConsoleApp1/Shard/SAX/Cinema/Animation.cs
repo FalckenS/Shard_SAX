@@ -110,8 +110,8 @@ namespace Shard.SAX.Cinema
         public bool HasLoopedSinceLastGet(long currentTimeMilli) 
         {
             if (IsPaused) { return false; }
-            float delta = _lastTimeMilliSeconds - currentTimeMilli;
-            if (((_milliSecondsSinceStart % (MilliSecondsBetweenKeyFrames * _keyFrames.Count)) + delta) > (MilliSecondsBetweenKeyFrames * _keyFrames.Count)) 
+            float delta = currentTimeMilli - _lastTimeMilliSeconds;
+            if (((_milliSecondsSinceStart % (MilliSecondsBetweenKeyFrames * _keyFrames.Count)) - delta) <= 0)
             { return true; } else return false;
         }
     }

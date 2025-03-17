@@ -3,6 +3,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using SDL2;
 using Shard;
 using Shard.SAX.Cinema;
@@ -16,7 +17,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     private const float Mass = 0.1f;
     private const float FlyForce = 1.5f;
 
-
+    private Animator<TextureRegion> _birdAnimator;
     private TextureSheet _birdSheet;
     private Animation<TextureRegion> _birdAnim;
     private Sprite _birb;
@@ -47,23 +48,30 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         _spacePressed = false;
 
 
-        _birdSheet = new TextureSheet(AssetManager2.getTexture("flappy_spritesheet.png"), 4, 1);
+        _birdSheet = new TextureSheet(AssetManager2.GetTexture("flappy_spritesheet.png"), 4, 1);
+        TextureSheet redBirdSheet = new TextureSheet(AssetManager2.GetTexture("flappy_sheet_red.png"),4,1);
+        AnimationFactory redBirdAnimFactory = new AnimationFactory(redBirdSheet,500);
         AnimationFactory animFactory = new AnimationFactory(_birdSheet,1000);
-        // Uncaught exception
-        _birdAnim = animFactory.GenerateAnimations("flap",1)[0];
-        _birdAnim.Play(Bootstrap.getCurrentMillis());
-        _birb = new Sprite(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis()), 100, 0, 100, 100);
+
+        List<Animation<TextureRegion>> al= new List<Animation<TextureRegion>>();
+        al.AddRange(animFactory.GenerateAnimations("flap", 1));
+        al.AddRange(redBirdAnimFactory.GenerateAnimations("flapRed", 1));
+
+        _birdAnimator = new Animator<TextureRegion>(al);
+        _birdAnimator.Play(Bootstrap.getCurrentMillis());
+
+        _birb = new Sprite(_birdAnimator.GetKeyFrame(Bootstrap.getCurrentMillis()), 100, 0, 100, 100);
         _display.SpriteBatch.Draw(_birb);
+
+        
     }
 
     public void handleInput(InputEvent inp, string eventType)
     {
-        System.Console.WriteLine("HEEELOO" + inp.Key + ": " + eventType);
         switch (eventType)
         {
             
-            case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_E && !_spacePressed:
-                System.Console.WriteLine("TRIGGERED FLY UP");
+            case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && !_spacePressed:
                 _spacePressed = true;
                 // Fly up
                 MyBody.addForce(Transform.Forward2d, FlyForce);
@@ -72,6 +80,11 @@ internal class Bird : GameObject, CollisionHandler, InputListener
             case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_E && _spacePressed:
                 _spacePressed = false;
                 break;
+            case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_R:
+                if (_birdAnimator.GetCurrentAnim().Name == "flap0") { _birdAnimator.Queue("flapRed0"); }
+                else { _birdAnimator.Queue("flap0"); }
+                
+                break;
         }
     }
 
@@ -79,25 +92,22 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     {
         if (MyBody.MinAndMaxY[0] <= -Bootstrap.getDisplay().getHeight() / 2f)
         {
-            Console.WriteLine("Bird hit floor!");
             Die();
         }
         if (MyBody.MinAndMaxY[1] >= Bootstrap.getDisplay().getHeight() / 2f)
         {
-            Console.WriteLine("Bird hit roof!");
             Die();
         }
 
-        _birb.SetTextureRegion(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis()));
+        //_birb.SetTextureRegion(_birdAnim.GetKeyFrame(Bootstrap.getCurrentMillis()));
+        _birb.SetTextureRegion(_birdAnimator.GetKeyFrame(Bootstrap.getCurrentMillis()));
         _display.SpriteBatch.Draw(_birb);
 
         _birb.Y = Transform.Y + 400;
-        System.Console.WriteLine("BIRB Y : " + Transform.Y);
     }
 
     public void onCollisionEnter(PhysicsBody x)
     {
-        Console.WriteLine("Bird hit wall!");
         Die();
     }
 

@@ -1,14 +1,16 @@
 #version 330 core
 layout (location = 0) in vec3 aPosition;
 layout(location = 1) in vec2 aTexCoord;
-layout (location = 2) in vec3 aTangent;
-layout (location = 3) in vec3 aBitangent;
+layout(location = 2) in vec3 aNormal;
+layout (location = 3) in vec3 aTangent;
+layout (location = 4) in vec3 aBitangent;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
+
 
 
 out vec2 texCoord;
@@ -24,8 +26,6 @@ void main()
     vec3 fragPos = vec3(vec4(aPosition, 1.0) * model);
     texCoord = aTexCoord;
     mat3 normalMatrix =  mat3(transpose(inverse(model)));
-    vec3 aNormal = normalize(cross(aTangent, aBitangent));
-    normal = normalize(aNormal * normalMatrix);
 
     vec3 T = normalize(aTangent * normalMatrix);
     vec3 B = normalize(aBitangent * normalMatrix);
@@ -38,6 +38,6 @@ void main()
     tangentLightPos = lightPos * TBN;
     tangentViewPos  = viewPos * TBN;
     tangentFragPos  = fragPos * TBN;
-    normal = normal * TBN;
+    normal = normalize(normalize(aNormal * normalMatrix) * TBN);
 
 }

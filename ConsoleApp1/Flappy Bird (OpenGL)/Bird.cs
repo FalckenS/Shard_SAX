@@ -3,6 +3,7 @@
 */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using SDL2;
 using Shard;
@@ -22,6 +23,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
     private Animation<TextureRegion> _birdAnim;
     private Sprite _birb;
     DisplayOpenGL _display = (DisplayOpenGL)Bootstrap.getDisplay();
+    private char sep = Path.DirectorySeparatorChar;
 
 
     public Shard.GameFlappyBird Game { init; get; }
@@ -48,10 +50,10 @@ internal class Bird : GameObject, CollisionHandler, InputListener
         _spacePressed = false;
 
 
-        _birdSheet = new TextureSheet(AssetManager2.GetTexture("flappy_spritesheet.png"), 4, 1);
-        TextureSheet redBirdSheet = new TextureSheet(AssetManager2.GetTexture("flappy_sheet_red.png"),4,1);
-        AnimationFactory redBirdAnimFactory = new AnimationFactory(redBirdSheet,500);
-        AnimationFactory animFactory = new AnimationFactory(_birdSheet,1000);
+        _birdSheet = new TextureSheet(Shard.SAX.IO.TextureLoader.GetTexture("flappy"+ sep + "flappy_spritesheet.png"), 4, 1);
+        TextureSheet redBirdSheet = new TextureSheet(Shard.SAX.IO.TextureLoader.GetTexture("flappy"+ sep + "flappy_sheet_red.png"),4,1);
+        TextureSheetAnimationFactory redBirdAnimFactory = new TextureSheetAnimationFactory(redBirdSheet,500);
+        TextureSheetAnimationFactory animFactory = new TextureSheetAnimationFactory(_birdSheet,1000);
 
         List<Animation<TextureRegion>> al= new List<Animation<TextureRegion>>();
         al.AddRange(animFactory.GenerateAnimations("flap", 1));

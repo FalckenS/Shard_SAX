@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using GameFlappyBird;
 using Shard.SAX.Graphics2D;
 using Shard.SAX.IO;
@@ -23,18 +24,21 @@ internal class GameFlappyBird : Game
     private int _score;
     private Sprite _background1;
     private Sprite _background2;
-    AssetManager2 _assetmanager2;
+    
     public override void initialize()
     {
-        _assetmanager2 = AssetManager2.Instance;
+
+
+        SAX.IO.TextureLoader.loadTexturesFromFolder(Bootstrap.getEnvironmentalVariable("assetpath")+"flappy");
         GameOver = false;
         _bird = new Bird { Game = this };
         _walls = new List<List<Wall>>();
         _random = new Random();
         _score = 0;
         CheckWallSettings();
-        _background1 = new Sprite(AssetManager2.GetTexture("background-night.png"), 800, 0, 800, 800);
-        _background2 = new Sprite(AssetManager2.GetTexture("background-night.png"), 0, 0, 800, 800);
+        char sep = Path.DirectorySeparatorChar;
+        _background1 = new Sprite(SAX.IO.TextureLoader.GetTexture("flappy"+ sep + "background-night.png"), 800, 0, 800, 800);
+        _background2 = new Sprite(SAX.IO.TextureLoader.GetTexture("flappy"+ sep + "background-night.png"), 0, 0, 800, 800);
 
     }
 

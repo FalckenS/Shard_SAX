@@ -16,16 +16,15 @@ namespace Shard.SAX.IO
     /// are retrievable through their relative paths and types. Asset data is
     /// preloaded and should be accessed through the singleton.
     /// </summary>
-    class AssetManager2
+    class TextureLoader
     {
         // Thread safe singleton implementation
         // from https://csharpindepth.com/articles/singleton
-        private AssetManager2()
+        private TextureLoader()
         {
-            // Load all textures in assets path
-            loadAssetsFolder();
+            
         }
-        public static AssetManager2 Instance { get { return Nested.instance; } }
+        public static TextureLoader Instance { get { return Nested.instance; } }
         private class Nested
         {
             // Explicit static constructor to tell C# compiler
@@ -33,14 +32,14 @@ namespace Shard.SAX.IO
             static Nested()
             {
             }
-            internal static readonly AssetManager2 instance = new AssetManager2();
+            internal static readonly TextureLoader instance = new TextureLoader();
         }
         /// <summary>
         /// Keys are relative paths. Relative to assets folder as configured in envar.cfg.
         /// </summary>
         private static Dictionary<string, Shard.SAX.Graphics2D.Texture> _textures = new Dictionary<string, Shard.SAX.Graphics2D.Texture>();
 
-        private void loadAssetsFolder() { loadTexturesFromFolder(Bootstrap.getEnvironmentalVariable("assetpath")); }
+        public static void loadAssetsFolder() { loadTexturesFromFolder(Bootstrap.getEnvironmentalVariable("assetpath")); }
 
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace Shard.SAX.IO
         /// </summary>
         /// <param name="absoluteFolderPath">Absolute path to the directory from which to load. 
         /// Adds the path relative from the assets folder as key for the texture in the directory.</param>
-        private void loadTexturesFromFolder(string absoluteFolderPath)
+        public static void loadTexturesFromFolder(string absoluteFolderPath)
         {
             string[] files = Directory.GetFiles(absoluteFolderPath);
             string[] dirs = Directory.GetDirectories(absoluteFolderPath);
@@ -75,7 +74,7 @@ namespace Shard.SAX.IO
         /// <summary>
         /// Reload all assets from assets folder.
         /// </summary>
-        public void ReloadAssets()
+        public static void ReloadAssets()
         {
             Discard();
             loadAssetsFolder();
@@ -83,7 +82,7 @@ namespace Shard.SAX.IO
         /// <summary>
         /// Discard all loaded assets.
         /// </summary>
-        public void Discard()
+        public static void Discard()
         {
             _textures.Clear();
         }
@@ -94,7 +93,7 @@ namespace Shard.SAX.IO
         /// </summary>
         /// <param name="relativePath">Path relative to assets folder</param>
         /// <returns>Texture loaded from the given filepath during instantiation.</returns>
-        public static Shard.SAX.Graphics2D.Texture getTexture(string relativePath)
+        public static Shard.SAX.Graphics2D.Texture GetTexture(string relativePath)
         {
             return _textures[relativePath];
         }

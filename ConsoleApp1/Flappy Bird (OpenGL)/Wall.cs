@@ -4,6 +4,7 @@
 using Shard;
 using Shard.SAX.Graphics2D;
 using Shard.SAX.IO;
+using System.IO;
 
 namespace GameFlappyBird;
 
@@ -26,7 +27,8 @@ internal class Wall : GameObject, CollisionHandler
 
         addTag("Red");
         BirdHasPassed = false;
-        _sprite = new Sprite(AssetManager2.getTexture("pipe-red.png"), 0, 0, 100, 0);
+        char sep = Path.DirectorySeparatorChar;
+        _sprite = new Sprite(Shard.SAX.IO.TextureLoader.GetTexture("flappy"+ sep + "pipe-red.png"), 0, 0, 100, 0);
     }
 
     public override void update()

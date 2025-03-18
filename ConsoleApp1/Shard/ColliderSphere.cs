@@ -78,7 +78,7 @@ internal class ColliderSphere : Collider
         float distanceSquared = (other.transform.X - transform.X) * (other.transform.X - transform.X) +
                                 (other.transform.Y - transform.Y) * (other.transform.Y - transform.Y) +
                                 (other.transform.Z - transform.Z) * (other.transform.Z - transform.Z);
-        return distanceSquared < transform.Radius * transform.Radius &&
+        return distanceSquared < transform.Radius * transform.Radius ||
                distanceSquared < other.transform.Radius * other.transform.Radius;
     }
 

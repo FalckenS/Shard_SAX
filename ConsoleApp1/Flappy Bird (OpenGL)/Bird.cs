@@ -79,7 +79,7 @@ internal class Bird : GameObject, CollisionHandler, InputListener
                 MyBody.addForce(Transform.Forward2d, FlyForce);
 
                 break;
-            case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_E && _spacePressed:
+            case "KeyUp" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_SPACE && _spacePressed:
                 _spacePressed = false;
                 break;
             case "KeyDown" when inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_R:

@@ -17,6 +17,7 @@ class GameDoom : Game
     private TargetObject target;
     private ModelObject gun;
     private Camera _camera;
+    private long startTime;
 
     private CubeObject cube;
 
@@ -26,6 +27,7 @@ class GameDoom : Game
         _second = 0;
         _score = 0;
         _scoreUpdated = false;
+        startTime = Bootstrap.getCurrentMillis();
 
         cube = new CubeObject(0, 10, -10, 0, 30, 0, 5, 5, 5, 1, 1, 1);
         RenderParams renderParamsCube = new RenderParams();
@@ -113,9 +115,12 @@ class GameDoom : Game
 
         _frame++;
         int timeStep = 2;
-        if (_frame == timeStep * getTargetFrameRate())
+        long currentTime = Bootstrap.getCurrentMillis();
+        //if (_frame == timeStep * getTargetFrameRate())
+        if (currentTime - startTime >= 2000)
         {
-            _frame -= timeStep * getTargetFrameRate();
+            //_frame -= timeStep * getTargetFrameRate();
+            startTime = currentTime;
             _second += timeStep;
             Debug.getInstance().log("second " + _second);
             Random random = new Random();

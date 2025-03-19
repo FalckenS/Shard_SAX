@@ -25,8 +25,8 @@ internal class Transform
     internal float Y { get; set; }
     internal float Rotz { get; set; }
     internal string SpritePath { get; set; }
-    internal int Width { get; set; }
-    internal int Height { get; set; }
+    internal float Width { get; set; }
+    internal float Height { get; set; }
     internal ref Vector2 Forward2d => ref forward2d;
     internal ref Vector2 Right2d => ref right2d;
     internal ref Vector2 Centre2d => ref centre2d;

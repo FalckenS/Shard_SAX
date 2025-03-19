@@ -8,88 +8,79 @@ struct Material {
 };
 
 struct Light {
-    //vec3 position;
+    vec3 position;
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
 };
 
-uniform Light light;
+#define MAX_NR_POINT_LIGHTS 10
+
+uniform Light lights[MAX_NR_POINT_LIGHTS];
 uniform Material material;
-
-uniform vec3 lightPos;
-uniform vec3 viewPos;
-
-
-//uniform sampler2D textureDiff;
-//uniform sampler2D textureNormal;
+uniform int useNormalMap;
+uniform int useDiffuseMap;
+uniform vec3 pureColor;
+uniform int nrLights;
 
 out vec4 FragColor;
 
-//in vec3 Normal;
-//in vec3 fragPos;
+
 in vec2 texCoord;
-in vec3 tangentLightPos;
 in vec3 tangentViewPos;
 in vec3 tangentFragPos;
 in vec3 normal;
-//in mat3 TBN;
+flat in mat3 TBN;
 
-//uniform vec3 tangentLightPos;
-//uniform vec3 tangentViewPos;
 
 
 
 void main()
 {
-    vec3 norm = texture(material.textureNormal, texCoord).rgb;
-    norm = normalize(norm * 2.0 - 1.0);
-    //norm = normal;
+    vec3 norm;
+    if (useNormalMap != 0){
+        norm = texture(material.textureNormal, texCoord).rgb;
+        norm = normalize(norm * 2.0 - 1.0);
+    }
+    else{
+        norm = normalize(normal);
+    }
 
-    //ambient
-    vec3 ambient = light.ambient * vec3(texture(material.textureDiff, texCoord));
+    vec3 baseColor;
+    if (useDiffuseMap != 0){
+        baseColor = vec3(texture(material.textureDiff, texCoord));
+    }
+    else{
+        baseColor = pureColor;
+    }
 
-    //diffuse 
-    vec3 lightDir = normalize(tangentLightPos - tangentFragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = light.diffuse * (diff * vec3(texture(material.textureDiff, texCoord))); 
+    vec3 result = vec3(0);
+    vec3 tangentLightPos[MAX_NR_POINT_LIGHTS];
 
-    //specular
-    vec3 viewDir = normalize(tangentViewPos - tangentFragPos);
-    //vec3 reflectDir = reflect(-lightDir, norm);
-    vec3 halfDir = normalize(viewDir + lightDir);
-    // float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    float spec = pow(max(dot(halfDir, norm), 0.0), material.shininess);
-    vec3 specular = light.specular * (spec * material.specular);
+    for (int i = 0; i < nrLights; i++){
+
+        tangentLightPos[i] = lights[i].position * TBN;
+        
+        //ambient
+        vec3 ambient = lights[i].ambient * baseColor;
+
+        //diffuse 
+        vec3 lightDir = normalize(tangentLightPos[i] - tangentFragPos);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 diffuse = lights[i].diffuse * (diff * baseColor); 
+
+        //specular
+        vec3 viewDir = normalize(tangentViewPos - tangentFragPos);
+        vec3 reflectDir = reflect(-lightDir, norm);
+        vec3 halfDir = normalize(viewDir + lightDir);
+        float spec = pow(max(dot(viewDir, reflectDir), 0.00001), material.shininess);
+        vec3 specular = lights[i].specular * (spec * material.specular);
 
 
-    vec3 result = ambient + diffuse + specular;
-    //FragColor = vec4(diff +result-result, 1.0);
+        result += ambient + diffuse + specular ;
+
+    }
+
+    
     FragColor = vec4(result, 1.0);
-
-//    vec3 norm_raw = texture(material.textureNormal, texCoord).rgb;
-//    vec3 norm = normalize(norm_raw * 2.0 - 1.0);
-//    norm = normalize(norm * TBN);
-//    //vec3 norm = normal;
-//
-//    //ambient
-//    vec3 ambient = light.ambient * vec3(texture(material.textureDiff, texCoord));
-//
-//    //diffuse 
-//    vec3 lightDir = normalize(lightPos - fragPos);
-//    float diff = max(dot(norm, lightDir), 0.0);
-//    vec3 diffuse = light.diffuse * (diff * vec3(texture(material.textureDiff, texCoord))); 
-//
-//    //specular
-//    vec3 viewDir = normalize(viewPos - fragPos);
-//    //vec3 reflectDir = reflect(-lightDir, norm);
-//    vec3 halfDir = normalize(viewDir + lightDir);
-//    // float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-//    float spec = pow(max(dot(halfDir, norm), 0.0), material.shininess);
-//    vec3 specular = light.specular * (spec * material.specular);
-//
-//
-//    vec3 result = ambient + diffuse + specular;
-//    FragColor = vec4(norm_raw*0.5+0.5+result-result, 1.0);
-//
 }

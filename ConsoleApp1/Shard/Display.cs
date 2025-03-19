@@ -98,6 +98,11 @@ namespace Shard
 
         }
 
+        public virtual void addToDrawModel(ModelObject model)
+        {
+
+        }
+
         public virtual void LinkCamera(Camera camera)
         {
 

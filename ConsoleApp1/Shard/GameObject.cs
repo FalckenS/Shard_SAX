@@ -158,8 +158,9 @@ namespace Shard
 
     class CubeObject : GameObject
     {
-        float w, h, d;
         RenderParams renderParams;
+
+        public Matrix4 ModelMatrix;
 
         public CubeObject(float tx, float ty, float tz, // translation
                           float rx, float ry, float rz, // rotation
@@ -175,14 +176,12 @@ namespace Shard
             Transform.ScaleX = sx;
             Transform.ScaleY = sy;
             Transform.ScaleZ = sz;
-            w = _w;
-            h = _h;
-            d = _d;
-        }
+            Transform.Width = _w;
+            Transform.Height = _h;
+            Transform.Depth = _d;
 
-        public float W { get => w; set => w = value; }
-        public float H { get => h; set => h = value; }
-        public float D { get => d; set => d = value; }
+            ModelMatrix = calcModel();
+        }
 
         public RenderParams RParams { get => renderParams; set => renderParams = value; }
 
@@ -194,7 +193,6 @@ namespace Shard
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
             Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
             return scale * rotZ * rotY * rotX * trans;
-            // return rotZ * rotY * rotX * trans;
 
         }
     }
@@ -214,6 +212,8 @@ namespace Shard
         Vector3 diffuse;
         Vector3 specular;
 
+        public Matrix4 ModelMatrix;
+
         public LightObject(float tx, float ty, float tz, // translation
                           float rx, float ry, float rz, // rotation
                           float sx, float sy, float sz,
@@ -231,6 +231,8 @@ namespace Shard
             color = _color;
             position = new Vector3(tx, ty, tz);
             type = _type;
+
+            ModelMatrix = calcModel();
         }
 
         public Matrix4 calcModel()
@@ -268,6 +270,11 @@ namespace Shard
     {
         private Camera _camera;
 
+        private Dictionary<string, ModelObject> _models;
+        private Dictionary<string, Vector3> _modelOffsets;
+
+        public Matrix4 ModelMatrix;
+
         public Player(float tx, float ty, float tz)
         {
             Transform.X = tx;
@@ -275,7 +282,35 @@ namespace Shard
             Transform.Z = tz;
             _camera = new Camera(new Vector3(tx, ty, tz), 1.0f);
 
+            _models = new Dictionary<string, ModelObject>();
+            _modelOffsets = new Dictionary<string, Vector3>();
+
             Bootstrap.getInput().addListener(this);
+        }
+
+        public void LinkModel(string name, ModelObject model)
+        {
+            _models[name] = model;
+
+        }
+
+        public void SetModelOffset(string name, Vector3 offest)
+        {
+            _modelOffsets[name] = offest;
+            UpdateModelTransform();
+        }
+
+        private void UpdateModelTransform()
+        {
+            float modelRotY = -_camera.Yaw - 90 + 180;
+            float modelRotX = -_camera.Pitch;
+
+            foreach (var modelName in _models.Keys)
+            {
+                Vector4 pos = new Vector4(_modelOffsets[modelName], 1.0f) * Matrix4.Invert(_camera.GetViewMatrix());
+                _models[modelName].TransMatrix = Matrix4.CreateTranslation(new Vector3(pos));
+                _models[modelName].RotMatrix = Matrix4.Invert(_camera.GetRotationMatrix());
+            }
         }
 
         public Camera GetCamera()
@@ -308,7 +343,7 @@ namespace Shard
                     Vector3 v = new Vector3(_camera.Front.X, 0, _camera.Front.Z);
                     v.Normalize();
                     _camera.Position += amount * new Vector3(v);
-                    
+
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_S)
                 {
@@ -329,15 +364,12 @@ namespace Shard
 
             if (eventType == "MouseMotion")
             {
-                float sensitivity = 0.2f;
-                //var deltaX = inp.X - inp.Lx;
-                //var deltaY = inp.Y - inp.Ly;
-                //_camera.Yaw += deltaX * sensitivity;
-                //_camera.Pitch -= deltaY * sensitivity;
+                float sensitivity = 0.15f;
                 _camera.Yaw += inp.Dx * sensitivity;
                 _camera.Pitch -= inp.Dy * sensitivity;
             }
 
+            UpdateModelTransform();
 
         }
 

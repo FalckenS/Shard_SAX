@@ -31,15 +31,15 @@ namespace Shard
             InputEvent ie;
             
 
-            //tick += Bootstrap.getDeltaTime();
+            tick += Bootstrap.getDeltaTime();
 
-            //if (tick < timeInterval)
-            //{
-            //    return;
-            //}
+            if (tick < timeInterval)
+            {
+                return;
+            }
 
-            //while (tick >= timeInterval)
-            //{
+            while (tick >= timeInterval)
+            {
                 while (SDL.SDL_PollEvent(out ev) != 0)
                 {
 
@@ -47,35 +47,11 @@ namespace Shard
 
                     if (ev.type == SDL.SDL_EventType.SDL_MOUSEMOTION)
                     {
-                        //if (mouse_first_move)
-                        //{
-                        //    lx = ev.motion.x;
-                        //    ly = ev.motion.y;
-                        //    mouse_first_move = false;
-                        //}
-                        //else
-                        //{
-                        //    SDL.SDL_MouseMotionEvent mot;
-
-                        //    mot = ev.motion;
-
-                        //    ie.X = mot.x;
-                        //    ie.Y = mot.y;
-                        //    ie.Lx = lx;
-                        //    ie.Ly = ly;
-
-                        //    Debug.getInstance().log("MouseMotion: " + ie.X + ", " + ie.Y);
-
-                        //    informListeners(ie, "MouseMotion");
-
-                        //    lx = ev.motion.x;
-                        //    ly = ev.motion.y;
-                        //}
+                        
                         SDL.SDL_MouseMotionEvent mot = ev.motion;
 
                         ie.Dx = mot.xrel;
                         ie.Dy = mot.yrel;
-                        Debug.getInstance().log("MouseMotion: " + ie.Dx + ", " + ie.Dy);
                         informListeners(ie, "MouseMotion");
                     }
 
@@ -128,22 +104,18 @@ namespace Shard
                     {
                         ie = new InputEvent();
                         ie.Key = i;
-                        Debug.getInstance().log("KeyPressed: " + ie.Key);
                         informListeners(ie, "KeyPressed");
                     }
                 }
 
-                //tick -= timeInterval;
-            //}
+                tick -= timeInterval;
+            }
         }
-
-
-
 
         public override void initialize()
         {
             tick = 0;
-            timeInterval = 1.0 / 60.0;
+            timeInterval = 1.0 / 30.0;
         }
 
     }

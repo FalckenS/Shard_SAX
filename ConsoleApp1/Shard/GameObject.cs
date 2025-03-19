@@ -294,33 +294,13 @@ namespace Shard
         public void LinkModel(string name, ModelObject model)
         {
             _models[name] = model;
-            Matrix4 toOrigin = Matrix4.CreateTranslation(-model.Transform.X, -model.Transform.Y, -model.Transform.Z);
-            _models[name].Transform.X = Transform.X;
-            _models[name].Transform.Y = Transform.Y;
-            _models[name].Transform.Z = Transform.Z;
-            _models[name].ModelMatrix *= toOrigin * Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
-            //Debug.getInstance().log("scale = " + _models[name].Transform.ScaleX);
 
         }
 
         public void SetModelOffset(string name, Vector3 offest)
         {
             _modelOffsets[name] = offest;
-            _models[name].Transform.X += offest.X;
-            _models[name].Transform.Y += offest.Y;
-            _models[name].Transform.Z += offest.Z;
-            _models[name].ModelMatrix *= Matrix4.CreateTranslation(offest);
-        }
-
-        private void UpdateModelTranslation(Vector3 t)
-        {
-            foreach (var modelName in _models.Keys)
-            {
-                _models[modelName].Transform.X += t.X;
-                _models[modelName].Transform.Y += t.Y;
-                _models[modelName].Transform.Z += t.Z;
-                _models[modelName].ModelMatrix *= Matrix4.CreateTranslation(t);
-            }
+            UpdateModelTransform();
         }
 
         private void UpdateModelTransform()
@@ -330,27 +310,9 @@ namespace Shard
 
             foreach (var modelName in _models.Keys)
             {
-                Matrix4 viewSpaceRot = Matrix4.CreateRotationX(modelRotX) * Matrix4.CreateRotationY(modelRotY);
                 Vector4 pos = new Vector4(_modelOffsets[modelName], 1.0f) * Matrix4.Invert(_camera.GetViewMatrix());
-                //_models[modelName].ModelMatrix *= rot;
-                _models[modelName].Transform.X = pos.X;
-                _models[modelName].Transform.Y = pos.Y;
-                _models[modelName].Transform.Z = pos.Z;
-                //Vector3 modelPos = new Vector3(pos);
-
-                //Matrix4 objectTransform = Matrix4.LookAt(
-                //    modelPos,        // 物体位置
-                //    modelPos + _camera.Front, // 物体朝向相机的方向
-                //    new Vector3(0, 1, 0)             // 物体的上方向
-                //);
-                _models[modelName].Transform.Rotx = modelRotX;
-                _models[modelName].Transform.Roty = modelRotY;
-                //Vector4 modelPos4 = new Vector4(modelPos, 1.0f) * objectTransform;
-                
-
-                //_models[modelName].ModelMatrix = _models[modelName].calcModel() * Matrix4.CreateTranslation(_modelOffsets[modelName]) * objectTransform;
-                //Debug.getInstance().log("rotx = " + modelRotX);
-                //Debug.getInstance().log("roty = " + modelRotY);
+                _models[modelName].TransMatrix = Matrix4.CreateTranslation(new Vector3(pos));
+                _models[modelName].RotMatrix = Matrix4.Invert(_camera.GetRotationMatrix());
             }
         }
 
@@ -374,28 +336,16 @@ namespace Shard
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_D)
                 {
                     _camera.Position += amount * _camera.Right;
-                    Transform.X += amount * _camera.Right.X;
-                    Transform.Y += amount * _camera.Right.Y;
-                    Transform.Z += amount * _camera.Right.Z;
-                    //UpdateModelTranslation(amount * _camera.Right);
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_A)
                 {
                     _camera.Position -= amount * _camera.Right;
-                    Transform.X -= amount * _camera.Right.X;
-                    Transform.Y -= amount * _camera.Right.Y;
-                    Transform.Z -= amount * _camera.Right.Z;
-                    //UpdateModelTranslation(-amount * _camera.Right);
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_W)
                 {
                     Vector3 v = new Vector3(_camera.Front.X, 0, _camera.Front.Z);
                     v.Normalize();
                     _camera.Position += amount * new Vector3(v);
-                    Transform.X += amount * new Vector3(v).X;
-                    Transform.Y += amount * new Vector3(v).Y;
-                    Transform.Z += amount * new Vector3(v).Z;
-                    //UpdateModelTranslation(amount * new Vector3(v));
 
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_S)
@@ -403,26 +353,14 @@ namespace Shard
                     Vector3 v = new Vector3(_camera.Front.X, 0, _camera.Front.Z);
                     v.Normalize();
                     _camera.Position -= amount * new Vector3(v);
-                    Transform.X -= amount * new Vector3(v).X;
-                    Transform.Y -= amount * new Vector3(v).Y;
-                    Transform.Z -= amount * new Vector3(v).Z;
-                    //UpdateModelTranslation(-amount * new Vector3(v));
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_Q)
                 {
                     _camera.Position += amount * new Vector3(0, 1.0f, 0);
-                    Transform.X += amount * new Vector3(0, 1.0f, 0).X;
-                    Transform.Y += amount * new Vector3(0, 1.0f, 0).Y;
-                    Transform.Z += amount * new Vector3(0, 1.0f, 0).Z;
-                    //UpdateModelTranslation(amount * new Vector3(0, 1.0f, 0));
                 }
                 if (inp.Key == (int)SDL.SDL_Scancode.SDL_SCANCODE_E)
                 {
                     _camera.Position -= amount * new Vector3(0, 1.0f, 0);
-                    Transform.X -= amount * new Vector3(0, 1.0f, 0).X;
-                    Transform.Y -= amount * new Vector3(0, 1.0f, 0).Y;
-                    Transform.Z -= amount * new Vector3(0, 1.0f, 0).Z;
-                    //UpdateModelTranslation(-amount * new Vector3(0, 1.0f, 0));
                 }
 
             }
@@ -430,32 +368,11 @@ namespace Shard
             if (eventType == "MouseMotion")
             {
                 float sensitivity = 0.15f;
-                //var deltaX = inp.X - inp.Lx;
-                //var deltaY = inp.Y - inp.Ly;
-                //_camera.Yaw += deltaX * sensitivity;
-                //_camera.Pitch -= deltaY * sensitivity;
                 _camera.Yaw += inp.Dx * sensitivity;
                 _camera.Pitch -= inp.Dy * sensitivity;
-                //float modelYaw = -inp.Dx * sensitivity;
-                //float modelPitch = -inp.Dy * sensitivity;
-                //Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(modelPitch));
-                //Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(modelYaw));
-                //Matrix4 toOrigin = Matrix4.CreateTranslation(-Transform.X, -Transform.Y, -Transform.Z);
-                //Matrix4 offOrigin = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
-                //UpdateModelRotation(toOrigin * rotY * rotX * offOrigin);
-
-
-                float modelRotY = MathHelper.RadiansToDegrees(-_camera.Yaw);
-                float modelRotX = MathHelper.RadiansToDegrees(_camera.Pitch);
-                //Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(modelRotX));
-                //Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(modelRotY));
-
-                
-
             }
+
             UpdateModelTransform();
-
-
 
         }
 

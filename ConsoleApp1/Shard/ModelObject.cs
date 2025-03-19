@@ -20,6 +20,14 @@ namespace Shard
 
         RenderParams renderParams;
 
+        private Matrix4 _initRotMatrix;
+        private Matrix4 _initTransMatrix;
+        private Matrix4 _initScaleMatrix;
+
+        private Matrix4 _transMatrix;
+        private Matrix4 _rotMatrix;
+        private Matrix4 _scaleMatrix;
+
         public Matrix4 ModelMatrix;
 
         public ModelObject(float tx, float ty, float tz, // translation
@@ -36,17 +44,58 @@ namespace Shard
             Transform.ScaleY = sy;
             Transform.ScaleZ = sz;
 
-            ModelMatrix = calcModel();
-        }
-
-        public Matrix4 calcModel()
-        {
-            Matrix4 trans = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
+            _initTransMatrix = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
             Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
             Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
-            Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
-            return scale * rotX * rotY * rotZ * trans;
+            _initRotMatrix = rotX * rotY * rotZ;
+            _initScaleMatrix = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
+
+            _transMatrix = Matrix4.Identity;
+            _rotMatrix = Matrix4.Identity;
+            _scaleMatrix = Matrix4.Identity;
+
+            calcModel();
+        }
+
+        private void calcModel()
+        {
+            //Matrix4 trans = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
+            //Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
+            //Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
+            //Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
+            //Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
+            ///return scale * rotX * rotY * rotZ * trans;
+            ModelMatrix = _initScaleMatrix * _scaleMatrix * _initRotMatrix * _rotMatrix * _initTransMatrix * _transMatrix;
+        }
+
+        public Matrix4 ScaleMatrix
+        {
+            get { return _scaleMatrix; }
+            set { 
+                _scaleMatrix = value; 
+                calcModel();
+            }
+        }
+
+        public Matrix4 RotMatrix
+        {
+            get { return _rotMatrix; }
+            set
+            {
+                _rotMatrix = value;
+                calcModel();
+            }
+        }
+
+        public Matrix4 TransMatrix
+        {
+            get { return _transMatrix; }
+            set
+            {
+                _transMatrix = value;
+                calcModel();
+            }
         }
 
         public RenderParams RParams { get => renderParams; set => renderParams = value; }

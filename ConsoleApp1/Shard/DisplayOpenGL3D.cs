@@ -558,8 +558,8 @@ class DisplayOpenGL3D : Display
     {
         _shaderLighting.Use();
 
-        _model = modelObj.calcModel();
-        //_model = modelObj.ModelMatrix;
+        //_model = modelObj.calcModel();
+        _model = modelObj.ModelMatrix;
         _shaderLighting.SetMatrix4("model", _model);
         _shaderLighting.SetMatrix4("view", _view);
         _shaderLighting.SetMatrix4("projection", _projection);

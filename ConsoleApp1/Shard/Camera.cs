@@ -94,6 +94,11 @@ namespace Shard
             return Matrix4.LookAt(Position, Position + _front, _up);
         }
 
+        public Matrix4 GetRotationMatrix()
+        {
+            return Matrix4.LookAt(new Vector3(0, 0, 0), _front, _up);
+        }
+
         // Get the projection matrix using the same method we have used up until this point
         public Matrix4 GetProjectionMatrix()
         {

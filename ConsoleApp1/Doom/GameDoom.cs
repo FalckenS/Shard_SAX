@@ -86,7 +86,7 @@ class GameDoom : Game
         renderParamsTarget.color = new Vector3(0, 0.5f, 1);
         target.RParams = renderParamsTarget;
 
-        gun = new ModelObject(0, 5, -5, 0, 180, 0, 0.001f, 0.001f, 0.001f);
+        gun = new ModelObject(0, 0, 0, 0, 180, 0, 0.001f, 0.001f, 0.001f);
         gun.Load(Bootstrap.getAssetManager().getAssetPath("gun.obj"));
         RenderParams renderParamsGun = new RenderParams();
         renderParamsGun.pathDiff = Bootstrap.getAssetManager().getAssetPath("gun_diff.jpg");

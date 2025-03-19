@@ -175,9 +175,6 @@ namespace Shard
             Transform.ScaleX = sx;
             Transform.ScaleY = sy;
             Transform.ScaleZ = sz;
-            //w = _w;
-            //h = _h;
-            //d = _d;
             Transform.Width = _w;
             Transform.Height = _h;
             Transform.Depth = _d;
@@ -195,7 +192,6 @@ namespace Shard
             Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
             Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
             return scale * rotZ * rotY * rotX * trans;
-            // return rotZ * rotY * rotX * trans;
 
         }
     }

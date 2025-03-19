@@ -60,12 +60,6 @@ namespace Shard
 
         private void calcModel()
         {
-            //Matrix4 trans = Matrix4.CreateTranslation(Transform.X, Transform.Y, Transform.Z);
-            //Matrix4 rotX = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(Transform.Rotx));
-            //Matrix4 rotY = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(Transform.Roty));
-            //Matrix4 rotZ = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(Transform.Rotz));
-            //Matrix4 scale = Matrix4.CreateScale(Transform.ScaleX, Transform.ScaleY, Transform.ScaleZ);
-            ///return scale * rotX * rotY * rotZ * trans;
             ModelMatrix = _initScaleMatrix * _scaleMatrix * _initRotMatrix * _rotMatrix * _initTransMatrix * _transMatrix;
         }
 
@@ -123,16 +117,16 @@ namespace Shard
 
                     switch (tokens[0])
                     {
-                        case "v":   // 顶点
+                        case "v": 
                             Vertices.Add(ParseVector3(tokens));
                             break;
-                        case "vn":  // 法线
+                        case "vn": 
                             Normals.Add(Vector3.Normalize(ParseVector3(tokens)));
                             break;
-                        case "vt":  // 纹理坐标
+                        case "vt": 
                             TextureCoords.Add(ParseVector2(tokens));
                             break;
-                        case "f":   // 面
+                        case "f":
                             Faces.Add(ParseFace(tokens));
                             break;
                     }
@@ -177,7 +171,6 @@ namespace Shard
 
         private void SetupModel()
         {
-            //float[] vertices = new float[Faces.Count*3*8];
             List<float> vertices = new List<float>();
             for (int i = 0; i < Faces.Count; i++)
             {
@@ -227,8 +220,6 @@ namespace Shard
     {
         public List<FaceVertex> Vertices { get; } = new List<FaceVertex>();
     }
-
-    // 面的顶点数据结构
     public class FaceVertex
     {
         public int VertexIndex;

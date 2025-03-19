@@ -44,63 +44,51 @@ class DisplayOpenGL3D : Display
 
     private void prepareBaseCube()
     {
-        //float[] _vertices =
-        //{
-        //    // Position         Texture coordinates
-        //     0.5f,  0.5f, 0.0f, 1.0f, 1.0f, // top right
-        //     0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
-        //    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
-        //    -0.5f,  0.5f, 0.0f, 0.0f, 1.0f  // top left
-        //};
+        float w = 1.0f, h = 1.0f, d = 1.0f;
 
-       float[] _vertices = {
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-             0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        float[] _vertices = {
+            // Position,      //TexCoord  //Normal   //Tangent  //Bitangent
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, -1, -1, 0, 0, 0, 1, 0,
+             w/2, -h/2, -d/2,  w,    0.0f, 0, 0, -1, -1, 0, 0, 0, 1, 0,
+             w/2,  h/2, -d/2,  w,    h,    0, 0, -1, -1, 0, 0, 0, 1, 0,
+             w/2,  h/2, -d/2,  w,    h,    0, 0, -1, -1, 0, 0, 0, 1, 0,
+            -w/2,  h/2, -d/2,  0.0f, h,    0, 0, -1, -1, 0, 0, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, 0, -1, -1, 0, 0, 0, 1, 0,
 
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f, 0, 0, 1, 1, 0, 0, 0, 1, 0,
+             w/2, -h/2,  d/2,  w,    0.0f, 0, 0, 1, 1, 0, 0, 0, 1, 0,
+             w/2,  h/2,  d/2,  w,    h,    0, 0, 1, 1, 0, 0, 0, 1, 0,
+             w/2,  h/2,  d/2,  w,    h,    0, 0, 1, 1, 0, 0, 0, 1, 0,
+            -w/2,  h/2,  d/2,  0.0f, h,    0, 0, 1, 1, 0, 0, 0, 1, 0,
+            -w/2, -h/2,  d/2,  0.0f, 0.0f, 0, 0, 1, 1, 0, 0, 0, 1, 0,
 
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+            -w/2,  h/2,  d/2,  d,    h,    -1, 0, 0, 0, 0, 1, 0, 1, 0,
+            -w/2,  h/2, -d/2,  0.0f, h,    -1, 0, 0, 0, 0, 1, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0, 0, 0, 1, 0, 1, 0,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, -1, 0, 0, 0, 0, 1, 0, 1, 0,
+            -w/2, -h/2,  d/2,  d,    0.0f, -1, 0, 0, 0, 0, 1, 0, 1, 0,
+            -w/2,  h/2,  d/2,  d,    h,    -1, 0, 0, 0, 0, 1, 0, 1, 0,
 
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+             w/2,  h/2,  d/2,  0.0f, h,    1, 0, 0, 0, 0, -1, 0, 1, 0,
+             w/2,  h/2, -d/2,  d,    h,    1, 0, 0, 0, 0, -1, 0, 1, 0,
+             w/2, -h/2, -d/2,  d,    0.0f, 1, 0, 0, 0, 0, -1, 0, 1, 0,
+             w/2, -h/2, -d/2,  d,    0.0f, 1, 0, 0, 0, 0, -1, 0, 1, 0,
+             w/2, -h/2,  d/2,  0.0f, 0.0f, 1, 0, 0, 0, 0, -1, 0, 1, 0,
+             w/2,  h/2,  d/2,  0.0f, h,    1, 0, 0, 0, 0, -1, 0, 1, 0,
 
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, -1, 0, 1, 0, 0, 0, 0, 1,
+             w/2, -h/2, -d/2,  w,    0.0f, 0, -1, 0, 1, 0, 0, 0, 0, 1,
+             w/2, -h/2,  d/2,  w,    d,    0, -1, 0, 1, 0, 0, 0, 0, 1,
+             w/2, -h/2,  d/2,  w,    d,    0, -1, 0, 1, 0, 0, 0, 0, 1,
+            -w/2, -h/2,  d/2,  0.0f, d,    0, -1, 0, 1, 0, 0, 0, 0, 1,
+            -w/2, -h/2, -d/2,  0.0f, 0.0f, 0, -1, 0, 1, 0, 0, 0, 0, 1,
 
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-        };
-
-    uint[] _indices =
-        {
-            0, 1, 3,
-            1, 2, 3
+            -w/2,  h/2, -d/2,  0.0f, d,    0, 1, 0, 1, 0, 0, 0, 0, -1,
+             w/2,  h/2, -d/2,  w,    d,    0, 1, 0, 1, 0, 0, 0, 0, -1,
+             w/2,  h/2,  d/2,  w,    0.0f, 0, 1, 0, 1, 0, 0, 0, 0, -1,
+             w/2,  h/2,  d/2,  w,    0.0f, 0, 1, 0, 1, 0, 0, 0, 0, -1,
+            -w/2,  h/2,  d/2,  0.0f, 0.0f, 0, 1, 0, 1, 0, 0, 0, 0, -1,
+            -w/2,  h/2, -d/2,  0.0f, d,    0, 1, 0, 1, 0, 0, 0, 0, -1
         };
 
         _vaoCube = GL.GenVertexArray();
@@ -108,22 +96,27 @@ class DisplayOpenGL3D : Display
 
         _vboCube = GL.GenBuffer();
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vboCube);
-        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
+        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.DynamicDraw);
 
-        _eboCube = GL.GenBuffer();
-        GL.BindBuffer(BufferTarget.ElementArrayBuffer, _eboCube);
-        GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
-
-        _shaderCube = new Shader("Shaders/cube.vert", "Shaders/cube.frag");
-
-        var vertexLocation = _shaderCube.GetAttribLocation("aPosition");
+        var vertexLocation = _shaderLighting.GetAttribLocation("aPosition");
         GL.EnableVertexAttribArray(vertexLocation);
-        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 0);
 
-        var texCoordLocation = _shaderCube.GetAttribLocation("aTexCoord");
+        var texCoordLocation = _shaderLighting.GetAttribLocation("aTexCoord");
         GL.EnableVertexAttribArray(texCoordLocation);
-        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 14 * sizeof(float), 3 * sizeof(float));
 
+        var normalLocation = _shaderLighting.GetAttribLocation("aNormal");
+        GL.EnableVertexAttribArray(normalLocation);
+        GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 5 * sizeof(float));
+
+        var tangentLocation = _shaderLighting.GetAttribLocation("aTangent");
+        GL.EnableVertexAttribArray(tangentLocation);
+        GL.VertexAttribPointer(tangentLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 8 * sizeof(float));
+
+        var bitangentLocation = _shaderLighting.GetAttribLocation("aBitangent");
+        GL.EnableVertexAttribArray(bitangentLocation);
+        GL.VertexAttribPointer(bitangentLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 11 * sizeof(float));
     }
 
     public override void initialize()
@@ -163,7 +156,7 @@ class DisplayOpenGL3D : Display
         _shaderLight = new Shader("Shaders/light.vert", "Shaders/light.frag");
         _shaderLighting = new Shader("Shaders/lighting.vert", "Shaders/lighting.frag");
 
-        // prepareBaseCube();
+        prepareBaseCube();
 
         _font = new FreeTypeFont(32);
 
@@ -374,7 +367,6 @@ class DisplayOpenGL3D : Display
         GL.BindVertexArray(0);
 
         // Use shader and draw the line
-        //_shaderShape.Use();
         GL.BindVertexArray(_vao);
         GL.DrawArrays(PrimitiveType.Lines, 0, 2);
     }
@@ -483,51 +475,28 @@ class DisplayOpenGL3D : Display
         };
 
 
-        _vaoCube = GL.GenVertexArray();
-        GL.BindVertexArray(_vaoCube);
-
-        _vboCube = GL.GenBuffer();
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vboCube);
-        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
-
-        var vertexLocation = _shaderLighting.GetAttribLocation("aPosition");
-        GL.EnableVertexAttribArray(vertexLocation);
-        GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 0);
-
-        var texCoordLocation = _shaderLighting.GetAttribLocation("aTexCoord");
-        GL.EnableVertexAttribArray(texCoordLocation);
-        GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 14 * sizeof(float), 3 * sizeof(float));
-
-        var normalLocation = _shaderLighting.GetAttribLocation("aNormal");
-        GL.EnableVertexAttribArray(normalLocation);
-        GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 5 * sizeof(float));
-
-        var tangentLocation = _shaderLighting.GetAttribLocation("aTangent");
-        GL.EnableVertexAttribArray(tangentLocation);
-        GL.VertexAttribPointer(tangentLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 8 * sizeof(float));
-
-        var bitangentLocation = _shaderLighting.GetAttribLocation("aBitangent");
-        GL.EnableVertexAttribArray(bitangentLocation);
-        GL.VertexAttribPointer(bitangentLocation, 3, VertexAttribPointerType.Float, false, 14 * sizeof(float), 11 * sizeof(float));
-
+        GL.BufferSubData(BufferTarget.ArrayBuffer, 0, _vertices.Length * sizeof(float), _vertices);
 
         _shaderLighting.Use();
 
         _model = cube.calcModel();
-        //_model = cube.ModelMatrix;
         _shaderLighting.SetMatrix4("model", _model);
         _shaderLighting.SetMatrix4("view", _view);
         _shaderLighting.SetMatrix4("projection", _projection);
         _shaderLighting.SetVector3("viewPos", _camera.Position);
-        //_shaderLighting.SetVector3("tangentViewPos", _camera.Position);
 
-        // TODO: Handle all lights in the list
-        LightObject light_temp = _lightsToRender[0];
-        _shaderLighting.SetVector3("lightPos", light_temp.getPosition());
-        //_shaderLighting.SetVector3("tangentLightPos", light_temp.getPosition());
-        _shaderLighting.SetVector3("light.ambient", light_temp.Ambient);
-        _shaderLighting.SetVector3("light.diffuse", light_temp.Diffuse);
-        _shaderLighting.SetVector3("light.specular", light_temp.Specular);
+        int nrLights = _lightsToRender.Count;
+        _shaderLighting.SetInt("nrLights", nrLights);
+
+        for(int i = 0; i < nrLights; i++)
+        {
+            LightObject light_temp = _lightsToRender[i];
+            _shaderLighting.SetVector3($"lights[{i}].position", light_temp.getPosition());
+            _shaderLighting.SetVector3($"lights[{i}].ambient", light_temp.Ambient);
+            _shaderLighting.SetVector3($"lights[{i}].diffuse", light_temp.Diffuse);
+            _shaderLighting.SetVector3($"lights[{i}].specular", light_temp.Specular);
+        }
 
         _shaderLighting.SetFloat("material.shininess", cube.RParams.shininess);
         _shaderLighting.SetVector3("material.specular", cube.RParams.specular);
@@ -548,9 +517,10 @@ class DisplayOpenGL3D : Display
             Texture texDiff = _textureBuffer[cube.RParams.pathDiff];
             texDiff.Use(TextureUnit.Texture0);
         }
-        
 
+        GL.BindVertexArray(_vaoCube);
         GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+        GL.BindVertexArray(0);
     }
 
 
@@ -558,20 +528,23 @@ class DisplayOpenGL3D : Display
     {
         _shaderLighting.Use();
 
-        //_model = modelObj.calcModel();
         _model = modelObj.ModelMatrix;
         _shaderLighting.SetMatrix4("model", _model);
         _shaderLighting.SetMatrix4("view", _view);
         _shaderLighting.SetMatrix4("projection", _projection);
         _shaderLighting.SetVector3("viewPos", _camera.Position);
 
-        // TODO: Handle all lights in the list
-        LightObject light_temp = _lightsToRender[0];
-        _shaderLighting.SetVector3("lightPos", light_temp.getPosition());
-        //_shaderLighting.SetVector3("tangentLightPos", light_temp.getPosition());
-        _shaderLighting.SetVector3("light.ambient", light_temp.Ambient);
-        _shaderLighting.SetVector3("light.diffuse", light_temp.Diffuse);
-        _shaderLighting.SetVector3("light.specular", light_temp.Specular);
+        int nrLights = _lightsToRender.Count;
+        _shaderLighting.SetInt("nrLights", nrLights);
+
+        for (int i = 0; i < nrLights; i++)
+        {
+            LightObject light_temp = _lightsToRender[i];
+            _shaderLighting.SetVector3($"lights[{i}].position", light_temp.getPosition());
+            _shaderLighting.SetVector3($"lights[{i}].ambient", light_temp.Ambient);
+            _shaderLighting.SetVector3($"lights[{i}].diffuse", light_temp.Diffuse);
+            _shaderLighting.SetVector3($"lights[{i}].specular", light_temp.Specular);
+        }
 
         _shaderLighting.SetFloat("material.shininess", modelObj.RParams.shininess);
         _shaderLighting.SetVector3("material.specular", modelObj.RParams.specular);
@@ -592,22 +565,9 @@ class DisplayOpenGL3D : Display
             Texture texDiff = _textureBuffer[modelObj.RParams.pathDiff];
             texDiff.Use(TextureUnit.Texture0);
         }
-        
-
-        //_shaderCube.Use();
-
-        //_model = modelObj.calcModel();
-        //_shaderCube.SetMatrix4("model", _model);
-        //_shaderCube.SetMatrix4("view", _view);
-        //_shaderCube.SetMatrix4("projection", _projection);
-
-        //_shaderCube.SetInt("textureDiff", 0);
-        //Texture texDiff = _textureBuffer[modelObj.RParams.pathDiff];
-        //texDiff.Use(TextureUnit.Texture0);
 
         GL.BindVertexArray(modelObj.GetVAO());
         GL.DrawArrays(PrimitiveType.Triangles, 0, modelObj.Faces.Count * 3);
-
 
     }
 
@@ -673,7 +633,6 @@ class DisplayOpenGL3D : Display
         _shaderLight.Use();
 
         _model = light.calcModel();
-        //_model = light.ModelMatrix;
         _shaderLight.SetMatrix4("model", _model);
         _shaderLight.SetMatrix4("view", _view);
         _shaderLight.SetMatrix4("projection", _projection);

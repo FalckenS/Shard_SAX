@@ -8,17 +8,13 @@ layout (location = 4) in vec3 aBitangent;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
-uniform vec3 lightPos;
 uniform vec3 viewPos;
 
-
-
 out vec2 texCoord;
-out vec3 tangentLightPos;
 out vec3 tangentViewPos;
 out vec3 tangentFragPos;
 out vec3 normal;
-//out vec3 fragPos;
+flat out mat3 TBN;
 
 void main()
 {
@@ -30,12 +26,8 @@ void main()
     vec3 T = normalize(aTangent * normalMatrix);
     vec3 B = normalize(aBitangent * normalMatrix);
     vec3 N = normalize(aNormal * normalMatrix);
-    //T = normalize(T - dot(T, N) * N);
-    // then retrieve perpendicular vector B with the cross product of T and N
-    //B = cross(N,T);
     
-    mat3 TBN = mat3(T, B, N);  
-    tangentLightPos = lightPos * TBN;
+    TBN = mat3(T, B, N);  
     tangentViewPos  = viewPos * TBN;
     tangentFragPos  = fragPos * TBN;
     normal = normalize(normalize(aNormal * normalMatrix) * TBN);

@@ -13,7 +13,7 @@ class GameDoom : Game
     private TextToRender hello;
     private CubeObject wall_1, wall_2, wall_3, wall_4, floor;
     private Player player;
-    private LightObject light;
+    private LightObject light, light2;
     private TargetObject target;
     private ModelObject gun;
     private Camera _camera;
@@ -68,10 +68,14 @@ class GameDoom : Game
         floor.RParams = renderParamsFloor;
 
         light = new LightObject(-10, 30, 15, 0, 0, 0, 1f, 1f, 1f, new Vector3(1, 1, 1), LightSourceType.Point);
-        //light = new LightObject(0, 15, 0, 0, 0, 0, 1, 1, 1, new Vector3(1, 1, 1), LightSourceType.Point);
         light.Ambient = new Vector3(0.1f);
-        light.Diffuse = new Vector3(1.0f);
+        light.Diffuse = new Vector3(0.5f);
         light.Specular = new Vector3(1.0f);
+
+        light2 = new LightObject(-10, 30, -15, 0, 0, 0, 1f, 1f, 1f, new Vector3(1, 1, 1), LightSourceType.Point);
+        light2.Ambient = new Vector3(0.1f);
+        light2.Diffuse = new Vector3(0.5f);
+        light2.Specular = new Vector3(1.0f);
 
         player = new Player(0, 10, 0);
         _camera = player.GetCamera();
@@ -112,6 +116,7 @@ class GameDoom : Game
         Bootstrap.getDisplay().addToDrawCube(wall_4);
         Bootstrap.getDisplay().addToDrawCube(floor);
         Bootstrap.getDisplay().addToDrawLight(light);
+        Bootstrap.getDisplay().addToDrawLight(light2);
 
         _frame++;
         int timeStep = 2;
@@ -156,8 +161,6 @@ class GameDoom : Game
         int offset = h / 100;
         Bootstrap.getDisplay().drawLine(w / 2 - offset, h / 2, w / 2 + offset, h / 2, Color.Red);
         Bootstrap.getDisplay().drawLine(w / 2, h / 2 - offset, w / 2, h / 2 + offset, Color.Red);
-
-        //Bootstrap.getDisplay().addToDrawCube(cube);
 
     }
 
@@ -210,7 +213,6 @@ class TargetObject : CubeObject, InputListener, CollisionHandler
         {
             System.Numerics.Vector3 pos = new System.Numerics.Vector3(_sourceCamera.Position.X, _sourceCamera.Position.Y, _sourceCamera.Position.Z);
             System.Numerics.Vector3 dir = new System.Numerics.Vector3(_sourceCamera.Front.X, _sourceCamera.Front.Y, _sourceCamera.Front.Z);
-            //Debug.getInstance().log("Hit!");
             if (MyBody.checkCollisions(pos, dir))
             {
                 Debug.getInstance().log("Hit!");

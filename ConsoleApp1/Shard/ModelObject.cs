@@ -209,9 +209,6 @@ namespace Shard
             GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 5 * sizeof(float));
 
             GL.BindVertexArray(0);
-
-            Debug.getInstance().log("face count: " + Faces.Count * 3);
-            Debug.getInstance().log("MouseMotion: " + vertices_array.Length/8);
         }
     }
 

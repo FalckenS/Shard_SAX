@@ -51,13 +51,13 @@ Avoid the pipes.
 Get as far as possible.  
 *Note : Pressing R changes the player model.* 
 
-### Doom
+### AimLab
 Change the Config.cfg to ...
 ```
 # Setup of internal systems
 display: DisplayOpenGL3D
 sound: SoundSDL
-game: GameDoom
+game: AimLab
 input: InputFramework3D
 asset: AssetManager
 ```

@@ -68,6 +68,7 @@ gravity_modifier: 0.1
 gravity_dir: 0,-1
 physics_debug: 0
 ```
+#### Instructions
 You can move around with wasd, shoot with left mouse button.  
 Aim at the blue square and try to shoot it and score points.  
 Practice your aim by trying to hit the square faster and faster.  

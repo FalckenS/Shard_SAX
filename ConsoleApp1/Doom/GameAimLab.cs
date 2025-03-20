@@ -7,7 +7,7 @@ using Shard;
 
 namespace Shard;
 
-class GameDoom : Game
+class GameAimLab : Game
 {
     private int _frame, _second, _score;
     private bool _scoreUpdated;

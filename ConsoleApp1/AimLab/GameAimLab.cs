@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 //using System.Numerics;
 using OpenTK.Mathematics;
@@ -54,9 +55,25 @@ class GameAimLab : Game
         renderParamsBrick.useDiffuseMap = 1;
         renderParamsBrick.useNormalMap = 1;
         wall_1.RParams = renderParamsBrick;
-        wall_2.RParams = renderParamsBrick;
-        wall_3.RParams = renderParamsBrick;
+        //wall_2.RParams = renderParamsBrick;
+        //wall_3.RParams = renderParamsBrick;
         wall_4.RParams = renderParamsBrick;
+
+        RenderParams renderParamsBrickPureColor = new RenderParams();
+        renderParamsBrickPureColor.shininess = 8.0f;
+        renderParamsBrickPureColor.specular = new Vector3(0.3f);
+        renderParamsBrickPureColor.useDiffuseMap = 0;
+        renderParamsBrickPureColor.useNormalMap = 0;
+        renderParamsBrickPureColor.color = new Vector3(0.86f, 0.72f, 0.52f); 
+        wall_2.RParams = renderParamsBrickPureColor;
+
+        RenderParams renderParamsBrickWONormalMap = new RenderParams();
+        renderParamsBrickWONormalMap.pathDiff = Bootstrap.getAssetManager().getAssetPath("brick_diff.jpg");
+        renderParamsBrickWONormalMap.shininess = 8.0f;
+        renderParamsBrickWONormalMap.specular = new Vector3(0.3f);
+        renderParamsBrickWONormalMap.useDiffuseMap = 1;
+        renderParamsBrickWONormalMap.useNormalMap = 0;
+        wall_3.RParams = renderParamsBrickWONormalMap;
 
         floor = new CubeObject(0, 0, 0, 0, 0, 0, 10, 4, 10, 5.0f, 0.5f, 5.0f);
         RenderParams renderParamsFloor = new RenderParams();
@@ -73,7 +90,7 @@ class GameAimLab : Game
         light.Diffuse = new Vector3(0.5f);
         light.Specular = new Vector3(1.0f);
 
-        light2 = new LightObject(-10, 30, -15, 0, 0, 0, 1f, 1f, 1f, new Vector3(1, 1, 1), LightSourceType.Point);
+        light2 = new LightObject(10, 30, -15, 0, 0, 0, 1f, 1f, 1f, new Vector3(1, 1, 1), LightSourceType.Point);
         light2.Ambient = new Vector3(0.1f);
         light2.Diffuse = new Vector3(0.5f);
         light2.Specular = new Vector3(1.0f);

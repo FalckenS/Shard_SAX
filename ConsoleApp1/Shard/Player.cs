@@ -63,7 +63,7 @@ namespace Shard
                 return;
             }
 
-            float amount = (float)(10 * Bootstrap.getDeltaTime());
+            float amount = (float)(7.5 * Bootstrap.getDeltaTime());
 
             if (eventType == "KeyPressed")
             {
@@ -102,7 +102,7 @@ namespace Shard
 
             if (eventType == "MouseMotion")
             {
-                float sensitivity = 0.15f;
+                float sensitivity = 0.10f;
                 _camera.Yaw += inp.Dx * sensitivity;
                 _camera.Pitch -= inp.Dy * sensitivity;
             }

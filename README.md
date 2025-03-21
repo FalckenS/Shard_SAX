@@ -22,7 +22,7 @@ The build is generated under bin/RELEASE
 Locate your MSBuild executable. (probably something like C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe)
 And run ```"MSBuildPath\msbuild.exe" "ProjectPath\Shard.csproj" /p:Configuration=RELEASE /v:normal```
 
-## Useage
+## Usage
 Running the generated exe file runs the current setup. Change run settings in the Config.cfg file located in the project folder. Change environment variables in the envar.cfg file. To switch between games you have to manually change these files.
 
 ## Running Demo Games

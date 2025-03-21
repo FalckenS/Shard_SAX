@@ -56,7 +56,7 @@ namespace Shard
             return _camera;
         }
 
-        public void handleInput(InputEvent inp, string eventType)
+        public virtual void handleInput(InputEvent inp, string eventType)
         {
             if (Bootstrap.getRunningGame().isRunning() == false)
             {
